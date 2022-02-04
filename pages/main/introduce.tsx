@@ -1,11 +1,25 @@
-import { NextPage } from 'next';
+import type { NextPage } from 'next';
+import React from 'react';
+import styled from 'styled-components';
+import { IntorContainer } from '../../container';
+import { $Color } from '../../styles';
 
-interface introduce{}
+export const Main = styled.main`
+  width: 100%;
+  height: 100vh;
+  background-color: ${$Color.default.dark4};
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
-const introduce:NextPage = (props)=> {
-  const {} = props
+const Introduce: NextPage = () => {
+  return (
+    <Main>
+      <IntorContainer />
+    </Main>
+  );
+};
 
-  return (<>자기소개</>)
-}
-
-export default introduce
+export default Introduce;
