@@ -1,30 +1,27 @@
+import { gsap } from 'gsap';
 import type { NextPage } from 'next';
 import React from 'react';
 import styled from 'styled-components';
 
 interface ParallaxProps {
-  top?: number;
-  left?: number;
-  right?: number;
-  bottom?: number;
+  top?: number | string;
+  left?: number | string;
+  right?: number | string;
   color?: string;
+  translateX?: string;
+  translateY?: string;
 }
 
-export const Item = styled((props) => {
-  return <h1 {...props}></h1>;
-})`
+export const Item = styled.h1`
   width: 500px;
   height: 150px;
   position: absolute;
   will-change: transform;
-  top: ${(props) => `${props.top}px`};
-  left: ${(props) => `${props.left}px`};
-  background-color: ${(props) => `${props.color}`};
 `;
 
 export const Parallax: NextPage<ParallaxProps> = (props) => {
-  const {} = props;
-  const componentsRef = React.useRef<HTMLElement>(null);
+  const { color, left, right, top, translateX = '', translateY = '' } = props;
+  const componentsRef = React.useRef<HTMLHeadingElement>(null);
   const [rect, setRect] = React.useState<DOMRect>();
 
   React.useEffect(() => {
@@ -40,12 +37,27 @@ export const Parallax: NextPage<ParallaxProps> = (props) => {
         const mouseY_title = e.clientY - rect.top;
 
         gsap.to(componentsRef.current, {
-          translateX: ((mouseX_title - rect.width / 2) / rect.width) * -30,
-          translateY: ((mouseY_title - rect.height / 2) / rect.height) * -10,
+          translateX:
+            ((mouseX_title - rect.width / 2) / rect.width) *
+            parseInt(translateX, 10),
+          translateY:
+            ((mouseY_title - rect.height / 2) / rect.height) *
+            parseInt(translateY, 10),
         });
       }
     });
-  }, [rect]);
+  }, [rect, translateX, translateY]);
 
-  return <Item {...props} ref={componentsRef}></Item>;
+  return (
+    <Item
+      {...props}
+      ref={componentsRef}
+      style={{
+        top: `${top}`,
+        left: left ? `${left}` : 'none',
+        right: right ? `${right}` : 'none',
+        backgroundColor: `${color}`,
+      }}
+    ></Item>
+  );
 };
