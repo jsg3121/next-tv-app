@@ -1,37 +1,159 @@
+import { Parallax } from 'components';
 import type { NextPage } from 'next';
 import React from 'react';
-import { Parallax } from '../../components';
 
 export const IntorContainer: NextPage = () => {
   return (
     <>
       <Parallax
-        top="150px"
-        left="150px"
-        color="red"
-        translateX="-80"
-        translateY="-30"
+        top="10%"
+        left="4%"
+        translateX="-42"
+        translateY="-35"
+        backgroundImage="/Devfolio.svg"
+        width={'772px'}
+        height={'356px'}
+        zIndex={10}
       />
       <Parallax
-        top="600px"
-        right="150px"
-        color="blue"
+        top="40%"
+        right="14%"
         translateX="-75"
-        translateY="-30"
+        translateY="-28"
+        backgroundImage="/react.svg"
+        width={'150px'}
+        height={'150px'}
+        zIndex={10}
       />
       <Parallax
-        top="200px"
-        left="600px"
-        color="yellow"
+        top="17%"
+        left="57%"
         translateX="-30"
         translateY="-10"
+        backgroundImage="/typescript.svg"
+        width={'120px'}
+        height={'120px'}
+        zIndex={10}
       />
       <Parallax
-        top="300px"
-        left="800px"
-        color="green"
+        top="48%"
+        left="13%"
         translateX="-45"
         translateY="-17"
+        backgroundImage="/vue.svg"
+        width={'150px'}
+        height={'150px'}
+        zIndex={10}
+      />
+      <Parallax
+        top="78%"
+        left="8%"
+        translateX="-70"
+        translateY="-28"
+        backgroundImage="/storybook.svg"
+        width={'130px'}
+        height={'130px'}
+        zIndex={10}
+      />
+      <Parallax
+        top="65%"
+        left="10%"
+        translateX="-89"
+        translateY="-58"
+        backgroundImage="/redux.svg"
+        width={'130px'}
+        height={'130px'}
+        zIndex={10}
+      />
+      <Parallax
+        top="52%"
+        right="35%"
+        translateX="-89"
+        translateY="-58"
+        backgroundImage="/prisma.svg"
+        width={'175px'}
+        height={'175px'}
+        zIndex={10}
+      />
+      <Parallax
+        top="42%"
+        right="50%"
+        translateX="-89"
+        translateY="-58"
+        backgroundImage="/node.svg"
+        width={'180px'}
+        height={'180px'}
+        zIndex={10}
+      />
+      <Parallax
+        top="32%"
+        left="35%"
+        translateX="-89"
+        translateY="-58"
+        backgroundImage="/mysql.svg"
+        width={'120px'}
+        height={'120px'}
+        zIndex={10}
+      />
+      <Parallax
+        top="72%"
+        left="40%"
+        translateX="-89"
+        translateY="-58"
+        backgroundImage="/mobx.svg"
+        width={'110px'}
+        height={'110px'}
+        zIndex={10}
+      />
+      <Parallax
+        top="32%"
+        right="30%"
+        translateX="-89"
+        translateY="-58"
+        backgroundImage="/html.svg"
+        width={'155px'}
+        height={'155px'}
+        zIndex={10}
+      />
+      <Parallax
+        top="80%"
+        right="10%"
+        translateX="-89"
+        translateY="-58"
+        backgroundImage="/graphql.svg"
+        width={'115px'}
+        height={'115px'}
+        zIndex={10}
+      />
+      <Parallax
+        top="10%"
+        right="9%"
+        translateX="-89"
+        translateY="-58"
+        backgroundImage="/docker.svg"
+        width={'100px'}
+        height={'100px'}
+        zIndex={10}
+      />
+      <Parallax
+        top="8%"
+        left="15%"
+        translateX="-89"
+        translateY="-58"
+        backgroundImage="/javascript.svg"
+        width={'155px'}
+        height={'155px'}
+        zIndex={10}
+      />
+      <Parallax
+        top="72%"
+        right="15%"
+        translateX="-89"
+        translateY="-58"
+        backgroundImage="/css.svg"
+        width={'120px'}
+        height={'120px'}
+        zIndex={10}
       />
     </>
   );

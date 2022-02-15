@@ -7,11 +7,12 @@ import { $Color } from '../../styles';
 export const Main = styled.main`
   width: 100%;
   height: 100vh;
-  background-color: ${$Color.default.dark4};
+  background-color: ${$Color.default.dark3};
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 `;
 
 const Introduce: NextPage = () => {
