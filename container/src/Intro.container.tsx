@@ -13,7 +13,7 @@ export const IntorContainer: NextPage = () => {
         backgroundImage="/Devfolio.svg"
         width={'772px'}
         height={'356px'}
-        zIndex={10}
+        zIndex={1000}
       />
       <Parallax
         top="40%"
@@ -57,9 +57,9 @@ export const IntorContainer: NextPage = () => {
       />
       <Parallax
         top="65%"
-        left="10%"
-        translateX="-89"
-        translateY="-58"
+        left="6%"
+        translateX="-28"
+        translateY="-38"
         backgroundImage="/redux.svg"
         width={'130px'}
         height={'130px'}
@@ -108,8 +108,8 @@ export const IntorContainer: NextPage = () => {
       <Parallax
         top="32%"
         right="30%"
-        translateX="-89"
-        translateY="-58"
+        translateX="-36"
+        translateY="-29"
         backgroundImage="/html.svg"
         width={'155px'}
         height={'155px'}
