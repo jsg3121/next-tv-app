@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 interface ParallaxProps {
   top?: number | string;
+  bottom?: number | string;
   left?: number | string;
   right?: number | string;
   translateX?: string;
@@ -14,9 +15,10 @@ interface ParallaxProps {
   width?: number | string;
   height?: number | string;
   zIndex?: number | string;
+  blur?: number | string;
 }
 
-export const Item = styled.div`
+const Item = styled.div`
   position: absolute;
   will-change: transform;
 `;
@@ -27,11 +29,13 @@ export const Parallax: NextPage<ParallaxProps> = (props) => {
     left,
     right,
     top,
+    bottom,
     zIndex,
     width,
     height,
     translateX = '',
     translateY = '',
+    blur,
   } = props;
   const componentsRef = React.useRef<HTMLHeadingElement>(null);
   const [rect, setRect] = React.useState<DOMRect>();
@@ -65,7 +69,8 @@ export const Parallax: NextPage<ParallaxProps> = (props) => {
       {...props}
       ref={componentsRef}
       style={{
-        top: `${top}`,
+        top: top ? `${top}` : 'none',
+        bottom: bottom ? `${bottom}` : 'none',
         left: left ? `${left}` : 'none',
         right: right ? `${right}` : 'none',
         zIndex: zIndex,
@@ -73,13 +78,17 @@ export const Parallax: NextPage<ParallaxProps> = (props) => {
     >
       {backgroundImage && (
         <picture>
-          <figure>
+          <figure
+            style={{
+              filter: `blur(${blur}px)`,
+            }}
+          >
             <Image
               src={backgroundImage}
-              alt="Devfolio"
-              loading="lazy"
               width={width}
               height={height}
+              alt="Devfolio"
+              loading="lazy"
             />
           </figure>
         </picture>
