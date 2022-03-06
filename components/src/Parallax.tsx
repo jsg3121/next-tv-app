@@ -1,5 +1,5 @@
+import isEqual from 'fast-deep-equal';
 import { gsap } from 'gsap';
-import type { NextPage } from 'next';
 import Image from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
@@ -23,7 +23,7 @@ const Item = styled.div`
   will-change: transform;
 `;
 
-export const Parallax: NextPage<ParallaxProps> = (props) => {
+const Parallax: React.FC<ParallaxProps> = (props) => {
   const {
     backgroundImage,
     left,
@@ -96,3 +96,5 @@ export const Parallax: NextPage<ParallaxProps> = (props) => {
     </Item>
   );
 };
+
+export default React.memo(Parallax, isEqual);

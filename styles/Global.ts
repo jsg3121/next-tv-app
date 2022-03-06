@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
-import { reset } from 'styled-reset';
+import { createGlobalStyle } from 'styled-components'
+import { reset } from 'styled-reset'
 
 export const GlobalStyle = createGlobalStyle`
     ${reset}
@@ -10,8 +10,10 @@ export const GlobalStyle = createGlobalStyle`
     ::-webkit-scrollbar {
         display: none;
     }
-    img, svg,body {
+    img, svg{
         pointer-events : none;
+    }
+    img, svg, body {
         -webkit-user-select:none;
         -webkit-user-drag: none;
         -moz-user-select:none;
@@ -36,4 +38,4 @@ export const GlobalStyle = createGlobalStyle`
             fill: #f2f3f4;
         }
     }
-`;
+`

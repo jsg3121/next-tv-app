@@ -1,21 +1,12 @@
-import { Parallax } from 'components';
-import type { NextPage } from 'next';
-import React from 'react';
+import { Parallax } from 'components'
+import isEqual from 'fast-deep-equal'
+import React from 'react'
 
-export const IntorContainer: NextPage = () => {
+const IntorContainer: React.FC = () => {
   return (
     <>
       {/* depth 1 */}
-      <Parallax
-        top="10%"
-        left="4%"
-        translateX="0"
-        translateY="0"
-        backgroundImage="/Devfolio.svg"
-        width={'772px'}
-        height={'356px'}
-        zIndex={1000}
-      />
+
       <Parallax
         top="30%"
         right="37%"
@@ -170,5 +161,7 @@ export const IntorContainer: NextPage = () => {
         zIndex={10}
       />
     </>
-  );
-};
+  )
+}
+
+export default React.memo(IntorContainer, isEqual)
