@@ -5,6 +5,7 @@ import { $Color } from 'styles'
 
 interface ButtonProps {
   children: React.ReactNode
+  onClick: () => void
 }
 
 const ButtonContainer = styled.button`
@@ -25,13 +26,13 @@ const ButtonContainer = styled.button`
 `
 
 export const Button: React.FC<ButtonProps> = (props) => {
-  const { children } = props
+  const { children, onClick } = props
 
-  return (
-    <>
-      <ButtonContainer>{children}</ButtonContainer>
-    </>
-  )
+  const handleClick = React.useCallback(() => {
+    onClick()
+  }, [onClick])
+
+  return <ButtonContainer onClick={handleClick}>{children}</ButtonContainer>
 }
 
 export default React.memo(Button, isEqual)

@@ -6,7 +6,6 @@ const IntorContainer: React.FC = () => {
   return (
     <>
       {/* depth 1 */}
-
       <Parallax
         top="30%"
         right="37%"

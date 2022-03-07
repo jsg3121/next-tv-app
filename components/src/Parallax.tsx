@@ -1,27 +1,27 @@
-import isEqual from 'fast-deep-equal';
-import { gsap } from 'gsap';
-import Image from 'next/image';
-import React from 'react';
-import styled from 'styled-components';
+import isEqual from 'fast-deep-equal'
+import { gsap } from 'gsap'
+import Image from 'next/image'
+import React from 'react'
+import styled from 'styled-components'
 
 interface ParallaxProps {
-  top?: number | string;
-  bottom?: number | string;
-  left?: number | string;
-  right?: number | string;
-  translateX?: string;
-  translateY?: string;
-  backgroundImage?: string;
-  width?: number | string;
-  height?: number | string;
-  zIndex?: number | string;
-  blur?: number | string;
+  top?: number | string
+  bottom?: number | string
+  left?: number | string
+  right?: number | string
+  translateX?: string
+  translateY?: string
+  backgroundImage?: string
+  width?: number | string
+  height?: number | string
+  zIndex?: number | string
+  blur?: number | string
 }
 
 const Item = styled.div`
   position: absolute;
   will-change: transform;
-`;
+`
 
 const Parallax: React.FC<ParallaxProps> = (props) => {
   const {
@@ -36,21 +36,21 @@ const Parallax: React.FC<ParallaxProps> = (props) => {
     translateX = '',
     translateY = '',
     blur,
-  } = props;
-  const componentsRef = React.useRef<HTMLHeadingElement>(null);
-  const [rect, setRect] = React.useState<DOMRect>();
+  } = props
+  const componentsRef = React.useRef<HTMLHeadingElement>(null)
+  const [rect, setRect] = React.useState<DOMRect>()
 
   React.useEffect(() => {
     if (componentsRef.current) {
-      setRect(componentsRef.current.getBoundingClientRect());
+      setRect(componentsRef.current.getBoundingClientRect())
     }
-  }, []);
+  }, [])
 
   React.useEffect(() => {
     window.addEventListener('mousemove', (e) => {
       if (rect) {
-        const mouseX_title = e.clientX - rect.left;
-        const mouseY_title = e.clientY - rect.top;
+        const mouseX_title = e.clientX - rect.left
+        const mouseY_title = e.clientY - rect.top
 
         gsap.to(componentsRef.current, {
           translateX:
@@ -59,10 +59,10 @@ const Parallax: React.FC<ParallaxProps> = (props) => {
           translateY:
             ((mouseY_title - rect.height / 2) / rect.height) *
             parseInt(translateY, 10),
-        });
+        })
       }
-    });
-  }, [rect, translateX, translateY]);
+    })
+  }, [rect, translateX, translateY])
 
   return (
     <Item
@@ -74,6 +74,8 @@ const Parallax: React.FC<ParallaxProps> = (props) => {
         left: left ? `${left}` : 'none',
         right: right ? `${right}` : 'none',
         zIndex: zIndex,
+        width,
+        height,
       }}
     >
       {backgroundImage && (
@@ -89,12 +91,13 @@ const Parallax: React.FC<ParallaxProps> = (props) => {
               height={height}
               alt="Devfolio"
               loading="lazy"
+              layout="responsive"
             />
           </figure>
         </picture>
       )}
     </Item>
-  );
-};
+  )
+}
 
-export default React.memo(Parallax, isEqual);
+export default React.memo(Parallax, isEqual)

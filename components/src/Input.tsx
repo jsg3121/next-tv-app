@@ -6,6 +6,7 @@ import { $Color } from 'styles'
 interface InputProps {
   placeholder: string
   type: 'text'
+  onChange: (value: string) => void
 }
 
 const InputContainer = styled.input`
@@ -24,9 +25,24 @@ const InputContainer = styled.input`
 `
 
 export const Input: React.FC<InputProps> = (props) => {
-  const { placeholder, type } = props
+  const { placeholder, type, onChange } = props
 
-  return <InputContainer type={type} placeholder={placeholder} />
+  const handleChange = React.useCallback(
+    (val) => {
+      onChange(val.target.value)
+    },
+    [onChange]
+  )
+
+  return (
+    <>
+      <InputContainer
+        onChange={handleChange}
+        type={type}
+        placeholder={placeholder}
+      />
+    </>
+  )
 }
 
 export default React.memo(Input, isEqual)

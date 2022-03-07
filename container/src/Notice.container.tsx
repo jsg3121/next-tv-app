@@ -1,5 +1,6 @@
-import { Button, Input } from 'components'
+import { Button, Input, Title } from 'components'
 import isEqual from 'fast-deep-equal'
+import Router from 'next/router'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -21,13 +22,36 @@ const Notice = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  overflow: hidden;
 `
+
 const NoticeContainer: React.FC = () => {
+  const [name, setName] = React.useState<string>()
+
+  const handleClick = React.useCallback(() => {
+    Router.replace('/')
+  }, [])
+
+  React.useEffect(() => {
+    const storage = localStorage.getItem('guestName')
+    if (storage) {
+      setName(storage)
+    }
+  }, [])
+
   return (
-    <Notice>
-      <Input type="text" placeholder="제가 부를 수 있는 별명을 알려주세요!" />
-      <Button>입장하기</Button>
-    </Notice>
+    <>
+      <Notice>
+        <Title depth={1}>
+          {name === '님' ? '안녕하세요!' : name} 찾아주셔서 감사합니다!
+        </Title>
+        <Button onClick={handleClick}>
+          {name === '님'
+            ? '이름을 알려줄게요!'
+            : `제 이름은 ${name}이 아니에요!`}
+        </Button>
+      </Notice>
+    </>
   )
 }
 
