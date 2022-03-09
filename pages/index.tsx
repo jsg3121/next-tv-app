@@ -40,7 +40,7 @@ const Home: NextPage = () => {
     //   })
     //   .then(() => {
     //   })
-    Router.replace('/main/introduce')
+    Router.replace('/main/intro')
   }, [name])
 
   const handleChange = React.useCallback((payload: string) => {
@@ -54,7 +54,7 @@ const Home: NextPage = () => {
         type="text"
         placeholder="제가 부를 수 있는 별명을 알려주세요!"
       />
-      <Button onClick={handleClick}>
+      <Button onClick={handleClick} type="primary">
         {name ? '입장하기' : '알려주지 않고 입장하기'}
       </Button>
     </Notice>

@@ -1,8 +1,20 @@
+import { SideContainer } from 'container'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
+import styled from 'styled-components'
 import { GlobalStyle } from '../styles/Global'
 
+const Root = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+`
+
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter()
+
   return (
     <>
       <Head>
@@ -11,7 +23,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <GlobalStyle />
-      <Component {...pageProps} />
+      <Root>
+        {router.pathname === '/main/introduce' && <SideContainer />}
+        <Component {...pageProps} />
+      </Root>
     </>
   )
 }

@@ -20,19 +20,23 @@ export const GlobalStyle = createGlobalStyle`
         -ms-user-select:none;
         user-select:none
     }
-    html{
+    html,body{
         font-size: 16px;
         -webkit-text-size-adjust: none;
         font-family: -apple-system,BlinkMacSystemFont,helvetica,Apple SD Gothic Neo,sans-serif;       
         font-display: fallback;
         -ms-overflow-style: none;
         scrollbar-width: none;
+        width: 100%;
+        height: 100vh;
+        background-color:#252538
     }
     button {
         background: none;
         padding: 0;
         border: none;
         cursor: pointer;
+        box-sizing: border-box;
         &:disabled {
             cursor: default;
             fill: #f2f3f4;
