@@ -11,16 +11,24 @@ const SideContainer: React.FC = () => {
       <nav className={side.menu_nav}>
         <ul>
           <li>
-            <Text>About</Text>
+            <a href="#about">
+              <Text>About</Text>
+            </a>
           </li>
           <li>
-            <Text>Skills</Text>
+            <a href="#skills">
+              <Text>Skills</Text>
+            </a>
           </li>
           <li>
-            <Text>Project</Text>
+            <a href="#project">
+              <Text>Project</Text>
+            </a>
           </li>
           <li>
-            <Text>Contact</Text>
+            <a href="#contact">
+              <Text>Contact</Text>
+            </a>
           </li>
         </ul>
       </nav>
