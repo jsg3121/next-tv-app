@@ -1,11 +1,13 @@
-@import './common.scss';
+@import './common.module.scss';
 
 .container {
   width: 130px;
   height: calc(100% - 60px);
   background-color: $color-default-dark3;
   padding: 30px;
-  position: relative;
+  position: fixed;
+  left: 0;
+  top: 0;
 }
 
 .menu_nav {
