@@ -8,7 +8,6 @@ interface TextProps {
 
 const Text: React.FC<TextProps> = (props) => {
   const { children } = props
-
   return <p className={text.text}>{children}</p>
 }
 
