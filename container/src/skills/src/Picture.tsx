@@ -2,15 +2,14 @@ import isEqual from 'fast-deep-equal'
 import Image, { ImageProps } from 'next/image'
 import React from 'react'
 import styled from 'styled-components'
-import { useSWRConfig } from 'swr'
 
 interface PictureProps
   extends Pick<
     ImageProps,
     'width' | 'height' | 'alt' | 'loading' | 'layout' | 'src'
   > {
-  selectkey?: string
-  onClick?: (val: string) => void
+  selectkey?: SkillsName
+  onClick?: (val: SkillsName) => void
 }
 
 const PictureContainer = styled((props) => {

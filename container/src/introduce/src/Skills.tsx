@@ -1,34 +1,31 @@
-import http from 'axios'
-import { Picture } from 'components'
+import { Picture, Description } from 'container/src/skills'
 import isEqual from 'fast-deep-equal'
 import React from 'react'
 import skills from 'styles/skills.module.scss'
-import useSWR from 'swr'
 
-const Skills: React.FC = () => {
-  const [key, setKey] = React.useState('css')
-  const { data, mutate } = useSWR(`detail/${key}`, async () => {
-    return await http
-      .request({
-        url: `/api/detail/${key}`,
-        method: 'GET',
-      })
-      .then((res) => res.data)
-  })
+interface SkillsProps {
+  data: SkillDescription
+}
+
+const Skills: React.FC<SkillsProps> = (props) => {
+  const { data } = props
+  const [selectSkill, setSelectSkill] = React.useState({})
 
   const handleClick = React.useCallback(
-    (val: string) => {
-      if (key !== val) {
-        setKey(val)
-        mutate(`detail/${key}`)
-      }
+    (val: SkillsName) => {
+      setSelectSkill(data[val])
     },
-    [key, mutate]
+    [data]
   )
+
+  React.useEffect(() => {
+    if (data) {
+      setSelectSkill(data['css'])
+    }
+  }, [data])
 
   return (
     <article className={skills.container} id="skills">
-      <p>{JSON.stringify(data)}</p>
       <div className={skills.skills_container}>
         <div>
           <Picture
@@ -41,32 +38,23 @@ const Skills: React.FC = () => {
             onClick={handleClick}
           />
           <Picture
-            src="/css.svg"
+            src="/docker.svg"
             alt="skills_image"
             width="115px"
             height="115px"
             layout="responsive"
-            selectkey="css2"
+            selectkey="docker"
             onClick={handleClick}
           />
           <Picture
-            src="/css.svg"
+            src="/graphql.svg"
             alt="skills_image"
             width="115px"
             height="115px"
             layout="responsive"
-            selectkey="css3"
+            selectkey="graphql"
             onClick={handleClick}
           />
-          <Picture
-            src="/css.svg"
-            alt="skills_image"
-            width="115px"
-            height="115px"
-            layout="responsive"
-          />
-        </div>
-        <div>
           <Picture
             src="/html.svg"
             alt="skills_image"
@@ -74,51 +62,10 @@ const Skills: React.FC = () => {
             height="115px"
             layout="responsive"
             selectkey="html"
-          />
-          <Picture
-            src="/html.svg"
-            alt="skills_image"
-            width="115px"
-            height="115px"
-            layout="responsive"
-          />
-          <Picture
-            src="/html.svg"
-            alt="skills_image"
-            width="115px"
-            height="115px"
-            layout="responsive"
-          />
-          <Picture
-            src="/html.svg"
-            alt="skills_image"
-            width="115px"
-            height="115px"
-            layout="responsive"
-          />
-          <Picture
-            src="/html.svg"
-            alt="skills_image"
-            width="115px"
-            height="115px"
-            layout="responsive"
-          />
-          <Picture
-            src="/html.svg"
-            alt="skills_image"
-            width="115px"
-            height="115px"
-            layout="responsive"
-          />
-          <Picture
-            src="/html.svg"
-            alt="skills_image"
-            width="115px"
-            height="115px"
-            layout="responsive"
+            onClick={handleClick}
           />
         </div>
-        <div>
+        {/* <div>
           <Picture
             src="/javascript.svg"
             alt="skills_image"
@@ -126,30 +73,94 @@ const Skills: React.FC = () => {
             height="115px"
             layout="responsive"
             selectkey="javascript"
+            onClick={handleClick}
           />
           <Picture
-            src="/javascript.svg"
+            src="/mobx.svg"
             alt="skills_image"
             width="115px"
             height="115px"
             layout="responsive"
+            selectkey="mobx"
+            onClick={handleClick}
           />
           <Picture
-            src="/javascript.svg"
+            src="/mysql.svg"
             alt="skills_image"
             width="115px"
             height="115px"
             layout="responsive"
+            selectkey="mysql"
+            onClick={handleClick}
           />
           <Picture
-            src="/javascript.svg"
+            src="/node.svg"
             alt="skills_image"
             width="115px"
             height="115px"
             layout="responsive"
+            selectkey="node"
+            onClick={handleClick}
+          />
+          <Picture
+            src="/prisma.svg"
+            alt="skills_image"
+            width="115px"
+            height="115px"
+            layout="responsive"
+            selectkey="prisma"
+            onClick={handleClick}
+          />
+          <Picture
+            src="/react.svg"
+            alt="skills_image"
+            width="115px"
+            height="115px"
+            layout="responsive"
+            selectkey="react"
+            onClick={handleClick}
+          />
+          <Picture
+            src="/redux.svg"
+            alt="skills_image"
+            width="115px"
+            height="115px"
+            layout="responsive"
+            selectkey="redux"
+            onClick={handleClick}
           />
         </div>
+        <div>
+          <Picture
+            src="/storybook.svg"
+            alt="skills_image"
+            width="115px"
+            height="115px"
+            layout="responsive"
+            selectkey="storybook"
+            onClick={handleClick}
+          />
+          <Picture
+            src="/typescript.svg"
+            alt="skills_image"
+            width="115px"
+            height="115px"
+            layout="responsive"
+            selectkey="typescript"
+            onClick={handleClick}
+          />
+          <Picture
+            src="/vue.svg"
+            alt="skills_image"
+            width="115px"
+            height="115px"
+            layout="responsive"
+            selectkey="vue"
+            onClick={handleClick}
+          />
+        </div> */}
       </div>
+      <Description data={selectSkill} />
     </article>
   )
 }
