@@ -45,4 +45,9 @@ export const GlobalStyle = createGlobalStyle`
     a {
         text-decoration: none;
     }
+
+    figure {
+        width: 100%;
+        height:100%;
+    }
 `
