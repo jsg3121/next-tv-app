@@ -8,8 +8,8 @@ interface PictureProps
     ImageProps,
     'width' | 'height' | 'alt' | 'loading' | 'layout' | 'src'
   > {
-  selectkey?: SkillsName
-  onClick?: (val: SkillsName) => void
+  selectkey?: SkillInfo['name']
+  onClick?: (val: SkillInfo['name']) => void
 }
 
 const PictureContainer = styled((props) => {

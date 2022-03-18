@@ -1,4 +1,5 @@
-import { Picture, Description } from 'container/src/skills'
+import { Progress, Text, Title } from 'components'
+import { Picture } from 'container/src/skills'
 import isEqual from 'fast-deep-equal'
 import React from 'react'
 import skills from 'styles/skills.module.scss'
@@ -9,158 +10,78 @@ interface SkillsProps {
 
 const Skills: React.FC<SkillsProps> = (props) => {
   const { data } = props
-  const [selectSkill, setSelectSkill] = React.useState({})
 
-  const handleClick = React.useCallback(
-    (val: SkillsName) => {
-      setSelectSkill(data[val])
-    },
-    [data]
-  )
-
-  React.useEffect(() => {
-    if (data) {
-      setSelectSkill(data['css'])
-    }
-  }, [data])
+  const handleClick = React.useCallback((val: SkillInfo['name']) => {}, [])
 
   return (
     <article className={skills.container} id="skills">
+      <div className={skills.skills_rate}>
+        <Title depth={1}>Name</Title>
+        <Progress />
+        <Text>description</Text>
+      </div>
       <div className={skills.skills_container}>
         <div>
-          <Picture
-            src="/css.svg"
-            alt="skills_image"
-            width="115px"
-            height="115px"
-            layout="responsive"
-            selectkey="css"
-            onClick={handleClick}
-          />
-          <Picture
-            src="/docker.svg"
-            alt="skills_image"
-            width="115px"
-            height="115px"
-            layout="responsive"
-            selectkey="docker"
-            onClick={handleClick}
-          />
-          <Picture
-            src="/graphql.svg"
-            alt="skills_image"
-            width="115px"
-            height="115px"
-            layout="responsive"
-            selectkey="graphql"
-            onClick={handleClick}
-          />
-          <Picture
-            src="/html.svg"
-            alt="skills_image"
-            width="115px"
-            height="115px"
-            layout="responsive"
-            selectkey="html"
-            onClick={handleClick}
-          />
-        </div>
-        {/* <div>
-          <Picture
-            src="/javascript.svg"
-            alt="skills_image"
-            width="115px"
-            height="115px"
-            layout="responsive"
-            selectkey="javascript"
-            onClick={handleClick}
-          />
-          <Picture
-            src="/mobx.svg"
-            alt="skills_image"
-            width="115px"
-            height="115px"
-            layout="responsive"
-            selectkey="mobx"
-            onClick={handleClick}
-          />
-          <Picture
-            src="/mysql.svg"
-            alt="skills_image"
-            width="115px"
-            height="115px"
-            layout="responsive"
-            selectkey="mysql"
-            onClick={handleClick}
-          />
-          <Picture
-            src="/node.svg"
-            alt="skills_image"
-            width="115px"
-            height="115px"
-            layout="responsive"
-            selectkey="node"
-            onClick={handleClick}
-          />
-          <Picture
-            src="/prisma.svg"
-            alt="skills_image"
-            width="115px"
-            height="115px"
-            layout="responsive"
-            selectkey="prisma"
-            onClick={handleClick}
-          />
-          <Picture
-            src="/react.svg"
-            alt="skills_image"
-            width="115px"
-            height="115px"
-            layout="responsive"
-            selectkey="react"
-            onClick={handleClick}
-          />
-          <Picture
-            src="/redux.svg"
-            alt="skills_image"
-            width="115px"
-            height="115px"
-            layout="responsive"
-            selectkey="redux"
-            onClick={handleClick}
-          />
+          <Title depth={2}>Advanced</Title>
+          <div className={skills.skills_list}>
+            {data &&
+              data.advanced.map((item, index) => {
+                return (
+                  <Picture
+                    key={index}
+                    src={item.iconUrl}
+                    alt="skills_image"
+                    width="95px"
+                    height="95px"
+                    layout="responsive"
+                    selectkey={item.name}
+                    onClick={handleClick}
+                  />
+                )
+              })}
+          </div>
         </div>
         <div>
-          <Picture
-            src="/storybook.svg"
-            alt="skills_image"
-            width="115px"
-            height="115px"
-            layout="responsive"
-            selectkey="storybook"
-            onClick={handleClick}
-          />
-          <Picture
-            src="/typescript.svg"
-            alt="skills_image"
-            width="115px"
-            height="115px"
-            layout="responsive"
-            selectkey="typescript"
-            onClick={handleClick}
-          />
-          <Picture
-            src="/vue.svg"
-            alt="skills_image"
-            width="115px"
-            height="115px"
-            layout="responsive"
-            selectkey="vue"
-            onClick={handleClick}
-          />
-        </div> */}
+          <Title depth={2}>Intermediate</Title>
+          <div className={skills.skills_list}>
+            {data &&
+              data.intermediate.map((item, index) => {
+                return (
+                  <Picture
+                    key={index}
+                    src={item.iconUrl}
+                    alt="skills_image"
+                    width="95px"
+                    height="95px"
+                    layout="responsive"
+                    selectkey={item.name}
+                    onClick={handleClick}
+                  />
+                )
+              })}
+          </div>
+        </div>
+        <div>
+          <Title depth={2}>Beginner</Title>
+          <div className={skills.skills_list}>
+            {data &&
+              data.beginner.map((item, index) => {
+                return (
+                  <Picture
+                    key={index}
+                    src={item.iconUrl}
+                    alt="skills_image"
+                    width="95px"
+                    height="95px"
+                    layout="responsive"
+                    selectkey={item.name}
+                    onClick={handleClick}
+                  />
+                )
+              })}
+          </div>
+        </div>
       </div>
-      <Description data={selectSkill} />
     </article>
   )
 }

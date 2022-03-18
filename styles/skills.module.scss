@@ -1,18 +1,48 @@
+@import './common.module.scss';
+
 .container {
   width: 100%;
   height: 100%;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.skills_rate {
+  width: 360px;
+  height: 60%;
+  background-color: $color-default-bright5;
+  border-radius: 10px;
+  padding: 20px;
+
+  h1 {
+    font-size: 2rem;
+  }
 }
 
 .skills_container {
+  & > div {
+    margin-bottom: 30px;
+  }
+
+  h2 {
+    color: $color-default-bright5;
+    font-size: 1.5rem;
+  }
+}
+
+.skills_box {
+  height: 180px;
+}
+
+.skills_list {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  width: 100%;
+  border-top: 1px solid $color-default-bright5;
+  padding-top: 10px;
 
-  & > div {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+  figure {
+    cursor: pointer;
   }
 }
