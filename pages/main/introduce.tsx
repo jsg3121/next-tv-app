@@ -1,17 +1,17 @@
-import http from 'axios'
-import { About, Skills } from 'container'
+import { About, Project } from 'container'
 import type { NextPage } from 'next'
 import layout from 'styles/introduce.module.scss'
 import useSWR from 'swr'
+import http from 'axios'
 
 const Introduce: NextPage = () => {
-  const { data } = useSWR('/api/skills', async () => {
+  const { data: projectData } = useSWR('/intorduce/project', async () => {
     return await http
       .request({
-        url: '/api/skills',
         method: 'GET',
+        url: '/api/project',
       })
-      .then((res) => res.data.result)
+      .then((res) => res.data)
   })
 
   return (
@@ -22,6 +22,9 @@ const Introduce: NextPage = () => {
       {/* <section>
         <Skills data={data} />
       </section> */}
+      <section>
+        <Project data={projectData} />
+      </section>
     </section>
   )
 }

@@ -16,6 +16,10 @@ declare global {
     | 'storybook'
     | 'typescript'
     | 'vue'
+    | 'angular'
+    | 'spring'
+    | 'scss'
+    | 'Next.js'
 
   export type SkillInfo = {
     name: keyof SkillName
@@ -25,6 +29,24 @@ declare global {
   export type SkillDescription = {
     [K in GradeType]: Array<SkillInfo>
   }
+
+  export type ProjectDescription = {
+    name: string
+    date: string
+    skills: Array<SkillsName>
+    workers: {
+      total: number
+      design: number
+      developer: number
+    }
+    service_image: Array<string>
+    backgroundColor: string
+    url?: string
+    waring?: string
+    git?: string
+  }
+
+  export type ProjectData = Array<ProjectDescription>
 }
 
 export {}
