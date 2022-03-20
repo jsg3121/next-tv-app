@@ -16,6 +16,7 @@ declare global {
     | 'storybook'
     | 'typescript'
     | 'vue'
+
   export type SkillInfo = {
     name: keyof SkillName
     iconUrl: `/${T}.svg`

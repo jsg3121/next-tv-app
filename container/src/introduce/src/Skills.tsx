@@ -35,7 +35,6 @@ const Skills: React.FC<SkillsProps> = (props) => {
                     height="95px"
                     layout="responsive"
                     selectkey={item.name}
-                    onClick={handleClick}
                   />
                 )
               })}

@@ -19,9 +19,9 @@ const Introduce: NextPage = () => {
       <section>
         <About />
       </section>
-      <section>
+      {/* <section>
         <Skills data={data} />
-      </section>
+      </section> */}
     </section>
   )
 }

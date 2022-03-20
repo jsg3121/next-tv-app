@@ -20,6 +20,18 @@ const PictureContainer = styled((props) => {
   height: ${(props) => props.height};
   display: block;
   margin: 10px;
+  position: relative;
+
+  figure {
+    position: absolute;
+
+    &:hover {
+      width: 110px;
+      height: 110px;
+      top: -7.5px;
+      left: -7.5px;
+    }
+  }
 `
 
 const Picture: React.FC<PictureProps> = (props) => {
@@ -34,7 +46,13 @@ const Picture: React.FC<PictureProps> = (props) => {
   return (
     <PictureContainer width={width} height={height} onClick={handleClick}>
       <figure>
-        <Image {...rest} alt={alt} width={width} height={height} />
+        <Image
+          {...rest}
+          alt={alt}
+          width={width}
+          height={height}
+          layout="responsive"
+        />
       </figure>
     </PictureContainer>
   )
