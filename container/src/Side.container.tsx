@@ -15,11 +15,11 @@ const SideContainer: React.FC = () => {
               <Text>About</Text>
             </a>
           </li>
-          <li>
+          {/* <li>
             <a href="#skills">
               <Text>Skills</Text>
             </a>
-          </li>
+          </li> */}
           <li>
             <a href="#project">
               <Text>Project</Text>
