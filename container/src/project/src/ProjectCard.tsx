@@ -8,31 +8,60 @@ interface ProjectCardProps {
   children?: React.ReactNode
   thumbnail: string
   backgroundColor: string
+  onClick?: () => void
 }
 
 const ProjectThumbnail = styled((props) => {
   const { children } = props
   return <div {...props}>{children}</div>
 })`
-  width: 25%;
-  height: 33.33vh;
+  width: 100%;
+  height: 100%;
   display: block;
   position: relative;
-  background-color: ${(props) => props.backgroundColor};
+  background-color: ${(props) => props.backgroundcolor};
+  z-index: 100;
+  border-radius: 30px;
+  overflow: hidden;
+
+  &:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  &:hover {
+    &:after {
+      content: none;
+    }
+  }
 `
 
 const ProjectCard: React.FC<ProjectCardProps> = (props) => {
-  const { backgroundColor, thumbnail } = props
+  const { backgroundColor, thumbnail, onClick } = props
+
+  const handleClick = React.useCallback(() => {
+    if (onClick) {
+      onClick()
+    }
+  }, [onClick])
+
   return (
-    <ProjectThumbnail backgroundColor={backgroundColor}>
+    <ProjectThumbnail backgroundcolor={backgroundColor} onClick={handleClick}>
       <picture>
         <figure>
           <Image
             src={thumbnail}
             alt="Project_image"
-            layout="fill"
+            layout="responsive"
+            width="100"
+            height="100"
             objectFit="contain"
-            loading="lazy"
+            priority
           />
         </figure>
       </picture>
