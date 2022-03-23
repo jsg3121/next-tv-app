@@ -30,6 +30,8 @@ declare global {
     [K in GradeType]: Array<SkillInfo>
   }
 
+  export type ProjectOffice = 'Quber' | 'Creasector' | 'ToyProject'
+
   export type ProjectDescription = {
     name: string
     date: string
@@ -46,7 +48,9 @@ declare global {
     git?: string
   }
 
-  export type ProjectData = Array<ProjectDescription>
+  export type ProjectData = {
+    [T in ProjectOffice]: Array<ProjectDescription>
+  }
 }
 
 export {}
