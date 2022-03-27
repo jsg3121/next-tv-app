@@ -35,6 +35,18 @@
   padding: 20px;
 }
 
+.project_slide_container {
+  width: 800px;
+  height: 300px;
+  margin: 0 auto;
+
+  .image-gallery-left-nav .image-gallery-svg,
+  .image-gallery-right-nav .image-gallery-svg {
+    width: 70px;
+    height: 30px;
+  }
+}
+
 .contaianer_history_line {
   position: absolute;
   left: 30px;

@@ -10,6 +10,8 @@ interface ProjectDetailProps {
 const ProjectDetail: React.FC<ProjectDetailProps> = (props) => {
   const { detail } = props
 
+  console.log(detail)
+
   const images = React.useMemo(() => {
     const arr: Array<ReactImageGalleryItem> = []
 
@@ -17,8 +19,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = (props) => {
       const options: ReactImageGalleryItem = {
         original: image,
         originalAlt: 'slide_image',
+        originalWidth: 300,
+        originalHeight: 300,
       }
-      arr.push()
+      arr.push(options)
     })
 
     return arr
@@ -27,21 +31,43 @@ const ProjectDetail: React.FC<ProjectDetailProps> = (props) => {
   return (
     <article className={project.project_description_container}>
       <div className={project.project_description_body}>
-        <ImageGallery items={images} />
+        <div className={project.project_slide_container}>
+          <ImageGallery
+            autoPlay
+            items={images}
+            lazyLoad={true}
+            showPlayButton={false}
+            showFullscreenButton={false}
+            slideDuration={300}
+          />
+        </div>
         <ul>
           <li>
             <p>name</p>
+            <span>{detail.name}</span>
           </li>
           <li>
-            <p>date: </p>
+            <p>date: {detail.date}</p>
           </li>
           <li>
-            <p>main Skills</p>
+            <p>main Skills : {detail.skills}</p>
           </li>
           <li>
             <p>workers</p>
-            <p></p>
+            <span>total: {detail.workers.total}</span>
+            <span>developer: {detail.workers.developer}</span>
+            <span>design: {detail.workers.design}</span>
           </li>
+          {detail.url && (
+            <li>
+              <p>url: {detail.url}</p>
+            </li>
+          )}
+          {detail.git && (
+            <li>
+              <p>git : {detail.git}</p>
+            </li>
+          )}
         </ul>
       </div>
     </article>
