@@ -1,6 +1,7 @@
 import isEqual from 'fast-deep-equal'
 import React from 'react'
 import project from 'styles/project.module.scss'
+import ImageGallery, { ReactImageGalleryItem } from 'react-image-gallery'
 
 interface ProjectDetailProps {
   detail: ProjectDescription
@@ -10,10 +11,14 @@ const ProjectDetail: React.FC<ProjectDetailProps> = (props) => {
   const { detail } = props
 
   const images = React.useMemo(() => {
-    const arr: Array<{ url: string }> = []
+    const arr: Array<ReactImageGalleryItem> = []
 
     detail.service_image.forEach((image) => {
-      arr.push({ url: image })
+      const options: ReactImageGalleryItem = {
+        original: image,
+        originalAlt: 'slide_image',
+      }
+      arr.push()
     })
 
     return arr
@@ -22,6 +27,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = (props) => {
   return (
     <article className={project.project_description_container}>
       <div className={project.project_description_body}>
+        <ImageGallery items={images} />
         <ul>
           <li>
             <p>name</p>

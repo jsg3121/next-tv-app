@@ -1,0 +1,8 @@
+@import './common.module.scss';
+
+.container {
+  width: calc(100% - 60px);
+  height: calc(100% - 60px);
+  position: relative;
+  padding: 30px;
+}

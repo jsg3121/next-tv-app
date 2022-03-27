@@ -4,6 +4,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import { GlobalStyle } from '../styles/Global'
+import 'react-image-gallery/styles/scss/image-gallery.scss'
 
 const Root = styled.div`
   width: 100%;
