@@ -11,8 +11,12 @@ interface ProjectProps {
 const Project: React.FC<ProjectProps> = (props) => {
   const { data } = props
   const [isShow, setIsShow] = React.useState<boolean>(false)
+  const [selectData, setSelectData] = React.useState<ProjectDescription>()
 
-  const handleClick = React.useCallback(() => {}, [])
+  const handleClick = React.useCallback((data: ProjectDescription) => {
+    setIsShow(true)
+    setSelectData(data)
+  }, [])
 
   return (
     <article id="project" className={project.container}>
@@ -29,6 +33,7 @@ const Project: React.FC<ProjectProps> = (props) => {
                       thumbnail={item.service_image[0]}
                       backgroundColor={item.backgroundColor}
                       onClick={handleClick}
+                      selectData={item}
                     />
                   </article>
                 )
@@ -46,6 +51,7 @@ const Project: React.FC<ProjectProps> = (props) => {
                     <ProjectCard
                       thumbnail={item.service_image[0]}
                       backgroundColor={item.backgroundColor}
+                      selectData={item}
                       onClick={handleClick}
                     />
                   </article>
@@ -64,6 +70,7 @@ const Project: React.FC<ProjectProps> = (props) => {
                     <ProjectCard
                       thumbnail={item.service_image[0]}
                       backgroundColor={item.backgroundColor}
+                      selectData={item}
                       onClick={handleClick}
                     />
                   </article>
@@ -72,22 +79,7 @@ const Project: React.FC<ProjectProps> = (props) => {
           </div>
         </section>
       </div>
-
-      {/* <div>
-        {data &&
-          data.map((item, index: number) => {
-            return (
-              <ProjectCard
-                thumbnail={item.service_image[0]}
-                backgroundColor={item.backgroundColor}
-                onClick={handleClick}
-                key={index}
-              />
-            )
-          })}
-      </div> */}
-
-      {/* {isShow && data && <ProjectDetail detail={data[0]} />} */}
+      {isShow && selectData && <ProjectDetail detail={selectData} />}
     </article>
   )
 }

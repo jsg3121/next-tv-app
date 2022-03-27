@@ -1,4 +1,4 @@
-import { About, Project } from 'container'
+import { About, Contact, Project } from 'container'
 import type { NextPage } from 'next'
 import layout from 'styles/introduce.module.scss'
 import useSWR from 'swr'
@@ -24,6 +24,9 @@ const Introduce: NextPage = () => {
       </section> */}
       <section>
         <Project data={projectData} />
+      </section>
+      <section>
+        <Contact />
       </section>
     </section>
   )

@@ -8,7 +8,8 @@ interface ProjectCardProps {
   children?: React.ReactNode
   thumbnail: string
   backgroundColor: string
-  onClick?: () => void
+  onClick?: (key: ProjectDescription) => void
+  selectData: ProjectDescription
 }
 
 const ProjectThumbnail = styled((props) => {
@@ -42,13 +43,13 @@ const ProjectThumbnail = styled((props) => {
 `
 
 const ProjectCard: React.FC<ProjectCardProps> = (props) => {
-  const { backgroundColor, thumbnail, onClick } = props
+  const { backgroundColor, thumbnail, onClick, selectData } = props
 
   const handleClick = React.useCallback(() => {
     if (onClick) {
-      onClick()
+      onClick(selectData)
     }
-  }, [onClick])
+  }, [selectData, onClick])
 
   return (
     <ProjectThumbnail backgroundcolor={backgroundColor} onClick={handleClick}>
