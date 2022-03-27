@@ -16,9 +16,11 @@ export const Button: React.FC<ButtonProps> = (props) => {
   }, [onClick])
 
   return (
-    <button onClick={handleClick} className={button[type]}>
-      {children}
-    </button>
+    <div className={button.container}>
+      <button onClick={handleClick} className={button[type]}>
+        {children}
+      </button>
+    </div>
   )
 }
 

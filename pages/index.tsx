@@ -6,8 +6,6 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Notice = styled.article`
-  width: 400px;
-  height: 140px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -19,7 +17,6 @@ const Notice = styled.article`
   -webkit-backdrop-filter: blur(9.5px);
   border-radius: 10px;
   border: 1px solid #ffffff2d;
-  padding: 20px 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -30,21 +27,30 @@ const Home: NextPage = () => {
   const [name, setName] = React.useState<string>('')
   const noticeRef = React.useRef<HTMLButtonElement>(null)
 
-  const handleClick = React.useCallback(() => {
+  const handleClick = React.useCallback(async () => {
     localStorage.setItem('guestName', `${name}님`)
-    // gsap
-    //   .to(noticeRef.current, {
-    //     width: 0,
-    //     height: 0,
-    //     padding: 0,
-    //   })
-    //   .then(() => {
-    //   })
+    await gsap
+      .to(noticeRef.current, {
+        width: 0,
+        height: 0,
+        padding: 0,
+      })
+      .then(() => {})
     Router.replace('/main/intro')
   }, [name])
 
   const handleChange = React.useCallback((payload: string) => {
     setName(payload)
+  }, [])
+
+  React.useEffect(() => {
+    gsap
+      .to(noticeRef.current, {
+        width: 400,
+        height: 140,
+        padding: '20px 30px',
+      })
+      .then(() => {})
   }, [])
 
   return (
