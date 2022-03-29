@@ -64,7 +64,7 @@
   will-change: transform;
   overflow: hidden;
 
-  &:after {
+  &::after {
     background-color: $color-default-dark3;
     content: '👉';
     text-align: right;
@@ -87,7 +87,7 @@
     box-shadow: 0 8px 32px 0 $color-default-dark3;
     border: 0;
 
-    &:after {
+    &::after {
       animation: 0.5s reverse both running easeInBounce;
     }
   }

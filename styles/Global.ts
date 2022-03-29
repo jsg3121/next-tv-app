@@ -29,7 +29,7 @@ export const GlobalStyle = createGlobalStyle`
         scrollbar-width: none;
         width: 100%;
         height: 100vh;
-        background-color:#252538
+        background-color:#353452
     }
     button {
         background: none;

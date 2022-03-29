@@ -7,157 +7,171 @@ const IntorContainer: React.FC = () => {
     <>
       {/* depth 1 */}
       <Parallax
-        top="30%"
-        right="37%"
-        translateX="-30"
-        translateY="-30"
+        top="37%"
+        right="38%"
+        translateX="-45"
+        translateY="-45"
         backgroundImage="/storybook.svg"
         width={'150px'}
         height={'150px'}
         zIndex={20}
+        delay={2}
       />
       <Parallax
-        bottom="20%"
-        left="25%"
-        translateX="-30"
-        translateY="-30"
+        bottom="15%"
+        left="28%"
+        translateX="-45"
+        translateY="-45"
         backgroundImage="/prisma.svg"
         width={'150px'}
         height={'150px'}
         zIndex={20}
+        delay={3.9}
       />
       <Parallax
-        top="5%"
-        left="5%"
-        translateX="-30"
-        translateY="-30"
+        top="1%"
+        left="-2%"
+        translateX="-45"
+        translateY="-45"
         backgroundImage="/node.svg"
         width={'150px'}
         height={'150px'}
         zIndex={20}
+        delay={4.75}
       />
       <Parallax
-        bottom="8%"
-        right="7%"
-        translateX="-30"
-        translateY="-30"
+        bottom="4%"
+        right="1%"
+        translateX="-45"
+        translateY="-45"
         backgroundImage="/javascript.svg"
         width={'150px'}
         height={'150px'}
         zIndex={20}
+        delay={3}
       />
       <Parallax
-        top="13%"
-        right="13%"
-        translateX="-30"
-        translateY="-30"
+        top="12%"
+        right="19%"
+        translateX="-45"
+        translateY="-45"
         backgroundImage="/redux.svg"
         width={'150px'}
         height={'150px'}
         zIndex={10}
+        delay={4.65}
       />
       {/* --------------------------------------- */}
       {/* depth 2 */}
       <Parallax
-        bottom="10%"
-        left="10%"
-        translateX="-20"
-        translateY="-20"
+        bottom="0%"
+        left="11%"
+        translateX="-30"
+        translateY="-30"
         backgroundImage="/react.svg"
         width={'150px'}
         height={'150px'}
         blur={3}
         zIndex={10}
+        delay={4.7}
       />
       <Parallax
-        top="36%"
-        left="17%"
-        translateX="-20"
-        translateY="-20"
+        top="29%"
+        left="13%"
+        translateX="-30"
+        translateY="-30"
         backgroundImage="/vue.svg"
         width={'150px'}
         height={'150px'}
         blur={3}
         zIndex={10}
+        delay={2.5}
       />
       <Parallax
         top="32%"
-        right="10%"
-        translateX="-20"
-        translateY="-20"
+        right="6%"
+        translateX="-30"
+        translateY="-30"
         backgroundImage="/html.svg"
         width={'150px'}
         height={'150px'}
         blur={3}
         zIndex={10}
+        delay={4.2}
       />
       <Parallax
-        top="56%"
-        right="23%"
-        translateX="-20"
-        translateY="-20"
+        top="61%"
+        right="21%"
+        translateX="-30"
+        translateY="-30"
         backgroundImage="/typescript.svg"
         width={'150px'}
         height={'150px'}
         blur={3}
         zIndex={10}
+        delay={4.5}
       />
       <Parallax
-        top="10%"
+        top="5%"
         left="46%"
-        translateX="-20"
-        translateY="-20"
+        translateX="-30"
+        translateY="-30"
         backgroundImage="/graphql.svg"
         width={'150px'}
         height={'150px'}
         blur={3}
         zIndex={10}
+        delay={3.6}
       />
       {/* --------------------------------------- */}
       {/* depth 3 */}
       <Parallax
-        top="16%"
-        left="28%"
-        translateX="-10"
-        translateY="-10"
+        top="11%"
+        left="29%"
+        translateX="-15"
+        translateY="-15"
         backgroundImage="/mysql.svg"
         width={'150px'}
         height={'150px'}
         blur={5}
         zIndex={10}
+        delay={4.6}
       />
       <Parallax
-        top="47%"
+        top="55%"
         left="5%"
-        translateX="-10"
-        translateY="-10"
+        translateX="-15"
+        translateY="-15"
         backgroundImage="/mobx.svg"
         width={'100px'}
         height={'100px'}
         blur={5}
         zIndex={10}
+        delay={4.7}
       />
       <Parallax
-        bottom="42%"
-        left="35%"
-        translateX="-10"
-        translateY="-10"
+        bottom="46%"
+        left="33%"
+        translateX="-15"
+        translateY="-15"
         backgroundImage="/docker.svg"
         width={'100px'}
         height={'100px'}
         blur={5}
         zIndex={10}
+        delay={4.6}
       />
       <Parallax
-        bottom="17%"
-        left="45%"
-        translateX="-10"
-        translateY="-10"
+        bottom="8%"
+        left="50%"
+        translateX="-15"
+        translateY="-15"
         backgroundImage="/css.svg"
         width={'150px'}
         height={'150px'}
         blur={5}
         zIndex={10}
+        delay={4.4}
       />
     </>
   )
