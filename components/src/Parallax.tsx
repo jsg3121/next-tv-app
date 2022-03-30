@@ -26,30 +26,42 @@ const Item = styled.div`
   box-sizing: border-box;
 `
 
-const popupEffect = (current: HTMLHeadingElement, delay: number) => {
+/**
+ * info : 패럴렉스 아이콘 팝 모션
+ * @param {HTMLHeadingElement} current
+ * @param {number} delay
+ */
+const popupEffect = (current: HTMLHeadingElement, delay: number): void => {
   gsap
+    .timeline()
     .to(current, {
       borderRadius: 0,
       border: 0,
       scale: 1.2,
     })
     .duration(0.2)
-    .delay(delay)
-  gsap
     .to(current, {
       scale: 1,
     })
     .duration(0.2)
-    .delay(delay + 0.2)
+    .delay(delay)
 }
 
+/**
+ * info : mouse move event
+ * @param {MouseEvent} e
+ * @param {HTMLHeadingElement} current
+ * @param {DOMRect} rect
+ * @param {string} translateX
+ * @param {string} translateY
+ */
 const mouseMotion = (
   e: MouseEvent,
   current: HTMLHeadingElement,
   rect: DOMRect,
   translateX: string,
   translateY: string
-) => {
+): void => {
   const mouseX_title = e.clientX - rect.left
   const mouseY_title = e.clientY - rect.top
 

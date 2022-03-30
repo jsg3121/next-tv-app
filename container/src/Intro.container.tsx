@@ -15,7 +15,7 @@ const IntorContainer: React.FC = () => {
         width={'150px'}
         height={'150px'}
         zIndex={20}
-        delay={2}
+        delay={1}
       />
       <Parallax
         bottom="15%"
@@ -26,7 +26,7 @@ const IntorContainer: React.FC = () => {
         width={'150px'}
         height={'150px'}
         zIndex={20}
-        delay={3.9}
+        delay={2.9}
       />
       <Parallax
         top="1%"
@@ -37,7 +37,7 @@ const IntorContainer: React.FC = () => {
         width={'150px'}
         height={'150px'}
         zIndex={20}
-        delay={4.75}
+        delay={3.75}
       />
       <Parallax
         bottom="4%"
@@ -48,7 +48,7 @@ const IntorContainer: React.FC = () => {
         width={'150px'}
         height={'150px'}
         zIndex={20}
-        delay={3}
+        delay={2}
       />
       <Parallax
         top="12%"
@@ -59,7 +59,7 @@ const IntorContainer: React.FC = () => {
         width={'150px'}
         height={'150px'}
         zIndex={10}
-        delay={4.65}
+        delay={3.65}
       />
       {/* --------------------------------------- */}
       {/* depth 2 */}
@@ -73,7 +73,7 @@ const IntorContainer: React.FC = () => {
         height={'150px'}
         blur={3}
         zIndex={10}
-        delay={4.7}
+        delay={3.7}
       />
       <Parallax
         top="29%"
@@ -85,7 +85,7 @@ const IntorContainer: React.FC = () => {
         height={'150px'}
         blur={3}
         zIndex={10}
-        delay={2.5}
+        delay={1.5}
       />
       <Parallax
         top="32%"
@@ -97,7 +97,7 @@ const IntorContainer: React.FC = () => {
         height={'150px'}
         blur={3}
         zIndex={10}
-        delay={4.2}
+        delay={3.2}
       />
       <Parallax
         top="61%"
@@ -109,7 +109,7 @@ const IntorContainer: React.FC = () => {
         height={'150px'}
         blur={3}
         zIndex={10}
-        delay={4.5}
+        delay={3.5}
       />
       <Parallax
         top="5%"
@@ -121,7 +121,7 @@ const IntorContainer: React.FC = () => {
         height={'150px'}
         blur={3}
         zIndex={10}
-        delay={3.6}
+        delay={2.6}
       />
       {/* --------------------------------------- */}
       {/* depth 3 */}
@@ -135,7 +135,7 @@ const IntorContainer: React.FC = () => {
         height={'150px'}
         blur={5}
         zIndex={10}
-        delay={4.6}
+        delay={3.6}
       />
       <Parallax
         top="55%"
@@ -147,7 +147,7 @@ const IntorContainer: React.FC = () => {
         height={'100px'}
         blur={5}
         zIndex={10}
-        delay={4.7}
+        delay={3.7}
       />
       <Parallax
         bottom="46%"
@@ -159,7 +159,7 @@ const IntorContainer: React.FC = () => {
         height={'100px'}
         blur={5}
         zIndex={10}
-        delay={4.6}
+        delay={3.6}
       />
       <Parallax
         bottom="8%"
@@ -171,7 +171,7 @@ const IntorContainer: React.FC = () => {
         height={'150px'}
         blur={5}
         zIndex={10}
-        delay={4.4}
+        delay={3.4}
       />
     </>
   )
