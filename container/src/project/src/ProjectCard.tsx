@@ -25,7 +25,7 @@ const ProjectThumbnail = styled((props) => {
   border-radius: 30px;
   overflow: hidden;
 
-  &:after {
+  &::after {
     content: '';
     width: 100%;
     height: 100%;
@@ -36,7 +36,7 @@ const ProjectThumbnail = styled((props) => {
   }
 
   &:hover {
-    &:after {
+    &::after {
       content: none;
     }
   }

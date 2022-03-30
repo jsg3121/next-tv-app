@@ -1,39 +1,92 @@
 import { IntorContainer, NoticeContainer } from 'container'
-import { gsap } from 'gsap'
+import { gsap, Power4 } from 'gsap'
 import type { NextPage } from 'next'
+import { NextRouter, useRouter } from 'next/router'
 import React from 'react'
-import styled from 'styled-components'
-import { $Color } from 'styles'
+import intro from 'styles/intro.module.scss'
 
-const Main = styled.main`
-  width: 100%;
-  height: 100vh;
-  background-color: ${$Color.default.dark3};
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`
+const turnOff = (current: HTMLHeadingElement, router: NextRouter): void => {
+  gsap
+    .timeline()
+    .to(current, {
+      width: '100%',
+      height: '2px',
+      ease: Power4.easeOut,
+      duration: 0.2,
+    })
+    .to(current, {
+      width: '0',
+      height: '0',
+      duration: 0.2,
+    })
+    .then(() => {
+      router.push('/main/introduce')
+    })
+}
+
+const turnOnOff = (current: HTMLHeadingElement) => {
+  const timeLine = gsap.timeline()
+
+  timeLine
+    .to(current, {
+      width: '100%',
+      height: '2px',
+      ease: Power4.easeOut,
+      duration: 0.2,
+    })
+    .to(current, {
+      width: '0',
+      height: '0',
+      duration: 0.2,
+    })
+    .to(current, {
+      width: '100%',
+      height: '2px',
+      ease: Power4.easeOut,
+      duration: 0.2,
+      backgroundImage: 'none',
+    })
+    .to(current, {
+      width: '100%',
+      height: 'calc(100vh - 140px)',
+      duration: 0.2,
+    })
+    .delay(1)
+}
 
 const Intro: NextPage = () => {
-  const introRef = React.useRef<HTMLButtonElement>(null)
+  const [isShow, setIsShow] = React.useState<boolean>(false)
+  const mainRef = React.useRef<HTMLHeadingElement>(null)
+  const router = useRouter()
+
+  const handleClick = React.useCallback(() => {
+    if (mainRef.current) {
+      turnOff(mainRef.current, router)
+    }
+  }, [router])
 
   React.useEffect(() => {
-    // gsap.to(introRef.current, {
-    //   width: '100%',
-    //   height: '100vh',
-    // })
+    if (mainRef.current) {
+      turnOnOff(mainRef.current)
+      const timeSet = setInterval(() => {
+        setIsShow(true)
+      }, 1400)
+
+      return () => {
+        return clearInterval(timeSet)
+      }
+    }
   }, [])
 
   return (
-    <Main ref={introRef}>
-      <IntorContainer />
-      <NoticeContainer />
-    </Main>
+    <main className={intro.container} ref={mainRef}>
+      {isShow && (
+        <>
+          <IntorContainer />
+          <NoticeContainer onClick={handleClick} />
+        </>
+      )}
+    </main>
   )
 }
 
