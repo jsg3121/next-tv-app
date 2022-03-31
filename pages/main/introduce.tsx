@@ -1,6 +1,6 @@
 import http from 'axios'
 import { About, Contact, Project } from 'container'
-import { gsap, Power4 } from 'gsap'
+import { gsap } from 'gsap'
 import type { NextPage } from 'next'
 import React from 'react'
 import layout from 'styles/introduce.module.scss'
@@ -20,47 +20,58 @@ const Introduce: NextPage = () => {
   })
 
   React.useEffect(() => {
-    // gsap
-    //   .timeline()
-    //   .to(introduceRef.current, {
-    //     width: '0',
-    //     height: '0',
-    //     duration: 0,
-    //     overflow: 'hidden',
-    //   })
-    //   .to(introduceRef.current, {
-    //     width: '100%',
-    //     height: '2px',
-    //     ease: Power4.easeOut,
-    //     duration: 0.1,
-    //     overflow: 'hidden',
-    //   })
-    //   .to(introduceRef.current, {
-    //     width: '100%',
-    //     height: '100vh',
-    //     duration: 0.1,
-    //     overflowY: 'auto',
-    //   })
+    gsap
+      .timeline()
+      .to(introduceRef.current, {
+        overflowY: 'hidden',
+        duration: 0,
+      })
+      .to(openningRef.current, {
+        display: 'flex',
+      })
+      .to(openningRef.current, {
+        fontSize: '1.5rem',
+        left: '270px',
+        top: '280px',
+        duration: 2,
+        delay: 0.5,
+      })
+      .to(
+        openningRef.current,
+        {
+          fontWeight: 'normal',
+          duration: 1,
+        },
+        4
+      )
+      .to(openningRef.current, {
+        display: 'none',
+        duration: 0,
+      })
+      .to(introduceRef.current, {
+        overflowY: 'auto',
+        duration: 0,
+      })
+      .delay(1.5)
   }, [])
 
   return (
-    <section className={layout.section} ref={introduceRef}>
-      <div ref={openningRef}>
-        <h1>ABOUT ME</h1>
-      </div>
-      <section>
-        <About />
+    <>
+      <h1 className={layout.openning} ref={openningRef}>
+        ABOUT ME
+      </h1>
+      <section className={layout.section} ref={introduceRef}>
+        <section>
+          <About />
+        </section>
+        <section>
+          <Project data={projectData} />
+        </section>
+        <section>
+          <Contact />
+        </section>
       </section>
-      {/* <section>
-        <Skills data={data} />
-      </section> */}
-      <section>
-        <Project data={projectData} />
-      </section>
-      <section>
-        <Contact />
-      </section>
-    </section>
+    </>
   )
 }
 

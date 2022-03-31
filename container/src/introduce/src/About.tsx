@@ -30,7 +30,7 @@ const About: React.FC = () => {
   return (
     <article className={about.container} id="about">
       <div>
-        <Title depth={1}>About Me</Title>
+        <Title depth={1}>ABOUT ME</Title>
         <div className={about.profile_info}>
           <picture className={about.profile} ref={pictureRef}>
             <figure>
