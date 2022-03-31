@@ -59,14 +59,14 @@ const About: React.FC = () => {
                 <a target="_blank">&nbsp;:&nbsp;https://velog.io/@jsg3121</a>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Title depth={3}>WAKATIME</Title>
               <Link href="https://wakatime.com/@jsg3121">
                 <a target="_blank">
                   &nbsp;:&nbsp;https://wakatime.com/@jsg3121
                 </a>
               </Link>
-            </li>
+            </li> */}
             <li>
               <Title depth={3}>CAREER</Title>
               <Text>&nbsp;:&nbsp;2019. 11 ~ ing - Quber Web Developer</Text>
