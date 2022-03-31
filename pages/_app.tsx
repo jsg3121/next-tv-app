@@ -1,10 +1,8 @@
-import { SideContainer } from 'container'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
+import 'react-image-gallery/styles/scss/image-gallery.scss'
 import styled from 'styled-components'
 import { GlobalStyle } from '../styles/Global'
-import 'react-image-gallery/styles/scss/image-gallery.scss'
 
 const Root = styled.div`
   width: 100%;
@@ -14,7 +12,6 @@ const Root = styled.div`
 `
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const router = useRouter()
   return (
     <>
       <Head>
@@ -34,7 +31,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <GlobalStyle />
       <Root>
-        {router.pathname === '/main/introduce' && <SideContainer />}
         <Component {...pageProps} />
       </Root>
     </>

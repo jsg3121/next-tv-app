@@ -20,7 +20,7 @@ const turnOff = (current: HTMLHeadingElement, router: NextRouter): void => {
       duration: 0.2,
     })
     .then(() => {
-      router.push('/main/introduce')
+      router.replace('/main/introduce')
     })
 }
 

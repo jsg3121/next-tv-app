@@ -1,4 +1,4 @@
-import { Button, Title } from 'components'
+import { Button, Text, Title } from 'components'
 import isEqual from 'fast-deep-equal'
 import React from 'react'
 import notice from 'styles/notice.module.scss'
@@ -15,8 +15,9 @@ const NoticeContainer: React.FC<NoticeContainerProps> = (props) => {
 
   return (
     <article className={notice.container}>
-      <Title depth={1}>안녕하세요! 찾아주셔서 감사합니다!</Title>
-      <Title depth={2}>Front End개발자 장선규 입니다</Title>
+      <Text>Hi! my name is</Text>
+      <Title depth={1}>Sungyu Jang</Title>
+      <Title depth={2}>Front End Devfolio</Title>
       <div className={notice.container_button}>
         <Button onClick={handleClickNext} type="primary">
           구경가기
