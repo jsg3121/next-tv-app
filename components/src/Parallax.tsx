@@ -20,7 +20,7 @@ interface ParallaxProps {
 }
 
 const Item = styled.div`
-  position: absolute;
+  position: fixed;
   will-change: transform;
   border-radius: 50%;
   box-sizing: border-box;
