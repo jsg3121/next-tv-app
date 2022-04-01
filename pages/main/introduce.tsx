@@ -6,6 +6,103 @@ import React from 'react'
 import layout from 'styles/introduce.module.scss'
 import useSWR from 'swr'
 
+const introEffect = (
+  current1: HTMLHeadingElement,
+  current2: HTMLHeadingElement
+) => {
+  gsap
+    .timeline()
+    .to(current1, {
+      overflowY: 'hidden',
+      duration: 0,
+    })
+    .to(current2, {
+      display: 'flex',
+    })
+    .to(current2, {
+      fontSize: '1.5rem',
+      left: '270px',
+      top: '251px',
+      duration: 2,
+      delay: 0.5,
+    })
+    .to(current2, {
+      fontWeight: '500',
+    })
+    .to(
+      current2,
+      {
+        display: 'none',
+        duration: 0,
+        delay: 4,
+      },
+      1
+    )
+    .to(current1, {
+      overflowY: 'auto',
+      duration: 0,
+    })
+    .delay(1.5)
+}
+
+const bounceEffect = (current: HTMLHeadingElement) => {
+  gsap
+    .timeline()
+    .to(current, {
+      y: 30,
+      duration: 0.05,
+    })
+    .to(current, {
+      y: 0,
+      duration: 0.05,
+    })
+    .delay(3.75)
+  gsap
+    .timeline()
+    .to(current, {
+      y: 20,
+      duration: 0.05,
+    })
+    .to(current, {
+      y: 0,
+      duration: 0.05,
+    })
+    .delay(4.5)
+  gsap
+    .timeline()
+    .to(current, {
+      y: 10,
+      duration: 0.05,
+    })
+    .to(current, {
+      y: 0,
+      duration: 0.05,
+    })
+    .delay(4.875)
+  gsap
+    .timeline()
+    .to(current, {
+      y: 2,
+      duration: 0.05,
+    })
+    .to(current, {
+      y: 0,
+      duration: 0.05,
+    })
+    .delay(5.125)
+  gsap
+    .timeline()
+    .to(current, {
+      y: 5,
+      duration: 0.05,
+    })
+    .to(current, {
+      y: 0,
+      duration: 0.05,
+    })
+    .delay(6.325)
+}
+
 const Introduce: NextPage = () => {
   const introduceRef = React.useRef<HTMLHeadingElement>(null)
   const openningRef = React.useRef<HTMLHeadingElement>(null)
@@ -21,93 +118,13 @@ const Introduce: NextPage = () => {
   })
 
   React.useEffect(() => {
-    gsap
-      .timeline()
-      .to(introduceRef.current, {
-        overflowY: 'hidden',
-        duration: 0,
-      })
-      .to(openningRef.current, {
-        display: 'flex',
-      })
-      .to(openningRef.current, {
-        fontSize: '1.5rem',
-        left: '270px',
-        top: '272px',
-        duration: 2,
-        delay: 0.5,
-      })
-      .to(openningRef.current, {
-        fontWeight: 'normal',
-      })
-      .to(openningRef.current, {
-        display: 'none',
-        duration: 0,
-      })
-      .to(introduceRef.current, {
-        overflowY: 'auto',
-        duration: 0,
-      })
-      .delay(1.5)
+    if (introduceRef.current && openningRef.current) {
+      introEffect(introduceRef.current, openningRef.current)
+    }
 
-    gsap
-      .timeline()
-      .to(aboutRef.current, {
-        y: 30,
-        duration: 0.05,
-      })
-      .to(aboutRef.current, {
-        y: 0,
-        duration: 0.05,
-      })
-      .delay(3.75)
-    gsap
-      .timeline()
-      .to(aboutRef.current, {
-        y: 20,
-        duration: 0.05,
-      })
-      .to(aboutRef.current, {
-        y: 0,
-        duration: 0.05,
-      })
-      .delay(4.5)
-
-    gsap
-      .timeline()
-      .to(aboutRef.current, {
-        y: 10,
-        duration: 0.05,
-      })
-      .to(aboutRef.current, {
-        y: 0,
-        duration: 0.05,
-      })
-      .delay(4.875)
-
-    gsap
-      .timeline()
-      .to(aboutRef.current, {
-        y: 2,
-        duration: 0.05,
-      })
-      .to(aboutRef.current, {
-        y: 0,
-        duration: 0.05,
-      })
-      .delay(5.125)
-
-    gsap
-      .timeline()
-      .to(aboutRef.current, {
-        y: 40,
-        duration: 0.05,
-      })
-      .to(aboutRef.current, {
-        y: 0,
-        duration: 0.05,
-      })
-      .delay(7.325)
+    if (aboutRef.current) {
+      bounceEffect(aboutRef.current)
+    }
   }, [])
 
   return (
