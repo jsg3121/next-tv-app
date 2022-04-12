@@ -38,12 +38,13 @@ const popupEffect = (current: HTMLHeadingElement, delay: number): void => {
       borderRadius: 0,
       border: 0,
       scale: 1.2,
+      duration: 0.2,
     })
-    .duration(0.2)
     .to(current, {
+      filter: 'drop-shadow(5px 6px 4px rgb(0 0 0 / 0.4))',
       scale: 1,
+      duration: 0.2,
     })
-    .duration(0.2)
     .delay(delay)
 }
 

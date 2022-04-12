@@ -10,7 +10,7 @@ import about from 'styles/about.module.scss'
  * info : bounce effect
  * @param {HTMLHeadingElement} current HTMLHeadingElement
  */
-const bounceEffect = (current: HTMLHeadingElement) => {
+const bounceEffect = (current: HTMLElement) => {
   gsap
     .timeline()
     .to(current, {
@@ -50,7 +50,7 @@ const bounceEffect = (current: HTMLHeadingElement) => {
     .delay(3)
 }
 
-const bounceEffect2 = (current: HTMLHeadingElement) => {
+const bounceEffect2 = (current: HTMLDivElement) => {
   gsap
     .timeline()
     .to(current, {
@@ -94,8 +94,8 @@ const bounceEffect2 = (current: HTMLHeadingElement) => {
 }
 
 const About: React.FC = () => {
-  const pictureRef = React.useRef<HTMLHeadingElement>(null)
-  const descriptionRef = React.useRef<HTMLHeadingElement>(null)
+  const pictureRef = React.useRef<HTMLElement>(null)
+  const descriptionRef = React.useRef<HTMLDivElement>(null)
 
   React.useEffect(() => {
     if (pictureRef.current) bounceEffect(pictureRef.current)
@@ -144,28 +144,15 @@ const About: React.FC = () => {
             </li>
             <li>
               <Title depth={3}>CAREER</Title>
-              <Text>&nbsp;:&nbsp;2019. 11 ~ ing - Quber Web Developer</Text>
+              <Text>&nbsp;:&nbsp;Quber Web Developer ( 2019. 11 ~ )</Text>
             </li>
             <li>
               <Title depth={3}> </Title>
               <Text>
-                &nbsp;&nbsp;&nbsp;2018. 06 ~ 2019. 07 - Cresector Web Developer
+                &nbsp;&nbsp;&nbsp;Cresector Web Developer ( 2018. 06 ~ 2019. 07
+                )
               </Text>
             </li>
-
-            {/* <li>
-              <Title depth={3}>Git&nbsp;:&nbsp;</Title>
-              <Link href="https://github.com/jsg3121">
-                <a target="_blank">https://github.com/jsg3121</a>
-              </Link>
-            </li>
-            <li>
-              <Title depth={3}>Mail&nbsp;:&nbsp;</Title>
-              <Link href="mailto:xodm95@gmail.com" passHref={true}>
-                <a target="_blank">xodm95@gmail.com</a>
-              </Link>
-            </li>
-            */}
           </ul>
         </div>
         <div className={about.info_description} ref={descriptionRef}>
