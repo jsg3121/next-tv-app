@@ -58,7 +58,7 @@ const IntorContainer: React.FC = () => {
         backgroundImage="/redux.svg"
         width={'150px'}
         height={'150px'}
-        zIndex={10}
+        zIndex={20}
         delay={3.65}
       />
       {/* --------------------------------------- */}
@@ -134,7 +134,7 @@ const IntorContainer: React.FC = () => {
         width={'150px'}
         height={'150px'}
         blur={5}
-        zIndex={10}
+        zIndex={5}
         delay={3.6}
       />
       <Parallax
@@ -146,7 +146,7 @@ const IntorContainer: React.FC = () => {
         width={'100px'}
         height={'100px'}
         blur={5}
-        zIndex={10}
+        zIndex={5}
         delay={3.7}
       />
       <Parallax
@@ -158,7 +158,7 @@ const IntorContainer: React.FC = () => {
         width={'100px'}
         height={'100px'}
         blur={5}
-        zIndex={10}
+        zIndex={5}
         delay={3.6}
       />
       <Parallax
@@ -170,7 +170,7 @@ const IntorContainer: React.FC = () => {
         width={'150px'}
         height={'150px'}
         blur={5}
-        zIndex={10}
+        zIndex={5}
         delay={3.4}
       />
     </>

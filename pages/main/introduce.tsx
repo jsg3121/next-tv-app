@@ -22,7 +22,7 @@ const introEffect = (
     .to(current2, {
       fontSize: '1.5rem',
       left: '270px',
-      top: '251px',
+      top: '231px',
       duration: 2,
       delay: 0.5,
     })
@@ -122,8 +122,8 @@ const Introduce: NextPage = () => {
       introEffect(introduceRef.current, openningRef.current)
     }
 
-    if (aboutRef.current) {
-      bounceEffect(aboutRef.current)
+    if (introduceRef.current) {
+      bounceEffect(introduceRef.current)
     }
   }, [])
 

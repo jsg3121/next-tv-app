@@ -9,11 +9,11 @@
   transform: translate(-50%, -50%);
   z-index: 999;
   background-color: #ffffff91;
-  box-shadow: 0 8px 32px 0 #1f26875e;
+  box-shadow: 0px 8px 32px 0 #2626265e, inset -7px -7px 17px -2px #524f4f91;
   backdrop-filter: blur(9.5px);
   -webkit-backdrop-filter: blur(9.5px);
   border-radius: 10px;
-  border: 1px solid #ffffff2d;
+  border: 0;
   padding: 20px 30px;
   display: flex;
   flex-direction: column;

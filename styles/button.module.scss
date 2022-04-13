@@ -54,10 +54,10 @@
   backdrop-filter: blur(9.5px);
   -webkit-backdrop-filter: blur(9.5px);
   border-radius: 10px;
-  border: 1px solid #ffffff2d;
+  border: 0;
   font-size: 1rem;
   background-color: $color-default-bright1;
-  box-shadow: 0 8px 32px 0 $color-default-bright1;
+  box-shadow: 5px 4px 6px -3px #706fa0, inset -4px -4px 6px -3px #5e5c87;
   color: #ffffff;
   position: absolute;
   transition: 0.2s transform ease-out;
@@ -67,6 +67,7 @@
   &::after {
     background-color: $color-default-dark3;
     content: '👉';
+    box-shadow: inset -4px -4px 6px -3px #151529;
     text-align: right;
     line-height: 40px;
     padding-right: 15px;
@@ -84,7 +85,7 @@
 
   &:hover {
     transform: scale(1.05);
-    box-shadow: 0 8px 32px 0 $color-default-dark3;
+    box-shadow: 5px 4px 6px -3px #141424;
     border: 0;
 
     &::after {

@@ -9,6 +9,7 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
+  experimental: { images: { layoutRaw: true } },
 }
 
 module.exports = nextConfig
