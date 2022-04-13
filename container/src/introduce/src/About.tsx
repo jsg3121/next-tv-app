@@ -112,7 +112,7 @@ const About: React.FC = () => {
               <Image
                 src="/profile.webp"
                 alt="profile_image"
-                layout="responsive"
+                layout="raw"
                 width="300px"
                 height="300px"
                 loading="lazy"
