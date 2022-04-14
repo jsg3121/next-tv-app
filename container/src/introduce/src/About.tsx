@@ -116,6 +116,11 @@ const About: React.FC = () => {
                 width="300px"
                 height="300px"
                 loading="lazy"
+                style={{
+                  borderRadius: '10px',
+                  position: 'relative',
+                  zIndex: '-1',
+                }}
               />
             </figure>
           </picture>

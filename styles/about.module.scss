@@ -66,14 +66,14 @@
   display: block;
   margin-right: 30px;
   transform: translate(570%, -220%) rotateZ(240deg);
-  border-radius: 10px;
-  overflow: hidden;
   position: relative;
   z-index: 10;
 
   figure {
     width: 100%;
     height: 100%;
+    box-shadow: 7px 7px 13px -3px #1f1f1f, inset -6px -6px 9px -3px #0000007d;
+    border-radius: 10px;
   }
 }
 
