@@ -44,20 +44,21 @@
 
 .container {
   width: 100%;
-  height: 40px;
+  height: 2.222rem;
   position: relative;
 }
 
 .primary {
   width: 100%;
-  height: 40px;
-  backdrop-filter: blur(9.5px);
-  -webkit-backdrop-filter: blur(9.5px);
-  border-radius: 10px;
+  height: 2.222rem;
+  backdrop-filter: blur(0.5277rem);
+  -webkit-backdrop-filter: blur(0.5277rem);
+  border-radius: 0.555rem;
   border: 0;
   font-size: 1rem;
   background-color: $color-default-bright1;
-  box-shadow: 5px 4px 6px -3px #706fa0, inset -4px -4px 6px -3px #5e5c87;
+  box-shadow: 0.277rem 0.222rem 0.333rem -0.166rem #706fa0,
+    inset -0.222rem -0.222rem 0.333rem -0.166rem #5e5c87;
   color: #ffffff;
   position: absolute;
   transition: 0.2s transform ease-out;
@@ -67,25 +68,26 @@
   &::after {
     background-color: $color-default-dark3;
     content: '👉';
-    box-shadow: inset -4px -4px 6px -3px #151529;
+    box-shadow: inset -0.222rem -0.222rem 0.333rem -0.166rem #151529;
     text-align: right;
-    line-height: 40px;
-    padding-right: 15px;
+    line-height: 2.222rem;
+    padding-right: 0.8333rem;
     display: block;
     height: 100%;
-    width: calc(100% - 15px);
+    width: calc(100% - 0.833rem);
     position: absolute;
     left: 0;
     top: 0;
     transform: translate(-100%, 0);
     will-change: transform;
     z-index: -1;
-    border-radius: 10px;
+    border-radius: 0.555rem;
   }
 
   &:hover {
     transform: scale(1.05);
-    box-shadow: 5px 4px 6px -3px #706fa0, inset -4px -4px 6px -3px #5e5c87;
+    box-shadow: 0.277rem 0.222rem 0.333rem -0.166rem #706fa0,
+      inset -0.222rem -0.222rem 0.333rem -0.166rem #5e5c87;
     border: 0;
 
     &::after {
@@ -96,10 +98,10 @@
 
 .danger {
   width: 100%;
-  height: 40px;
-  backdrop-filter: blur(9.5px);
-  -webkit-backdrop-filter: blur(9.5px);
-  border-radius: 10px;
+  height: 2.222rem;
+  backdrop-filter: blur(0.527rem);
+  -webkit-backdrop-filter: blur(0.527rem);
+  border-radius: 0.555rem;
   border: 2px solid $color-default-dark4;
   font-size: 1rem;
   background-color: $color-default-bright3;

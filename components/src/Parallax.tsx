@@ -75,6 +75,15 @@ const mouseMotion = (
   })
 }
 
+/**
+ * info : size props 변환
+ * @param {string} width
+ * @returns {number}
+ */
+const changeSize = (width: string): number => {
+  return Math.ceil(Number(width.replace('rem', '')) * 18) / 2
+}
+
 const Parallax: React.FC<ParallaxProps> = (props) => {
   const {
     backgroundImage,
@@ -113,6 +122,8 @@ const Parallax: React.FC<ParallaxProps> = (props) => {
     }
   }, [delay])
 
+  console.log()
+
   return (
     <Item
       ref={componentsRef}
@@ -122,7 +133,7 @@ const Parallax: React.FC<ParallaxProps> = (props) => {
         left: left ? `${left}` : 'none',
         right: right ? `${right}` : 'none',
         zIndex: zIndex,
-        border: `${parseInt(width?.replace('px', ''), 10) / 2}px solid #353452`,
+        border: `${changeSize(width)}px solid #353452`,
         width,
         height,
       }}

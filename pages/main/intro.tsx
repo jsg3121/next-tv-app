@@ -48,7 +48,7 @@ const turnOnOff = (current: HTMLHeadingElement) => {
     })
     .to(current, {
       width: '100%',
-      height: 'calc(100vh - 140px)',
+      height: 'calc(100vh - 7.778rem)',
       duration: 0.2,
     })
     .delay(1)
