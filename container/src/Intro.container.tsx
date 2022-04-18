@@ -71,7 +71,7 @@ const IntorContainer: React.FC = () => {
         backgroundImage="/react.svg"
         width={'8.333rem'}
         height={'8.333rem'}
-        blur={3}
+        // blur={3}
         zIndex={10}
         delay={3.7}
       />
@@ -83,7 +83,7 @@ const IntorContainer: React.FC = () => {
         backgroundImage="/vue.svg"
         width={'8.333rem'}
         height={'8.333rem'}
-        blur={3}
+        // blur={3}
         zIndex={10}
         delay={1.5}
       />
@@ -95,7 +95,7 @@ const IntorContainer: React.FC = () => {
         backgroundImage="/html.svg"
         width={'8.333rem'}
         height={'8.333rem'}
-        blur={3}
+        // blur={3}
         zIndex={10}
         delay={3.2}
       />
@@ -107,7 +107,7 @@ const IntorContainer: React.FC = () => {
         backgroundImage="/typescript.svg"
         width={'8.333rem'}
         height={'8.333rem'}
-        blur={3}
+        // blur={3}
         zIndex={10}
         delay={3.5}
       />
@@ -119,7 +119,7 @@ const IntorContainer: React.FC = () => {
         backgroundImage="/graphql.svg"
         width={'8.333rem'}
         height={'8.333rem'}
-        blur={3}
+        // blur={3}
         zIndex={10}
         delay={2.6}
       />
@@ -133,7 +133,7 @@ const IntorContainer: React.FC = () => {
         backgroundImage="/mysql.svg"
         width={'8.333rem'}
         height={'8.333rem'}
-        blur={5}
+        // blur={5}
         zIndex={5}
         delay={3.6}
       />
@@ -145,7 +145,7 @@ const IntorContainer: React.FC = () => {
         backgroundImage="/mobx.svg"
         width={'5.555rem'}
         height={'5.555rem'}
-        blur={5}
+        // blur={5}
         zIndex={5}
         delay={3.7}
       />
@@ -157,7 +157,7 @@ const IntorContainer: React.FC = () => {
         backgroundImage="/docker.svg"
         width={'5.555rem'}
         height={'5.555rem'}
-        blur={5}
+        // blur={5}
         zIndex={5}
         delay={3.6}
       />
@@ -169,7 +169,7 @@ const IntorContainer: React.FC = () => {
         backgroundImage="/css.svg"
         width={'8.333rem'}
         height={'8.333rem'}
-        blur={5}
+        // blur={5}
         zIndex={5}
         delay={3.4}
       />
