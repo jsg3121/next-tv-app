@@ -41,7 +41,8 @@ const popupEffect = (current: HTMLHeadingElement, delay: number): void => {
       duration: 0.2,
     })
     .to(current, {
-      filter: 'drop-shadow(5px 6px 4px rgb(0 0 0 / 0.4))',
+      filter:
+        'drop-shadow(0.277777777777778rem 0.333333333333333rem 0.222222222222222rem rgb(0 0 0 / 0.4))',
       scale: 1,
       duration: 0.2,
     })
@@ -122,8 +123,6 @@ const Parallax: React.FC<ParallaxProps> = (props) => {
     }
   }, [delay])
 
-  console.log()
-
   return (
     <Item
       ref={componentsRef}
@@ -133,7 +132,6 @@ const Parallax: React.FC<ParallaxProps> = (props) => {
         left: left ? `${left}` : 'none',
         right: right ? `${right}` : 'none',
         zIndex: zIndex,
-        border: `${changeSize(width)}px solid #353452`,
         width,
         height,
       }}

@@ -112,12 +112,10 @@ const About: React.FC = () => {
               <Image
                 src="/profile.webp"
                 alt="profile_image"
-                layout="raw"
-                width="300px"
-                height="300px"
+                layout="fill"
                 loading="lazy"
                 style={{
-                  borderRadius: '10px',
+                  borderRadius: '0.555rem',
                   position: 'relative',
                   zIndex: '-1',
                 }}

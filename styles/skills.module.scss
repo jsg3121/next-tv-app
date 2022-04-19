@@ -10,11 +10,11 @@
 }
 
 .skills_rate {
-  width: 360px;
+  width: 20rem;
   height: 60%;
   background-color: $color-default-bright5;
-  border-radius: 10px;
-  padding: 20px;
+  border-radius: 0.555555555555556rem;
+  padding: 1.111111111111111rem;
 
   h1 {
     font-size: 2rem;
@@ -23,7 +23,7 @@
 
 .skills_container {
   & > div {
-    margin-bottom: 30px;
+    margin-bottom: 1.666666666666667rem;
   }
 
   h2 {
@@ -33,14 +33,14 @@
 }
 
 .skills_box {
-  height: 180px;
+  height: 10rem;
 }
 
 .skills_list {
   display: flex;
   align-items: center;
   border-top: 1px solid $color-default-bright5;
-  padding-top: 10px;
+  padding-top: 0.555555555555556rem;
 
   figure {
     cursor: pointer;

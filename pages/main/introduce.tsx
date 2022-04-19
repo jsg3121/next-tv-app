@@ -21,8 +21,8 @@ const introEffect = (
     })
     .to(current2, {
       fontSize: '1.5rem',
-      left: '270px',
-      top: '231px',
+      left: '15.43rem',
+      top: '12.833rem',
       duration: 2,
       delay: 0.5,
     })

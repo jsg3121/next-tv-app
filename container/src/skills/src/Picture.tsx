@@ -19,17 +19,17 @@ const PictureContainer = styled((props) => {
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   display: block;
-  margin: 10px;
+  margin: 0.555555555555556rem;
   position: relative;
 
   figure {
     position: absolute;
 
     &:hover {
-      width: 110px;
-      height: 110px;
-      top: -7.5px;
-      left: -7.5px;
+      width: 6.111111111111111rem;
+      height: 6.111111111111111rem;
+      top: -0.416666666666667rem;
+      left: -0.416666666666667rem;
     }
   }
 `

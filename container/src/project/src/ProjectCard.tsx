@@ -22,7 +22,7 @@ const ProjectThumbnail = styled((props) => {
   position: relative;
   background-color: ${(props) => props.backgroundcolor};
   z-index: 100;
-  border-radius: 30px;
+  border-radius: 1.666666666666667rem;
   overflow: hidden;
 
   &::after {
