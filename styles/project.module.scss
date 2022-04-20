@@ -16,7 +16,7 @@
 .project_description_container {
   width: 100vw;
   height: 100vh;
-  position: fixed;
+  position: absolute;
   background-color: rgba(0, 0, 0, 0.5);
   top: 0;
   left: 0;
@@ -98,7 +98,7 @@
 
 .container_section {
   width: fit-content;
-  margin-bottom: 2.222222222222222rem;
+  margin-bottom: 1.5rem;
 
   h1 {
     color: $color-default-bright5;
@@ -121,9 +121,8 @@
 }
 
 .thumbnail {
-  width: 10rem;
-  height: 10rem;
-
+  width: 7rem;
+  height: 7rem;
   margin: 1.111111111111111rem 1.666666666666667rem;
   position: relative;
 
@@ -137,4 +136,10 @@
     top: -1.666666666666667rem;
     z-index: 110;
   }
+}
+
+.container_detail {
+  position: absolute;
+  top: 0;
+  left: 0;
 }

@@ -108,14 +108,14 @@ const Introduce: NextPage = () => {
   const openningRef = React.useRef<HTMLHeadingElement>(null)
   const aboutRef = React.useRef<HTMLHeadingElement>(null)
 
-  const { data: projectData } = useSWR('/intorduce/project', async () => {
-    return await http
-      .request({
-        method: 'GET',
-        url: '/api/project',
-      })
-      .then((res) => res.data)
-  })
+  // const { data: projectData } = useSWR('/intorduce/project', async () => {
+  //   return await http
+  //     .request({
+  //       method: 'GET',
+  //       url: '/api/project',
+  //     })
+  //     .then((res) => res.data)
+  // })
 
   React.useEffect(() => {
     if (introduceRef.current && openningRef.current) {
@@ -136,12 +136,12 @@ const Introduce: NextPage = () => {
         <section ref={aboutRef}>
           <About />
         </section>
-        <section>
+        {/* <section>
           <Project data={projectData} />
         </section>
         <section>
           <Contact />
-        </section>
+        </section> */}
       </section>
     </>
   )
