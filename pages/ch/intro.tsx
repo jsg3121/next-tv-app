@@ -1,3 +1,4 @@
+import { Channel, Title } from 'components'
 import { IntorContainer, NoticeContainer } from 'container'
 import { gsap, Power4 } from 'gsap'
 import type { NextPage } from 'next'
@@ -79,14 +80,17 @@ const Intro: NextPage = () => {
   }, [])
 
   return (
-    <main className={intro.container} ref={mainRef}>
-      {isShow && (
-        <>
-          <IntorContainer />
-          <NoticeContainer onClick={handleClick} />
-        </>
-      )}
-    </main>
+    <>
+      {isShow && <Channel chName="Intro" chNumber="001" />}
+      <main className={intro.container} ref={mainRef}>
+        {isShow && (
+          <div>
+            <IntorContainer />
+            <NoticeContainer onClick={handleClick} />
+          </div>
+        )}
+      </main>
+    </>
   )
 }
 

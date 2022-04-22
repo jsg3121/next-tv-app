@@ -1,10 +1,9 @@
-import http from 'axios'
-import { About, Contact, Project } from 'container'
+import { Channel } from 'components'
+import { About } from 'container'
 import { gsap } from 'gsap'
 import type { NextPage } from 'next'
 import React from 'react'
 import layout from 'styles/introduce.module.scss'
-import useSWR from 'swr'
 
 const introEffect = (
   current1: HTMLHeadingElement,
@@ -108,15 +107,6 @@ const Introduce: NextPage = () => {
   const openningRef = React.useRef<HTMLHeadingElement>(null)
   const aboutRef = React.useRef<HTMLHeadingElement>(null)
 
-  // const { data: projectData } = useSWR('/intorduce/project', async () => {
-  //   return await http
-  //     .request({
-  //       method: 'GET',
-  //       url: '/api/project',
-  //     })
-  //     .then((res) => res.data)
-  // })
-
   React.useEffect(() => {
     if (introduceRef.current && openningRef.current) {
       introEffect(introduceRef.current, openningRef.current)
@@ -129,6 +119,7 @@ const Introduce: NextPage = () => {
 
   return (
     <>
+      <Channel chName="About" chNumber="002" />
       <section className={layout.section} ref={introduceRef}>
         <h1 className={layout.openning} ref={openningRef}>
           ABOUT ME
@@ -136,12 +127,6 @@ const Introduce: NextPage = () => {
         <section ref={aboutRef}>
           <About />
         </section>
-        {/* <section>
-          <Project data={projectData} />
-        </section>
-        <section>
-          <Contact />
-        </section> */}
       </section>
     </>
   )

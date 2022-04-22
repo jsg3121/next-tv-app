@@ -70,7 +70,7 @@ const bounceEffect2 = (current: HTMLDivElement) => {
   gsap
     .timeline()
     .to(current, {
-      y: '-20%',
+      y: '-10%',
       duration: 0.5,
       ease: 'expo.out',
     })
@@ -116,7 +116,6 @@ const About: React.FC = () => {
                 loading="lazy"
                 style={{
                   borderRadius: '0.555rem',
-                  position: 'relative',
                   zIndex: '-1',
                 }}
               />

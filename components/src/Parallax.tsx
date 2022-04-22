@@ -22,7 +22,6 @@ interface ParallaxProps {
 const Item = styled.div`
   position: fixed;
   will-change: transform;
-  border-radius: 50%;
   box-sizing: border-box;
 `
 
@@ -35,8 +34,6 @@ const popupEffect = (current: HTMLHeadingElement, delay: number): void => {
   gsap
     .timeline()
     .to(current, {
-      borderRadius: 0,
-      border: 0,
       scale: 1.2,
       duration: 0.2,
     })
