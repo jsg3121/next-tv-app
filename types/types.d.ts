@@ -30,7 +30,7 @@ declare global {
     [K in GradeType]: Array<SkillInfo>
   }
 
-  export type ProjectOffice = 'Quber' | 'Creasector' | 'ToyProject'
+  export type ProjectOffice = 'Quber' | 'Cresector' | 'ToyProject'
 
   export type ProjectDescription = {
     name: string

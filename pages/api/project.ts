@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
 const projectData: ProjectData = {
-  Creasector: [
+  Cresector: [
     {
       name: 'Nepa SmartMirror, Tablet 장바구니 서비스',
       date: '2020. 11 ~ 2021. 02',

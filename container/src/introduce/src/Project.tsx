@@ -45,7 +45,7 @@ const Project: React.FC<ProjectProps> = (props) => {
           <hr />
           <div className={project.contaianer_thumbnail}>
             {data &&
-              data.Creasector.map((item, index: number) => {
+              data.Cresector.map((item, index: number) => {
                 return (
                   <article className={project.thumbnail} key={index}>
                     <ProjectCard

@@ -3,7 +3,7 @@ import { About } from 'container'
 import { gsap } from 'gsap'
 import type { NextPage } from 'next'
 import React from 'react'
-import layout from 'styles/introduce.module.scss'
+import page from 'styles/page.module.scss'
 
 const introEffect = (
   current1: HTMLHeadingElement,
@@ -120,8 +120,8 @@ const Introduce: NextPage = () => {
   return (
     <>
       <Channel chName="About" chNumber="002" />
-      <section className={layout.section} ref={introduceRef}>
-        <h1 className={layout.openning} ref={openningRef}>
+      <section className={page.section_about} ref={introduceRef}>
+        <h1 className={page.openning} ref={openningRef}>
           ABOUT ME
         </h1>
         <section ref={aboutRef}>
