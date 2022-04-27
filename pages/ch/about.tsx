@@ -120,6 +120,7 @@ const Introduce: NextPage = () => {
   return (
     <>
       <Channel chName="About" chNumber="002" />
+
       <section className={page.section_about} ref={introduceRef}>
         <h1 className={page.openning} ref={openningRef}>
           ABOUT ME
