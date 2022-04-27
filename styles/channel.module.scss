@@ -1,0 +1,22 @@
+.container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 10rem;
+  text-align: right;
+  margin: 0.5rem 1.5rem;
+  z-index: 1000000;
+
+  h1,
+  h2 {
+    color: #ffffff;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+}

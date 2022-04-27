@@ -4,7 +4,7 @@ import React from 'react'
 
 const Home: NextPage = () => {
   React.useEffect(() => {
-    Router.replace('/main/intro')
+    Router.replace('/ch/intro')
   }, [])
 
   return <></>

@@ -12,15 +12,15 @@ interface InputProps {
 const InputContainer = styled.input`
   box-sizing: border-box;
   width: 100%;
-  height: 40px;
+  height: 42.222rem;
   border: 0;
-  padding: 5px 10px;
+  padding: 0.277rem 0.556rem;
   background-color: ${$Color.default.bright3};
-  box-shadow: 0 8px 32px 0 ${$Color.default.bright2};
-  backdrop-filter: blur(9.5px);
-  -webkit-backdrop-filter: blur(9.5px);
-  border-radius: 10px;
-  border: 1px solid #ffffff2d;
+  box-shadow: 0 0.444rem 1.777rem 0 ${$Color.default.bright2};
+  backdrop-filter: blur(0.527rem);
+  -webkit-backdrop-filter: blur(0.527rem);
+  border-radius: 0.555rem;
+  border: 0.0555rem solid #ffffff2d;
   font-size: 1rem;
 `
 

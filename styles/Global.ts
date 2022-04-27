@@ -21,7 +21,7 @@ export const GlobalStyle = createGlobalStyle`
         user-select:none
     }
     html,body{
-        font-size: 16px;
+        font-size: 18px;
         -webkit-text-size-adjust: none;
         font-family: -apple-system,BlinkMacSystemFont,helvetica,Apple SD Gothic Neo,sans-serif;       
         font-display: fallback;
@@ -50,4 +50,25 @@ export const GlobalStyle = createGlobalStyle`
         width: 100%;
         height:100%;
     }
+
+    @media screen and (min-width: 960px) and (max-width: 1280px) {
+        html, body {
+            font-size : 16px;
+        }
+    }
+    @media screen and (min-width: 680px) and (max-width: 959px) {
+        html, body {
+            font-size : 14px;
+        }
+    }
+    @media screen and (min-width: 480px) and (max-width: 679px) {
+        html, body {
+            font-size : 12px;
+        }
+    }
+    /* @media screen and (max-width: 479px) {
+        html, body {
+            font-size : 16px;
+        }
+    } */
 `

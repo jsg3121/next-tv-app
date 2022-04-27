@@ -1,5 +1,7 @@
+import { Remote } from 'components'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import 'react-image-gallery/styles/scss/image-gallery.scss'
 import styled from 'styled-components'
 import { GlobalStyle } from '../styles/Global'
@@ -12,6 +14,7 @@ const Root = styled.div`
 `
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter()
   return (
     <>
       <Head>
@@ -31,6 +34,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <GlobalStyle />
       <Root>
+        {router.pathname !== '/ch/intro' && <Remote />}
         <Component {...pageProps} />
       </Root>
     </>

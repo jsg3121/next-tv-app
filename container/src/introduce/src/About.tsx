@@ -70,7 +70,7 @@ const bounceEffect2 = (current: HTMLDivElement) => {
   gsap
     .timeline()
     .to(current, {
-      y: '-20%',
+      y: '-10%',
       duration: 0.5,
       ease: 'expo.out',
     })
@@ -112,10 +112,12 @@ const About: React.FC = () => {
               <Image
                 src="/profile.webp"
                 alt="profile_image"
-                layout="raw"
-                width="300px"
-                height="300px"
+                layout="fill"
                 loading="lazy"
+                style={{
+                  borderRadius: '0.555rem',
+                  zIndex: '-1',
+                }}
               />
             </figure>
           </picture>

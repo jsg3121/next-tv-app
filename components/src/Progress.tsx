@@ -9,18 +9,18 @@ interface ProgressProps {}
 
 const PrgressBar = styled.div`
   width: 100%;
-  height: 60px;
-  margin: 20px 0;
+  height: 3.333333333333333rem;
+  margin: 1.111111111111111rem 0;
 `
 
 const Percentage = styled.div`
   width: 100%;
-  height: 8px;
+  height: 0.444444444444444rem;
   background-color: ${$Color.default.bright4};
   & > span {
     width: 30%;
     height: 100%;
-    border-radius: 4px;
+    border-radius: 0.222222222222222rem;
     background-color: ${$Color.default.dark1};
     display: block;
   }

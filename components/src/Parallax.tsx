@@ -22,7 +22,6 @@ interface ParallaxProps {
 const Item = styled.div`
   position: fixed;
   will-change: transform;
-  border-radius: 50%;
   box-sizing: border-box;
 `
 
@@ -35,13 +34,12 @@ const popupEffect = (current: HTMLHeadingElement, delay: number): void => {
   gsap
     .timeline()
     .to(current, {
-      borderRadius: 0,
-      border: 0,
       scale: 1.2,
       duration: 0.2,
     })
     .to(current, {
-      filter: 'drop-shadow(5px 6px 4px rgb(0 0 0 / 0.4))',
+      filter:
+        'drop-shadow(0.277777777777778rem 0.333333333333333rem 0.222222222222222rem rgb(0 0 0 / 0.4))',
       scale: 1,
       duration: 0.2,
     })
@@ -73,6 +71,15 @@ const mouseMotion = (
       ((mouseY_title - rect.height / 2) / rect.height) *
       parseInt(translateY, 10),
   })
+}
+
+/**
+ * info : size props 변환
+ * @param {string} width
+ * @returns {number}
+ */
+const changeSize = (width: string): number => {
+  return Math.ceil(Number(width.replace('rem', '')) * 18) / 2
 }
 
 const Parallax: React.FC<ParallaxProps> = (props) => {
@@ -122,7 +129,6 @@ const Parallax: React.FC<ParallaxProps> = (props) => {
         left: left ? `${left}` : 'none',
         right: right ? `${right}` : 'none',
         zIndex: zIndex,
-        border: `${parseInt(width?.replace('px', ''), 10) / 2}px solid #353452`,
         width,
         height,
       }}
