@@ -6,13 +6,108 @@ import Link from 'next/link'
 import React from 'react'
 import about from 'styles/about.module.scss'
 
+/**
+ * info : bounce effect
+ * @param {HTMLHeadingElement} current HTMLHeadingElement
+ */
+const bounceEffect = (current: HTMLElement) => {
+  gsap
+    .timeline()
+    .to(current, {
+      y: '-220%',
+      duration: 0,
+    })
+    .to(current, {
+      y: 0,
+      duration: 2,
+      ease: 'bounce.out',
+    })
+    .to(
+      current,
+      {
+        duration: 2,
+        rotateZ: -720,
+        x: -10,
+      },
+      '-=1.75'
+    )
+    .to(
+      current,
+      {
+        transformOrigin: 'bottom left',
+        rotateZ: -730,
+        ease: 'power2.out',
+        duration: 1,
+      },
+      2.15
+    )
+    .to(current, {
+      rotateZ: -720,
+      x: 0,
+      duration: 0.3,
+      ease: 'power4.out',
+    })
+    .delay(3)
+}
+
+const bounceEffect2 = (current: HTMLDivElement) => {
+  gsap
+    .timeline()
+    .to(current, {
+      y: '-50%',
+      duration: 0.5,
+      ease: 'expo.out',
+    })
+    .delay(3.75)
+  gsap
+    .timeline()
+    .to(current, {
+      y: '-30%',
+      duration: 0.5,
+      ease: 'expo.out',
+    })
+    .delay(4.5)
+  gsap
+    .timeline()
+    .to(current, {
+      y: '-10%',
+      duration: 0.5,
+      ease: 'expo.out',
+    })
+    .delay(4.875)
+  gsap
+    .timeline()
+    .to(current, {
+      y: '-5%',
+      duration: 0.5,
+      ease: 'expo.out',
+    })
+    .delay(5.125)
+  gsap
+    .timeline()
+    .to(current, {
+      y: 0,
+      duration: 0.5,
+      ease: 'expo.out',
+    })
+    .delay(6.325)
+}
+
 const About: React.FC = () => {
+  const pictureRef = React.useRef<HTMLElement>(null)
+  const descriptionRef = React.useRef<HTMLDivElement>(null)
+
+  React.useEffect(() => {
+    if (pictureRef.current) bounceEffect(pictureRef.current)
+    if (descriptionRef.current) bounceEffect2(descriptionRef.current)
+  }, [])
+
   return (
     <article className={about.container} id="about">
       <div>
         <Title depth={1}>ABOUT ME</Title>
         <div className={about.profile_info}>
-          <picture className={about.profile}>
+          <picture className={about.profile} ref={pictureRef}>
             <figure>
               <Image
                 src="/profile.webp"
@@ -61,8 +156,9 @@ const About: React.FC = () => {
               </Text>
             </li>
           </ul>
+          <i></i>
         </div>
-        <div className={about.info_description}>
+        <div className={about.info_description} ref={descriptionRef}>
           <Text>
             주로 즐겨하던 게임들은 대부분 진행 난이도가 높아 입문하기 어려운
             게임 종류였습니다.

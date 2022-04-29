@@ -2,20 +2,21 @@
 
 .container {
   width: 10rem;
-  height: 14rem;
+  height: 18rem;
   background-color: #ffffff;
-  position: absolute;
+  position: fixed;
   z-index: 1000000;
   right: 5rem;
-  bottom: 0rem;
+  bottom: -12.3rem;
   border-top-left-radius: 5rem;
   border-top-right-radius: 5rem;
   box-shadow: 6px 1px 8px -5px #1a1a1a, inset -4px 2px 13px 4px #999999;
   will-change: transform;
-  transition: transform 0.2s;
+  transition: transform 0.2s, bottom 0.2s;
   overflow: hidden;
 
   &:hover {
+    bottom: -0.2rem;
     transform: scale(1.1) translateY(-5%);
   }
 }
