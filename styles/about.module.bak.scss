@@ -1,5 +1,14 @@
 @import './common.module.scss';
 
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes showInfo {
   0% {
     left: 18.332rem;
@@ -34,6 +43,7 @@
 
   & > div > h1 {
     display: block;
+    animation: show 0s 6.5s both;
     position: relative;
     z-index: 15;
   }
@@ -47,6 +57,17 @@
   margin-bottom: 2.222rem;
   position: relative;
   z-index: 10;
+
+  & > i {
+    width: calc(100% - 18.332rem);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 18.332rem;
+    background-color: red;
+    z-index: 10;
+    animation: showInfo 1.2s 4s both;
+  }
 }
 
 .profile {
@@ -54,6 +75,7 @@
   height: 16.666rem;
   display: block;
   margin-right: 1.666rem;
+  transform: translate(570%, -220%) rotateZ(240deg);
   position: relative;
   z-index: 15;
 
@@ -86,8 +108,5 @@
   position: relative;
   z-index: 5;
   height: 9.166rem;
-
-  p {
-    line-height: 1.2;
-  }
+  transform: translate(0, -110%);
 }

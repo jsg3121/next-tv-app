@@ -20,8 +20,8 @@ const ProjectThumbnail = styled((props) => {
     gsap.timeline().to(thumbnailRef.current, {
       rotate: 0,
       duration: 1,
-      ease: 'elastic.out(1.5, 0.75)',
-      delay: delay * 1.45,
+      ease: 'elastic.out(1.5, 0.5)',
+      delay: delay * 1.625,
     })
   }, [delay, thumbnailRef])
 

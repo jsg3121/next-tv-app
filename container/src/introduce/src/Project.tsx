@@ -25,20 +25,20 @@ const Project: React.FC<ProjectProps> = (props) => {
     gsap.timeline().to(quberRef.current, {
       transform: 'translate(0,0)',
       duration: 1,
-      delay: 1,
-      ease: 'power3.out',
+      delay: 0.4,
+      ease: 'expo.out',
     })
     gsap.timeline().to(cresectorRef.current, {
       transform: 'translate(0,0)',
       duration: 1,
-      delay: 1.2,
-      ease: 'power3.out',
+      delay: 0.6,
+      ease: 'expo.out',
     })
     gsap.timeline().to(toyRef.current, {
       transform: 'translate(0,0)',
       duration: 1,
-      delay: 1.4,
-      ease: 'power3.out',
+      delay: 0.8,
+      ease: 'expo.out',
     })
   }, [])
 
@@ -58,7 +58,7 @@ const Project: React.FC<ProjectProps> = (props) => {
                       backgroundColor={item.backgroundColor}
                       onClick={handleClick}
                       selectData={item}
-                      delay={1}
+                      delay={0.4}
                     />
                   </article>
                 )
@@ -78,7 +78,7 @@ const Project: React.FC<ProjectProps> = (props) => {
                       backgroundColor={item.backgroundColor}
                       selectData={item}
                       onClick={handleClick}
-                      delay={1.2}
+                      delay={0.6}
                     />
                   </article>
                 )
@@ -98,7 +98,7 @@ const Project: React.FC<ProjectProps> = (props) => {
                       backgroundColor={item.backgroundColor}
                       selectData={item}
                       onClick={handleClick}
-                      delay={1.4}
+                      delay={0.8}
                     />
                   </article>
                 )
