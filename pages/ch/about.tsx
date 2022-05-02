@@ -11,32 +11,14 @@ const introEffect = (
 ) => {
   gsap
     .timeline()
-    // .to(current1, {
-    //   overflowY: 'hidden',
-    //   duration: 0,
-    // })
     .to(current2, {
       display: 'flex',
     })
-    // .to(current2, {
-    //   fontSize: '1.5rem',
-    //   left: '15.43rem',
-    //   top: '13.933rem',
-    //   duration: 2,
-    //   delay: 0.5,
-    // })
-    // .to(current2, {
-    //   fontWeight: '500',
-    // })
     .to(current2, {
       display: 'none',
       duration: 0,
       delay: 2,
     })
-    // .to(current1, {
-    //   overflowY: 'auto',
-    //   duration: 0,
-    // })
     .delay(1)
 }
 

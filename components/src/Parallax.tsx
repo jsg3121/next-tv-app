@@ -19,12 +19,6 @@ interface ParallaxProps {
   delay: number
 }
 
-const Item = styled.div`
-  position: fixed;
-  will-change: transform;
-  box-sizing: border-box;
-`
-
 /**
  * info : 패럴렉스 아이콘 팝 모션
  * @param {HTMLHeadingElement} current
@@ -46,73 +40,24 @@ const popupEffect = (current: HTMLHeadingElement, delay: number): void => {
     .delay(delay)
 }
 
-/**
- * info : mouse move event
- * @param {MouseEvent} e
- * @param {HTMLHeadingElement} current
- * @param {DOMRect} rect
- * @param {string} translateX
- * @param {string} translateY
- */
-const mouseMotion = (
-  e: MouseEvent,
-  current: HTMLHeadingElement,
-  rect: DOMRect,
-  translateX: string,
-  translateY: string
-): void => {
-  const mouseX_title = e.clientX - rect.left
-  const mouseY_title = e.clientY - rect.top
-
-  gsap.to(current, {
-    translateX:
-      ((mouseX_title - rect.width / 2) / rect.width) * parseInt(translateX, 10),
-    translateY:
-      ((mouseY_title - rect.height / 2) / rect.height) *
-      parseInt(translateY, 10),
-  })
-}
-
-/**
- * info : size props 변환
- * @param {string} width
- * @returns {number}
- */
-const changeSize = (width: string): number => {
-  return Math.ceil(Number(width.replace('rem', '')) * 18) / 2
-}
-
-const Parallax: React.FC<ParallaxProps> = (props) => {
+const Icon = styled((props) => {
   const {
     backgroundImage,
-    left,
-    right,
-    top,
-    bottom,
-    zIndex,
     width,
     height,
     translateX = '',
     translateY = '',
     blur,
     delay,
+    top,
+    bottom,
+    right,
+    left,
+    zIndex,
+    ...rest
   } = props
+
   const componentsRef = React.useRef<HTMLHeadingElement>(null)
-  const [rect, setRect] = React.useState<DOMRect>()
-
-  React.useEffect(() => {
-    if (componentsRef.current) {
-      setRect(componentsRef.current.getBoundingClientRect())
-    }
-  }, [])
-
-  React.useEffect(() => {
-    window.addEventListener('mousemove', (e) => {
-      if (rect && componentsRef.current) {
-        mouseMotion(e, componentsRef.current, rect, translateX, translateY)
-      }
-    })
-  }, [rect, translateX, translateY])
 
   React.useEffect(() => {
     if (componentsRef.current) {
@@ -121,29 +66,10 @@ const Parallax: React.FC<ParallaxProps> = (props) => {
   }, [delay])
 
   return (
-    <Item
-      ref={componentsRef}
-      style={{
-        top: top ? `${top}` : 'none',
-        bottom: bottom ? `${bottom}` : 'none',
-        left: left ? `${left}` : 'none',
-        right: right ? `${right}` : 'none',
-        zIndex: zIndex,
-        width,
-        height,
-      }}
-    >
+    <div ref={componentsRef} {...rest}>
       {backgroundImage && (
         <picture>
-          <figure
-            style={
-              blur
-                ? {
-                    filter: `blur(${blur}px)`,
-                  }
-                : {}
-            }
-          >
+          <figure>
             <Image
               src={backgroundImage}
               width={width}
@@ -155,8 +81,48 @@ const Parallax: React.FC<ParallaxProps> = (props) => {
           </figure>
         </picture>
       )}
-    </Item>
+    </div>
   )
+})`
+  position: fixed;
+  will-change: transform;
+  box-sizing: border-box;
+  transform: scale(0);
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  top: ${(props) => {
+    return props.top ? props.top : 'none'
+  }};
+  bottom: ${(props) => {
+    return props.bottom ? props.bottom : 'none'
+  }};
+  right: ${(props) => {
+    return props.right ? props.right : 'none'
+  }};
+  left: ${(props) => {
+    return props.left ? props.left : 'none'
+  }};
+  z-index: ${(props) => props.zIndex};
+
+  & figure {
+    position: relative;
+    filter: ${(props) => {
+      return props.blur ? `blur(${props.blur}px)` : ''
+    }};
+  }
+`
+
+/**
+ * info : size props 변환
+ * @param {string} width
+ * @returns {number}
+ */
+const changeSize = (width: string): number => {
+  return Math.ceil(Number(width.replace('rem', '')) * 18) / 2
+}
+
+const Parallax: React.FC<ParallaxProps> = (props) => {
+  return <Icon {...props}></Icon>
 }
 
 export default React.memo(Parallax, isEqual)

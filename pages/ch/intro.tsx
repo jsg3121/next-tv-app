@@ -13,15 +13,15 @@ const turnOff = (current: HTMLHeadingElement, router: NextRouter): void => {
       width: '100%',
       height: '2px',
       ease: Power4.easeOut,
-      duration: 0.2,
+      duration: 0.1,
     })
     .to(current, {
       width: '0',
       height: '0',
-      duration: 0.2,
+      duration: 0.1,
     })
     .then(() => {
-      router.replace('/ch/about')
+      router.push('/ch/about')
     })
 }
 
@@ -33,7 +33,7 @@ const turnOnOff = (current: HTMLHeadingElement) => {
       width: '100%',
       height: '2px',
       ease: Power4.easeOut,
-      duration: 0.2,
+      duration: 0.1,
     })
     .to(current, {
       width: '0',
@@ -50,7 +50,7 @@ const turnOnOff = (current: HTMLHeadingElement) => {
     .to(current, {
       width: '100%',
       height: 'calc(100vh - 7.778rem)',
-      duration: 0.2,
+      duration: 0.1,
     })
     .delay(1)
 }
