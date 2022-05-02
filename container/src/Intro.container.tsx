@@ -1,4 +1,4 @@
-import { Parallax } from 'components'
+import { Icon } from 'components'
 import isEqual from 'fast-deep-equal'
 import React from 'react'
 
@@ -6,7 +6,7 @@ const IntorContainer: React.FC = () => {
   return (
     <>
       {/* depth 1 */}
-      <Parallax
+      <Icon
         top="37%"
         right="38%"
         translateX="-45"
@@ -17,7 +17,7 @@ const IntorContainer: React.FC = () => {
         zIndex={20}
         delay={1}
       />
-      <Parallax
+      <Icon
         bottom="15%"
         left="28%"
         translateX="-45"
@@ -28,7 +28,7 @@ const IntorContainer: React.FC = () => {
         zIndex={20}
         delay={2.9}
       />
-      <Parallax
+      <Icon
         top="1%"
         left="-2%"
         translateX="-45"
@@ -39,7 +39,7 @@ const IntorContainer: React.FC = () => {
         zIndex={20}
         delay={3.75}
       />
-      <Parallax
+      <Icon
         bottom="4%"
         right="1%"
         translateX="-45"
@@ -50,7 +50,7 @@ const IntorContainer: React.FC = () => {
         zIndex={20}
         delay={2}
       />
-      <Parallax
+      <Icon
         top="12%"
         right="19%"
         translateX="-45"
@@ -63,7 +63,7 @@ const IntorContainer: React.FC = () => {
       />
       {/* --------------------------------------- */}
       {/* depth 2 */}
-      <Parallax
+      <Icon
         bottom="0%"
         left="11%"
         translateX="-30"
@@ -75,7 +75,7 @@ const IntorContainer: React.FC = () => {
         zIndex={10}
         delay={3.7}
       />
-      <Parallax
+      <Icon
         top="29%"
         left="13%"
         translateX="-30"
@@ -87,7 +87,7 @@ const IntorContainer: React.FC = () => {
         zIndex={10}
         delay={1.5}
       />
-      <Parallax
+      <Icon
         top="32%"
         right="6%"
         translateX="-30"
@@ -99,7 +99,7 @@ const IntorContainer: React.FC = () => {
         zIndex={10}
         delay={3.2}
       />
-      <Parallax
+      <Icon
         top="61%"
         right="21%"
         translateX="-30"
@@ -111,7 +111,7 @@ const IntorContainer: React.FC = () => {
         zIndex={10}
         delay={3.5}
       />
-      <Parallax
+      <Icon
         top="5%"
         left="46%"
         translateX="-30"
@@ -125,7 +125,7 @@ const IntorContainer: React.FC = () => {
       />
       {/* --------------------------------------- */}
       {/* depth 3 */}
-      <Parallax
+      <Icon
         top="11%"
         left="29%"
         translateX="-15"
@@ -137,7 +137,7 @@ const IntorContainer: React.FC = () => {
         zIndex={5}
         delay={3.6}
       />
-      <Parallax
+      <Icon
         top="55%"
         left="5%"
         translateX="-15"
@@ -149,7 +149,7 @@ const IntorContainer: React.FC = () => {
         zIndex={5}
         delay={3.7}
       />
-      <Parallax
+      <Icon
         bottom="46%"
         left="33%"
         translateX="-15"
@@ -161,7 +161,7 @@ const IntorContainer: React.FC = () => {
         zIndex={5}
         delay={3.6}
       />
-      <Parallax
+      <Icon
         bottom="8%"
         left="50%"
         translateX="-15"

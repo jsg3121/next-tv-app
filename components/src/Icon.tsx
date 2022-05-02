@@ -4,7 +4,7 @@ import Image from 'next/image'
 import React from 'react'
 import styled from 'styled-components'
 
-interface ParallaxProps {
+interface IconProps {
   top?: number | string
   bottom?: number | string
   left?: number | string
@@ -40,7 +40,7 @@ const popupEffect = (current: HTMLHeadingElement, delay: number): void => {
     .delay(delay)
 }
 
-const Icon = styled((props) => {
+const IconContainer = styled((props) => {
   const {
     backgroundImage,
     width,
@@ -112,17 +112,8 @@ const Icon = styled((props) => {
   }
 `
 
-/**
- * info : size props 변환
- * @param {string} width
- * @returns {number}
- */
-const changeSize = (width: string): number => {
-  return Math.ceil(Number(width.replace('rem', '')) * 18) / 2
+const Icon: React.FC<IconProps> = (props) => {
+  return <IconContainer {...props}></IconContainer>
 }
 
-const Parallax: React.FC<ParallaxProps> = (props) => {
-  return <Icon {...props}></Icon>
-}
-
-export default React.memo(Parallax, isEqual)
+export default React.memo(Icon, isEqual)
