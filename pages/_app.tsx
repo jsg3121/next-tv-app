@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import 'react-image-gallery/styles/scss/image-gallery.scss'
 import styled from 'styled-components'
 import { GlobalStyle } from '../styles/Global'
+import React from 'react'
 
 const Root = styled.div`
   width: 100%;
@@ -16,10 +17,11 @@ const Root = styled.div`
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
+
   return (
     <>
       <Head>
-        <title>Sungyu Jang&apos;s Devfolio </title>
+        <title>Sungyu Jang&apos;s Devfolio</title>
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="author" content="xodm95@gmail.com" />
@@ -35,7 +37,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <GlobalStyle />
       <Root>
-        {router.pathname !== '/ch/intro' && <Remote />}
+        <Remote />
         <Component {...pageProps} />
       </Root>
     </>

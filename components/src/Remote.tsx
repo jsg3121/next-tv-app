@@ -3,8 +3,7 @@ import isEqual from 'fast-deep-equal'
 import remote from 'styles/remote.module.scss'
 import Image from 'next/image'
 import styled from 'styled-components'
-
-interface RemoteProps {}
+import { useRouter } from 'next/router'
 
 const Lights = styled.div`
   width: 0.8rem;
@@ -20,9 +19,11 @@ const Lights = styled.div`
   }
 `
 
-const Remote: React.FC<RemoteProps> = (props) => {
-  const {} = props
+const Remote: React.FC = () => {
   const activeRef = React.useRef<HTMLDivElement>(null)
+  const [isShow, setIsShow] = React.useState<boolean>(true)
+
+  const router = useRouter()
 
   const handleSignal = React.useCallback(() => {
     if (activeRef.current) {
@@ -35,6 +36,21 @@ const Remote: React.FC<RemoteProps> = (props) => {
       activeRef.current.classList.remove('active')
     }
   }, [])
+
+  React.useEffect(() => {
+    if (router.pathname === '/ch/intro') {
+      const timeOut = setTimeout(() => {
+        setIsShow(true)
+
+        return () => {
+          return clearTimeout(timeOut)
+        }
+      }, 5500)
+    }
+    if (router.pathname !== '/ch/intro') {
+      setIsShow(true)
+    }
+  }, [router.pathname])
 
   const themeImg = React.useMemo(() => {
     return (
@@ -61,56 +77,62 @@ const Remote: React.FC<RemoteProps> = (props) => {
 
   return (
     <>
-      <div className={remote.container}>
-        <div className={remote.controller_container}>
-          <div className={remote.btn_power}>
-            <button>
-              <i></i>
-            </button>
-          </div>
-          <Lights ref={activeRef}>
-            <i></i>
-          </Lights>
-        </div>
-        <div className={remote.channel_btn}>
-          <ul className={remote.btn_container}>
-            <li
-              onMouseDown={handleSignal}
-              onMouseUp={handleOff}
-              className="ch_up"
-            ></li>
-            <li
-              onMouseDown={handleSignal}
-              onMouseUp={handleOff}
-              className="ch_right"
-            ></li>
-            <li
-              onMouseDown={handleSignal}
-              onMouseUp={handleOff}
-              className="ch_down"
-            ></li>
-            <li
-              onMouseDown={handleSignal}
-              onMouseUp={handleOff}
-              className="ch_left"
-            ></li>
-            <li
-              onMouseDown={handleSignal}
-              onMouseUp={handleOff}
-              className="ch_ok"
-            >
-              OK
-            </li>
-          </ul>
-        </div>
-        <div className={remote.switch_theme}>
-          <input type="checkbox" name="theme" id="theme" />
-          <label htmlFor="theme">
-            <i></i>
-          </label>
-          <div className={remote.theme_icon}>{themeImg}</div>
-        </div>
-        {/* <div className="keypad">
+      {isShow && (
+        <>
+          <div className={remote.container}>
+            <div className={remote.controller_container}>
+              <div className={remote.btn_power}>
+                <button>
+                  <i></i>
+                </button>
+              </div>
+              <Lights ref={activeRef}>
+                <i></i>
+              </Lights>
+            </div>
+            <div className={remote.arrow_btn}>
+              <ul className={remote.btn_container}>
+                <li
+                  onMouseDown={handleSignal}
+                  onMouseUp={handleOff}
+                  className="ch_up"
+                />
+                <li
+                  onMouseDown={handleSignal}
+                  onMouseUp={handleOff}
+                  className="ch_right"
+                />
+                <li
+                  onMouseDown={handleSignal}
+                  onMouseUp={handleOff}
+                  className="ch_down"
+                />
+                <li
+                  onMouseDown={handleSignal}
+                  onMouseUp={handleOff}
+                  className="ch_left"
+                />
+                <li
+                  onMouseDown={handleSignal}
+                  onMouseUp={handleOff}
+                  className="ch_ok"
+                >
+                  OK
+                </li>
+              </ul>
+            </div>
+            <div className={remote.switch_theme}>
+              <input type="checkbox" name="theme" id="theme" />
+              <label htmlFor="theme">
+                <i></i>
+              </label>
+              <div className={remote.theme_icon}>{themeImg}</div>
+            </div>
+            <div className={remote.channel_btn_container}>
+              <div></div>
+              <div></div>
+            </div>
+            {/* <div className="keypad">
           <ul>
             <li>
               <button className="keypad_number">1</button>
@@ -144,7 +166,9 @@ const Remote: React.FC<RemoteProps> = (props) => {
             </li>
           </ul>
         </div> */}
-      </div>
+          </div>
+        </>
+      )}
     </>
   )
 }

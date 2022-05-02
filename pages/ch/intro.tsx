@@ -10,10 +10,15 @@ const turnOff = (current: HTMLHeadingElement, router: NextRouter): void => {
   gsap
     .timeline()
     .to(current, {
+      filter: 'grayscale(0)',
+      duration: 0.5,
+    })
+    .to(current, {
       width: '100%',
       height: '2px',
       ease: Power4.easeOut,
       duration: 0.1,
+      delay: 0.5,
     })
     .to(current, {
       width: '0',
