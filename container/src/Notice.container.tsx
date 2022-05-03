@@ -9,9 +9,13 @@ interface NoticeContainerProps {
 
 const NoticeContainer: React.FC<NoticeContainerProps> = (props) => {
   const { onClick } = props
+  const [isClick, setIsClick] = React.useState<boolean>(true)
   const handleClickNext = React.useCallback(() => {
-    onClick()
-  }, [onClick])
+    if (isClick) {
+      onClick()
+      setIsClick(false)
+    }
+  }, [onClick, isClick])
 
   return (
     <article className={notice.container}>
