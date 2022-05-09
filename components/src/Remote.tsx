@@ -82,8 +82,9 @@ const Remote: React.FC = () => {
           <div className={remote.container}>
             <div className={remote.controller_container}>
               <div className={remote.btn_power}>
-                <button>
-                  <i></i>
+                <button area-label="power_btn">
+                  power button
+                  <i className="power_icon"></i>
                 </button>
               </div>
               <Lights ref={activeRef}>
@@ -124,6 +125,7 @@ const Remote: React.FC = () => {
             <div className={remote.switch_theme}>
               <input type="checkbox" name="theme" id="theme" />
               <label htmlFor="theme">
+                theme change toggle
                 <i></i>
               </label>
               <div className={remote.theme_icon}>{themeImg}</div>

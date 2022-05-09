@@ -1,3 +1,5 @@
+import { ImageProps } from 'next/image'
+
 declare global {
   export type GradeType = 'advanced' | 'intermediate' | 'beginner'
 
@@ -40,6 +42,17 @@ declare global {
       total: number
       design: number
       developer: number
+    }
+    thumbnail_image: {
+      img: string
+      top?: string
+      bottom?: string
+      left?: string
+      right?: string
+      width?: string
+      height?: string
+      zIndex?: number
+      objectFit?: ImageProps['objectFit']
     }
     service_image: Array<string>
     backgroundColor: string

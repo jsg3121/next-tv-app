@@ -1,11 +1,10 @@
 import { Remote } from 'components'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
+import React from 'react'
 import 'react-image-gallery/styles/scss/image-gallery.scss'
 import styled from 'styled-components'
 import { GlobalStyle } from '../styles/Global'
-import React from 'react'
 
 const Root = styled.div`
   width: 100%;
@@ -16,8 +15,6 @@ const Root = styled.div`
 `
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const router = useRouter()
-
   return (
     <>
       <Head>

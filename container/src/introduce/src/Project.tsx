@@ -1,112 +1,57 @@
-import { Title } from 'components'
 import isEqual from 'fast-deep-equal'
 import React from 'react'
 import project from 'styles/project.module.scss'
 import { ProjectCard, ProjectDetail } from '../../../src/project'
-import { gsap } from 'gsap'
 interface ProjectProps {
   data: ProjectData
 }
 
 const Project: React.FC<ProjectProps> = (props) => {
   const { data } = props
-  const [isShow, setIsShow] = React.useState<boolean>(false)
-  const [selectData, setSelectData] = React.useState<ProjectDescription>()
-  const quberRef = React.useRef<HTMLDivElement>(null)
-  const cresectorRef = React.useRef<HTMLDivElement>(null)
-  const toyRef = React.useRef<HTMLDivElement>(null)
+  const projectRef = React.useRef<HTMLDivElement>(null)
+  const [detail, setDetail] = React.useState<ProjectData[keyof ProjectData]>()
 
-  const handleClick = React.useCallback((data: ProjectDescription) => {
-    setIsShow(true)
-    setSelectData(data)
-  }, [])
-
-  React.useEffect(() => {
-    gsap.timeline().to(quberRef.current, {
-      transform: 'translate(0,0)',
-      duration: 1,
-      delay: 0.4,
-      ease: 'expo.out',
-    })
-    gsap.timeline().to(cresectorRef.current, {
-      transform: 'translate(0,0)',
-      duration: 1,
-      delay: 0.6,
-      ease: 'expo.out',
-    })
-    gsap.timeline().to(toyRef.current, {
-      transform: 'translate(0,0)',
-      duration: 1,
-      delay: 0.8,
-      ease: 'expo.out',
-    })
-  }, [])
+  const handleClick = React.useCallback(
+    (val: keyof ProjectData) => {
+      if (projectRef.current) {
+        projectRef.current.classList.add(`${project.active}`)
+        setDetail(data[val])
+      }
+    },
+    [projectRef, data]
+  )
 
   return (
     <article id="project" className={project.container}>
-      <div>
-        <section className={project.container_section} ref={quberRef}>
-          <Title depth={1}>Quber</Title>
-          <hr />
-          <div className={project.contaianer_thumbnail}>
-            {data &&
-              data.Quber.map((item, index: number) => {
-                return (
-                  <article className={project.thumbnail} key={index}>
-                    <ProjectCard
-                      thumbnail={item.service_image[0]}
-                      backgroundColor={item.backgroundColor}
-                      onClick={handleClick}
-                      selectData={item}
-                      delay={0.4}
-                    />
-                  </article>
-                )
-              })}
-          </div>
-        </section>
-        <section className={project.container_section} ref={cresectorRef}>
-          <Title depth={1}>Cresector</Title>
-          <hr />
-          <div className={project.contaianer_thumbnail}>
-            {data &&
-              data.Cresector.map((item, index: number) => {
-                return (
-                  <article className={project.thumbnail} key={index}>
-                    <ProjectCard
-                      thumbnail={item.service_image[0]}
-                      backgroundColor={item.backgroundColor}
-                      selectData={item}
-                      onClick={handleClick}
-                      delay={0.6}
-                    />
-                  </article>
-                )
-              })}
-          </div>
-        </section>
-        <section className={project.container_section} ref={toyRef}>
-          <Title depth={1}>ToyProject</Title>
-          <hr />
-          <div className={project.contaianer_thumbnail}>
-            {data &&
-              data.ToyProject.map((item, index: number) => {
-                return (
-                  <article className={project.thumbnail} key={index}>
-                    <ProjectCard
-                      thumbnail={item.service_image[0]}
-                      backgroundColor={item.backgroundColor}
-                      selectData={item}
-                      onClick={handleClick}
-                      delay={0.8}
-                    />
-                  </article>
-                )
-              })}
-          </div>
-        </section>
+      <div className={project.slide_container}>
+        <div className={project.contaianer_thumbnail} ref={projectRef}>
+          <article className={project.thumbnail}>
+            <ProjectCard
+              onClick={handleClick}
+              thumbnail={'/quber.png'}
+              backgroundColor={'#888888'}
+              category="Quber"
+            />
+          </article>
+          <article className={project.thumbnail}>
+            <ProjectCard
+              onClick={handleClick}
+              thumbnail={'/cresector.jpeg'}
+              backgroundColor={'red'}
+              category="Cresector"
+            />
+          </article>
+          <article className={project.thumbnail}>
+            <ProjectCard
+              onClick={handleClick}
+              thumbnail={'/personal.png'}
+              backgroundColor={'#ffffff'}
+              category="ToyProject"
+            />
+          </article>
+        </div>
       </div>
-      {isShow && selectData && <ProjectDetail detail={selectData} />}
+      {detail && <ProjectDetail detail={data.Quber} />}
     </article>
   )
 }

@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
 const projectData: ProjectData = {
-  Cresector: [
+  Quber: [
     {
       name: 'Nepa SmartMirror, Tablet 장바구니 서비스',
       date: '2020. 11 ~ 2021. 02',
@@ -10,6 +10,9 @@ const projectData: ProjectData = {
         total: 2,
         design: 0,
         developer: 2,
+      },
+      thumbnail_image: {
+        img: '/nepa_0.svg',
       },
       service_image: ['/nepa_0.svg'],
       backgroundColor: '#48af97',
@@ -22,6 +25,9 @@ const projectData: ProjectData = {
         total: 2,
         design: 0,
         developer: 2,
+      },
+      thumbnail_image: {
+        img: '/nepa_0.svg',
       },
       service_image: ['/scs_0.png'],
       waring: '보안상의 이유로 인하여 세부 정보를 표시할 수 없습니다',
@@ -36,12 +42,15 @@ const projectData: ProjectData = {
         design: 0,
         developer: 2,
       },
+      thumbnail_image: {
+        img: '/nepa_0.svg',
+      },
       service_image: ['/scs_0.png'],
       waring: '보안상의 이유로 인하여 세부 정보를 표시할 수 없습니다',
       backgroundColor: '#ffffff',
     },
   ],
-  Quber: [
+  Cresector: [
     {
       name: '선주 상호보험',
       date: '2019. 07 ~ 2019. 11',
@@ -50,6 +59,9 @@ const projectData: ProjectData = {
         total: 3,
         design: 1,
         developer: 2,
+      },
+      thumbnail_image: {
+        img: '/nepa_0.svg',
       },
       service_image: [
         '/kpi_0.svg',
@@ -71,6 +83,9 @@ const projectData: ProjectData = {
         design: 1,
         developer: 2,
       },
+      thumbnail_image: {
+        img: '/nepa_0.svg',
+      },
       service_image: [
         '/toyota_0.svg',
         '/toyota_1.png',
@@ -90,6 +105,9 @@ const projectData: ProjectData = {
         design: 1,
         developer: 1,
       },
+      thumbnail_image: {
+        img: '/nepa_0.svg',
+      },
       service_image: ['/kisan_0.png'],
       waring: '보안상의 이유로 인하여 세부 정보를 표시할 수 없습니다',
       backgroundColor: '#1a1834',
@@ -104,6 +122,15 @@ const projectData: ProjectData = {
         total: 2,
         design: 1,
         developer: 1,
+      },
+      thumbnail_image: {
+        img: '/culture_4.png',
+        top: '10rem',
+        left: '10rem',
+        width: '15rem',
+        height: '23rem',
+        zIndex: 10,
+        objectFit: 'cover',
       },
       service_image: [
         '/culture_0.png',
@@ -124,6 +151,15 @@ const projectData: ProjectData = {
         design: 1,
         developer: 1,
       },
+      thumbnail_image: {
+        img: '/weather_1.png',
+        top: '13rem',
+        right: '10rem',
+        width: '18rem',
+        height: '27rem',
+        zIndex: 20,
+        objectFit: 'cover',
+      },
       service_image: ['/weather_0.png', '/weather_1.png', '/weather_2.png'],
       url: 'https://best-weather.com/',
       waring: '공공 API사용으로 이하여 정보 요청시간이 오래 걸릴 수 있습니다.',
@@ -138,6 +174,15 @@ const projectData: ProjectData = {
         total: 2,
         design: 1,
         developer: 1,
+      },
+      thumbnail_image: {
+        img: '/devfolio_1.png',
+        top: '7rem',
+        right: '30rem',
+        width: '23rem',
+        height: '13rem',
+        zIndex: 15,
+        objectFit: 'cover',
       },
       service_image: [
         '/devfolio_0.png',
@@ -157,6 +202,15 @@ const projectData: ProjectData = {
         total: 1,
         design: 0,
         developer: 1,
+      },
+      thumbnail_image: {
+        img: '/devfolio_0.png',
+        bottom: '10rem',
+        left: '27rem',
+        width: '30rem',
+        height: '17rem',
+        zIndex: 25,
+        objectFit: 'cover',
       },
       service_image: ['/devfolio_0.png'],
       backgroundColor: '#181920',

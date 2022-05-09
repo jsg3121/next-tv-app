@@ -44,6 +44,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 0;
 
       i {
         width: 40%;
@@ -267,17 +268,9 @@
 
 .switch_theme {
   width: 2rem;
-  height: 3rem;
   position: absolute;
   top: 3.3rem;
   left: 1rem;
-
-  input[type='checkbox'] {
-    width: 0;
-    height: 0;
-    border: 0;
-    position: absolute;
-  }
 
   label {
     width: 2rem;
@@ -290,6 +283,7 @@
       inset -0.8px -0.8px 4px -1px #eeeeee;
     position: relative;
     cursor: pointer;
+    font-size: 0;
 
     & > i {
       position: absolute;
@@ -327,6 +321,13 @@
         margin-right: 2px;
       }
     }
+  }
+
+  input[type='checkbox'] {
+    width: 0;
+    height: 0;
+    border: 0;
+    position: absolute;
   }
 
   input[type='checkbox']:checked + label > i {
