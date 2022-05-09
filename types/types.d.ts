@@ -44,7 +44,7 @@ declare global {
       developer: number
     }
     thumbnail_image: {
-      img: string
+      img?: string
       top?: string
       bottom?: string
       left?: string

@@ -10,12 +10,14 @@ const Project: React.FC<ProjectProps> = (props) => {
   const { data } = props
   const projectRef = React.useRef<HTMLDivElement>(null)
   const [detail, setDetail] = React.useState<ProjectData[keyof ProjectData]>()
+  const [category, setCategory] = React.useState<keyof ProjectData>('Quber')
 
   const handleClick = React.useCallback(
     (val: keyof ProjectData) => {
       if (projectRef.current) {
         projectRef.current.classList.add(`${project.active}`)
         setDetail(data[val])
+        setCategory(val)
       }
     },
     [projectRef, data]
@@ -51,7 +53,7 @@ const Project: React.FC<ProjectProps> = (props) => {
           </article>
         </div>
       </div>
-      {detail && <ProjectDetail detail={data.Quber} />}
+      {detail && <ProjectDetail detail={detail} category={category} />}
     </article>
   )
 }
