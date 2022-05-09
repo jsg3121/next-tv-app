@@ -21,7 +21,6 @@ const Project: React.FC<ProjectProps> = (props) => {
 
   return (
     <>
-      <Remote />
       <Channel chName="Project" chNumber="003" />
       <section className={page.section_project}>
         <ProjectContainer data={projectData} />

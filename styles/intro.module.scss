@@ -12,6 +12,8 @@
   top: 50%;
   left: 50%;
   overflow: hidden;
-  background-color: $color-default-dark3;
+  background-color: #222222;
+  will-change: filter;
+  filter: grayscale(100%);
   transform: translate(-50%, -50%);
 }

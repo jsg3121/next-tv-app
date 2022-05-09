@@ -1,35 +1,20 @@
-import React from 'react'
 import isEqual from 'fast-deep-equal'
 import Image from 'next/image'
+import React from 'react'
 import styled from 'styled-components'
-import { gsap } from 'gsap'
+
 interface ProjectCardProps {
   children?: React.ReactNode
+  category: keyof ProjectData
   thumbnail: string
-  backgroundColor: string
-  onClick?: (key: ProjectDescription) => void
-  selectData: ProjectDescription
-  delay: number
+  backgroundColor?: string
+  onClick?: (key: keyof ProjectData) => void
 }
 
 const ProjectThumbnail = styled((props) => {
-  const { children, delay } = props
-  const thumbnailRef = React.useRef<HTMLDivElement>(null)
+  const { children } = props
 
-  React.useEffect(() => {
-    gsap.timeline().to(thumbnailRef.current, {
-      rotate: 0,
-      duration: 1,
-      ease: 'elastic.out(1.5, 0.5)',
-      delay: delay * 1.625,
-    })
-  }, [delay, thumbnailRef])
-
-  return (
-    <div {...props} ref={thumbnailRef}>
-      {children}
-    </div>
-  )
+  return <div {...props}>{children}</div>
 })`
   width: 100%;
   height: 100%;
@@ -37,10 +22,8 @@ const ProjectThumbnail = styled((props) => {
   position: relative;
   background-color: ${(props) => props.backgroundcolor};
   z-index: 115;
-  border-radius: 1.666666666666667rem;
   overflow: hidden;
   transform-origin: top;
-  transform: rotate(30deg);
 
   &::after {
     content: '';
@@ -57,31 +40,29 @@ const ProjectThumbnail = styled((props) => {
       content: none;
     }
   }
+
+  figure {
+    position: relative;
+  }
 `
 
 const ProjectCard: React.FC<ProjectCardProps> = (props) => {
-  const { backgroundColor, thumbnail, onClick, selectData, delay } = props
+  const { backgroundColor, thumbnail, onClick, category } = props
 
   const handleClick = React.useCallback(() => {
     if (onClick) {
-      onClick(selectData)
+      onClick(category)
     }
-  }, [selectData, onClick])
+  }, [onClick, category])
 
   return (
-    <ProjectThumbnail
-      backgroundcolor={backgroundColor}
-      onClick={handleClick}
-      delay={delay}
-    >
+    <ProjectThumbnail backgroundcolor={backgroundColor} onClick={handleClick}>
       <picture>
         <figure>
           <Image
             src={thumbnail}
             alt="Project_image"
-            layout="responsive"
-            width="100"
-            height="100"
+            layout="fill"
             objectFit="contain"
             priority
           />
