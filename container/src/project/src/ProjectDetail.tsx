@@ -5,6 +5,8 @@ import ImageGallery, { ReactImageGalleryItem } from 'react-image-gallery'
 import Image from 'next/image'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
+import { Text, Title } from 'components'
+import Link from 'next/link'
 
 interface ProjectDetailProps {
   detail: Array<ProjectDescription>
@@ -29,6 +31,7 @@ const ThumnailImage = styled((props) => {
     z-index: ${(props) => props.zindex};
     transform-origin: bottom;
     background-color: ${(props) => props.backgroundcolor};
+    box-shadow: 4px 3px 12px 0px rgba(0, 0, 0, 0.5);
 
     &::after {
       content: '';
@@ -39,6 +42,7 @@ const ThumnailImage = styled((props) => {
     }
 
     &:hover {
+      box-shadow: 4px 3px 12px 0px ${(props) => props.backgroundcolor};
       transform: scale(1.1);
       z-index: 50;
 
@@ -66,9 +70,15 @@ const Description = styled((props) => {
     const { position } = props
     return position.top
   }};
-  width: 30rem;
-  height: calc(100% - 6rem);
-  background-color: rgba(0, 0, 0, 0.5);
+  width: 28rem;
+  height: calc(100% - 8rem);
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+
+  h1,
+  h2 {
+    color: #ffffff;
+  }
 `
 
 const ProjectDetail: React.FC<ProjectDetailProps> = (props) => {
@@ -100,7 +110,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = (props) => {
                       ? thumbnail_image.objectFit
                       : 'cover'
                   }
-                  loading="lazy"
+                  priority
                 />
               </figure>
             </ThumnailImage>
@@ -114,7 +124,42 @@ const ProjectDetail: React.FC<ProjectDetailProps> = (props) => {
             top: '3rem',
             left: '3rem',
           }}
-        ></Description>
+        >
+          <Title depth={1}>{category}</Title>
+          {detail.map((item, index: number) => {
+            return (
+              <div key={index}>
+                <ul className={project.description_info}>
+                  <li>
+                    <Title depth={2}>프로젝트 명 :&nbsp;</Title>
+                    <p>{item.name}</p>
+                  </li>
+                  <li className={project.info_skillList}>
+                    <Title depth={2}>주요 기술 :&nbsp;</Title>
+                    {item.skills.map((skills, index: number) => {
+                      return <p key={index}>{skills}</p>
+                    })}
+                  </li>
+                  <li>
+                    <Title depth={2}>기간 :&nbsp;</Title>
+                    <p>{item.date}</p>
+                  </li>
+                  {item.git && (
+                    <li>
+                      <Title depth={2}>Github :&nbsp;</Title>
+                      <Link href={item.git}>
+                        <a target="_blank" rel="noopener">
+                          Git 방문하기
+                        </a>
+                      </Link>
+                    </li>
+                  )}
+                </ul>
+                <hr />
+              </div>
+            )
+          })}
+        </Description>
       )}
       {category !== 'ToyProject' && (
         <Description
@@ -122,7 +167,51 @@ const ProjectDetail: React.FC<ProjectDetailProps> = (props) => {
             top: '3rem',
             right: '3rem',
           }}
-        ></Description>
+        >
+          <Title depth={1}>{category}</Title>
+          {detail.map((item, index: number) => {
+            return (
+              <div key={index}>
+                <ul className={project.description_info}>
+                  <li>
+                    <Title depth={2}>프로젝트 명 :&nbsp;</Title>
+                    <p>{item.name}</p>
+                  </li>
+                  <li>
+                    <Title depth={2}>주요 기술 :&nbsp;</Title>
+                    {item.skills.map((skills, index: number) => {
+                      return <p key={index}>{skills}</p>
+                    })}
+                  </li>
+                  <li>
+                    <Title depth={2}>기간 :&nbsp;</Title>
+                    <p>{item.date}</p>
+                  </li>
+                  {item.url && (
+                    <li>
+                      <Title depth={2}>url :&nbsp;</Title>
+                      <Link href={item.url}>
+                        <a target="_blank" rel="noopener">
+                          홈페이지 방문하기
+                        </a>
+                      </Link>
+                    </li>
+                  )}
+                  {item.role && (
+                    <li>
+                      <Title depth={2}>담당 업무 :&nbsp;</Title>
+                      {item.role.map((item, index) => {
+                        return <p key={index}>{item}</p>
+                      })}
+                    </li>
+                  )}
+                </ul>
+                <br />
+                <hr />
+              </div>
+            )
+          })}
+        </Description>
       )}
     </article>
   )
