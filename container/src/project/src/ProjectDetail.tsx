@@ -144,6 +144,16 @@ const ProjectDetail: React.FC<ProjectDetailProps> = (props) => {
                     <Title depth={2}>기간 :&nbsp;</Title>
                     <p>{item.date}</p>
                   </li>
+                  {item.url && (
+                    <li>
+                      <Title depth={2}>url :&nbsp;</Title>
+                      <Link href={item.url}>
+                        <a target="_blank" rel="noopener">
+                          홈페이지 방문하기
+                        </a>
+                      </Link>
+                    </li>
+                  )}
                   {item.git && (
                     <li>
                       <Title depth={2}>Github :&nbsp;</Title>
