@@ -43,6 +43,7 @@ declare global {
       design: number
       developer: number
     }
+    role?: Array<string>
     thumbnail_image: {
       img?: string
       top?: string

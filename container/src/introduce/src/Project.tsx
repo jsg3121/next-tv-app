@@ -10,7 +10,8 @@ const Project: React.FC<ProjectProps> = (props) => {
   const { data } = props
   const projectRef = React.useRef<HTMLDivElement>(null)
   const [detail, setDetail] = React.useState<ProjectData[keyof ProjectData]>()
-  const [category, setCategory] = React.useState<keyof ProjectData>('Quber')
+  const [category, setCategory] =
+    React.useState<keyof ProjectData>('ToyProject')
 
   const handleClick = React.useCallback(
     (val: keyof ProjectData) => {
@@ -22,6 +23,19 @@ const Project: React.FC<ProjectProps> = (props) => {
     },
     [projectRef, data]
   )
+
+  React.useEffect(() => {
+    if (data) {
+      setDetail(data.ToyProject)
+
+      const time = setTimeout(() => {
+        projectRef.current?.classList.add(`${project.active}`)
+      }, 1000)
+      return () => {
+        return clearTimeout(time)
+      }
+    }
+  }, [data])
 
   return (
     <article id="project" className={project.container}>

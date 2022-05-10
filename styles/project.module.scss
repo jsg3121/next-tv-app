@@ -62,8 +62,57 @@
   transition: transform 0.2s;
   margin: 0 0.3rem;
 
+  &::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 120;
+  }
+
+  &:hover {
+    &::after {
+      content: none;
+    }
+  }
+
   &:hover {
     transform: scale(1.2);
     z-index: 15;
+  }
+}
+
+.description_info {
+  li {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    a,
+    p {
+      color: $color-default-bright5;
+      line-height: 1.3;
+    }
+
+    p {
+      &::after {
+        content: ',';
+        display: absolute;
+        right: 0;
+        margin-right: 0.3rem;
+      }
+
+      &:last-child {
+        &::after {
+          content: unset;
+        }
+      }
+    }
+    a {
+      text-decoration: underline;
+    }
   }
 }
