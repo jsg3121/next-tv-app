@@ -19,9 +19,18 @@ const Project: React.FC<ProjectProps> = (props) => {
       .then((res) => res.data)
   })
 
+  React.useEffect(() => {
+    sessionStorage.setItem('chNum', '3')
+  }, [])
+
   return (
     <>
-      <Channel chName="Project" chNumber="003" />
+      <Channel
+        chName="Project"
+        chNumber="003"
+        progress={60}
+        broadcast="Portfolio"
+      />
       <section className={page.section_project}>
         <ProjectContainer data={projectData} />
       </section>

@@ -1,3 +1,5 @@
+@import './common.module.scss';
+
 .container {
   position: fixed;
   top: 0;
@@ -18,5 +20,84 @@
 
   h2 {
     font-size: 2rem;
+  }
+}
+
+.epg_container {
+  height: 10rem;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .channel_number {
+    width: 10rem;
+    & > h1 {
+      color: $color-default-bright5;
+      font-size: 3rem;
+      font-weight: bold;
+    }
+  }
+
+  .epg_progress {
+    width: calc(100% - 40rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .ch_info {
+      width: 100%;
+      height: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.3rem;
+
+      p {
+        color: $color-default-bright5;
+      }
+    }
+
+    .progress_info {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      & .broadcast_name {
+        height: 1.4rem;
+        width: 100%;
+        margin: 0.3rem 0 0.5rem;
+
+        p {
+          font-size: 1.4rem;
+          color: $color-default-bright5;
+        }
+      }
+
+      & .progress_bar {
+        width: 100%;
+        height: 0.5rem;
+        background-color: #4e4e4e;
+        border-radius: 0.25rem;
+        font-size: 0;
+        overflow: hidden;
+      }
+
+      & .broadcast_time {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+
+        p {
+          color: $color-default-bright5;
+        }
+      }
+    }
   }
 }

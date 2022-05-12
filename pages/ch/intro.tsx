@@ -72,6 +72,7 @@ const Intro: NextPage = () => {
   }, [router])
 
   React.useEffect(() => {
+    sessionStorage.setItem('chNum', '1')
     if (mainRef.current) {
       turnOnOff(mainRef.current)
       const timeSet = setInterval(() => {
@@ -86,7 +87,9 @@ const Intro: NextPage = () => {
 
   return (
     <>
-      {isShow && <Channel chName="Intro" chNumber="001" />}
+      {isShow && (
+        <Channel chName="Intro" chNumber="001" progress={0} broadcast="시작" />
+      )}
       <main className={intro.container} ref={mainRef}>
         {isShow && (
           <div>
