@@ -5,7 +5,7 @@
     transform: translateY(100%);
   }
   100% {
-    transform: translateY(-45%);
+    transform: translateY(-50%);
   }
 }
 
@@ -14,25 +14,26 @@
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-60%);
+    transform: translateY(-50%);
   }
 }
 
 .conatiner {
-  position: fixed;
+  position: absolute;
   width: 100%;
-  height: 110%;
+  min-height: 100%;
   transform-origin: bottom;
   will-change: transform;
   padding-bottom: 2rem;
-  animation: credit 6s 1s linear both running;
+  animation: credit 6s linear both running;
 }
 
 .credit_container {
   width: 100%;
-  position: absolute;
+  position: relative;
+  transform-origin: bottom;
   will-change: transform;
-  animation: contact 2s 7s linear both running;
+  animation: contact 2s 6s linear both running;
 
   li {
     margin-bottom: 1.5rem;
@@ -75,7 +76,7 @@
 
 .contact_container {
   width: 100%;
-  position: absolute;
+  position: relative;
   bottom: 0;
 
   li {

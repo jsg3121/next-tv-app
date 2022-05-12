@@ -1,9 +1,10 @@
-import React from 'react'
+import { channelChange } from 'common'
 import isEqual from 'fast-deep-equal'
-import remote from 'styles/remote.module.scss'
 import Image from 'next/image'
-import styled from 'styled-components'
 import { useRouter } from 'next/router'
+import React from 'react'
+import styled from 'styled-components'
+import remote from 'styles/remote.module.scss'
 
 const Lights = styled.div`
   width: 0.8rem;
@@ -37,6 +38,30 @@ const Remote: React.FC = () => {
     }
   }, [])
 
+  const handleClickChUp = React.useCallback(() => {
+    const ch = channelChange('up')
+    if (ch) {
+      router.push(ch)
+    }
+  }, [router])
+
+  const handleClickChDown = React.useCallback(() => {
+    const ch = channelChange('down')
+    if (ch) {
+      router.push(ch)
+    }
+  }, [router])
+
+  const handleClickOK = React.useCallback(() => {
+    switch (router.pathname) {
+      case '/ch/intro':
+        break
+
+      default:
+        break
+    }
+  }, [router])
+
   React.useEffect(() => {
     if (router.pathname === '/ch/intro') {
       const timeOut = setTimeout(() => {
@@ -51,29 +76,6 @@ const Remote: React.FC = () => {
       setIsShow(true)
     }
   }, [router.pathname])
-
-  const themeImg = React.useMemo(() => {
-    return (
-      <>
-        <i>
-          <Image
-            src="/theme_light.svg"
-            layout="fill"
-            alt="icon_theme"
-            priority
-          />
-        </i>
-        <i>
-          <Image
-            src="/theme_dark.svg"
-            layout="fill"
-            alt="icon_theme"
-            priority
-          />
-        </i>
-      </>
-    )
-  }, [])
 
   return (
     <>
@@ -93,30 +95,14 @@ const Remote: React.FC = () => {
             </div>
             <div className={remote.arrow_btn}>
               <ul className={remote.btn_container}>
+                <li onMouseDown={handleSignal} onMouseUp={handleOff} />
+                <li onMouseDown={handleSignal} onMouseUp={handleOff} />
+                <li onMouseDown={handleSignal} onMouseUp={handleOff} />
+                <li onMouseDown={handleSignal} onMouseUp={handleOff} />
                 <li
                   onMouseDown={handleSignal}
                   onMouseUp={handleOff}
-                  className="ch_up"
-                />
-                <li
-                  onMouseDown={handleSignal}
-                  onMouseUp={handleOff}
-                  className="ch_right"
-                />
-                <li
-                  onMouseDown={handleSignal}
-                  onMouseUp={handleOff}
-                  className="ch_down"
-                />
-                <li
-                  onMouseDown={handleSignal}
-                  onMouseUp={handleOff}
-                  className="ch_left"
-                />
-                <li
-                  onMouseDown={handleSignal}
-                  onMouseUp={handleOff}
-                  className="ch_ok"
+                  onClick={handleClickOK}
                 >
                   OK
                 </li>
@@ -128,46 +114,37 @@ const Remote: React.FC = () => {
                 theme change toggle
                 <i></i>
               </label>
-              <div className={remote.theme_icon}>{themeImg}</div>
+              <div className={remote.theme_icon}>
+                <i>
+                  <Image
+                    src="/theme_light.svg"
+                    layout="fill"
+                    alt="icon_theme"
+                    priority
+                  />
+                </i>
+                <i>
+                  <Image
+                    src="/theme_dark.svg"
+                    layout="fill"
+                    alt="icon_theme"
+                    priority
+                  />
+                </i>
+              </div>
             </div>
             <div className={remote.channel_btn_container}>
-              <div></div>
-              <div></div>
+              <div>
+                <i>volum up</i>
+                <i>volum up</i>
+                <p>VOL</p>
+              </div>
+              <div>
+                <i onClick={handleClickChUp}>channel up</i>
+                <i onClick={handleClickChDown}>channel down</i>
+                <p>CH</p>
+              </div>
             </div>
-            {/* <div className="keypad">
-          <ul>
-            <li>
-              <button className="keypad_number">1</button>
-            </li>
-            <li>
-              <button className="keypad_number">2</button>
-            </li>
-            <li>
-              <button className="keypad_number">3</button>
-            </li>
-            <li>
-              <button className="keypad_number">4</button>
-            </li>
-            <li>
-              <button className="keypad_number">5</button>
-            </li>
-            <li>
-              <button className="keypad_number">6</button>
-            </li>
-            <li>
-              <button className="keypad_number">7</button>
-            </li>
-            <li>
-              <button className="keypad_number">8</button>
-            </li>
-            <li>
-              <button className="keypad_number">9</button>
-            </li>
-            <li>
-              <button className="keypad_number">0</button>
-            </li>
-          </ul>
-        </div> */}
           </div>
         </>
       )}

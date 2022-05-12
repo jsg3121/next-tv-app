@@ -6,9 +6,18 @@ import contact from 'styles/contact.module.scss'
 import page from 'styles/page.module.scss'
 
 const Contact: NextPage = () => {
+  React.useEffect(() => {
+    sessionStorage.setItem('chNum', '4')
+  }, [])
+
   return (
     <>
-      <Channel chName="Contact" chNumber="004" />
+      <Channel
+        chName="Contact"
+        chNumber="004"
+        progress={90}
+        broadcast="Devfolio the movie"
+      />
       <div className={page.section_contact}>
         <div className={contact.conatiner}>
           <ul className={contact.credit_container}>
@@ -48,6 +57,7 @@ const Contact: NextPage = () => {
                 <Text>Gsap</Text>
                 <Text>Fast-deep-equal</Text>
                 <Text>Swr</Text>
+                <Text>Dayjs</Text>
               </div>
             </li>
             <br />

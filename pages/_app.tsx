@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import React from 'react'
 import 'react-image-gallery/styles/scss/image-gallery.scss'
+import { wrapper } from 'store'
 import styled from 'styled-components'
 import { GlobalStyle } from '../styles/Global'
 
@@ -41,4 +42,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   )
 }
 
-export default MyApp
+export default wrapper.withRedux(MyApp)

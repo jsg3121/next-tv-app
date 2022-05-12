@@ -1,64 +1,10 @@
-import { Channel, Title } from 'components'
+import { turnOff, turnOnOff } from 'common'
+import { Channel } from 'components'
 import { IntorContainer, NoticeContainer } from 'container'
-import { gsap, Power4 } from 'gsap'
 import type { NextPage } from 'next'
-import { NextRouter, useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import React from 'react'
 import intro from 'styles/intro.module.scss'
-
-const turnOff = (current: HTMLHeadingElement, router: NextRouter): void => {
-  gsap
-    .timeline()
-    .to(current, {
-      filter: 'grayscale(0)',
-      duration: 0.5,
-    })
-    .to(current, {
-      width: '100%',
-      height: '2px',
-      ease: Power4.easeOut,
-      duration: 0.1,
-      delay: 0.5,
-    })
-    .to(current, {
-      width: '0',
-      height: '0',
-      duration: 0.1,
-    })
-    .then(() => {
-      router.push('/ch/about')
-    })
-}
-
-const turnOnOff = (current: HTMLHeadingElement) => {
-  const timeLine = gsap.timeline()
-
-  timeLine
-    .to(current, {
-      width: '100%',
-      height: '2px',
-      ease: Power4.easeOut,
-      duration: 0.1,
-    })
-    .to(current, {
-      width: '0',
-      height: '0',
-      duration: 0.2,
-    })
-    .to(current, {
-      width: '100%',
-      height: '2px',
-      ease: Power4.easeOut,
-      duration: 0.2,
-      backgroundImage: 'none',
-    })
-    .to(current, {
-      width: '100%',
-      height: 'calc(100vh - 7.778rem)',
-      duration: 0.1,
-    })
-    .delay(1)
-}
 
 const Intro: NextPage = () => {
   const [isShow, setIsShow] = React.useState<boolean>(false)
@@ -72,6 +18,7 @@ const Intro: NextPage = () => {
   }, [router])
 
   React.useEffect(() => {
+    sessionStorage.setItem('chNum', '1')
     if (mainRef.current) {
       turnOnOff(mainRef.current)
       const timeSet = setInterval(() => {
@@ -86,7 +33,9 @@ const Intro: NextPage = () => {
 
   return (
     <>
-      {isShow && <Channel chName="Intro" chNumber="001" />}
+      {isShow && (
+        <Channel chName="Intro" chNumber="001" progress={0} broadcast="시작" />
+      )}
       <main className={intro.container} ref={mainRef}>
         {isShow && (
           <div>

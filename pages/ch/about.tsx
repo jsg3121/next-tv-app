@@ -27,6 +27,7 @@ const Introduce: NextPage = () => {
   const openningRef = React.useRef<HTMLHeadingElement>(null)
 
   React.useEffect(() => {
+    sessionStorage.setItem('chNum', '2')
     if (introduceRef.current && openningRef.current) {
       introEffect(introduceRef.current, openningRef.current)
     }
@@ -34,7 +35,12 @@ const Introduce: NextPage = () => {
 
   return (
     <>
-      <Channel chName="About" chNumber="002" />
+      <Channel
+        chName="About"
+        chNumber="002"
+        progress={10}
+        broadcast="Who Am I?"
+      />
 
       <h1 className={page.openning} ref={openningRef}>
         ABOUT ME
