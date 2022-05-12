@@ -101,3 +101,20 @@
     }
   }
 }
+
+.channel_wartermark {
+  position: fixed;
+  z-index: 10000;
+  top: 1rem;
+  right: 1rem;
+  min-width: 5rem;
+  max-width: 7rem;
+  height: 1.7rem;
+  text-align: right;
+
+  h1 {
+    font-size: 1.7rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: bold;
+  }
+}

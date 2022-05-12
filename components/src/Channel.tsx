@@ -76,6 +76,9 @@ const Channel: React.FC<ChannelProps> = (props) => {
           </div>
         </>
       )}
+      <div className={channel.channel_wartermark}>
+        <h1>{chName}</h1>
+      </div>
     </>
   )
 }

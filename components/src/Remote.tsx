@@ -21,8 +21,6 @@ const Lights = styled.div`
 
 const channelChange = (arrow: 'up' | 'down') => {
   const channelNumber = sessionStorage.getItem('chNum')
-
-  console.log(channelNumber)
   switch (channelNumber) {
     case '1':
       if (arrow === 'up') {
