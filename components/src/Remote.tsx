@@ -1,9 +1,10 @@
-import React from 'react'
+import { channelChange } from 'common'
 import isEqual from 'fast-deep-equal'
-import remote from 'styles/remote.module.scss'
 import Image from 'next/image'
-import styled from 'styled-components'
 import { useRouter } from 'next/router'
+import React from 'react'
+import styled from 'styled-components'
+import remote from 'styles/remote.module.scss'
 
 const Lights = styled.div`
   width: 0.8rem;
@@ -18,39 +19,6 @@ const Lights = styled.div`
     background-color: #a5e741 !important;
   }
 `
-
-const channelChange = (arrow: 'up' | 'down') => {
-  const channelNumber = sessionStorage.getItem('chNum')
-  switch (channelNumber) {
-    case '1':
-      if (arrow === 'up') {
-        return '/ch/about'
-      }
-      break
-    case '2':
-      if (arrow === 'up') {
-        return '/ch/project'
-      }
-      if (arrow === 'down') {
-        return '/ch/intro'
-      }
-      break
-    case '3':
-      if (arrow === 'up') {
-        return '/ch/contact'
-      }
-      if (arrow === 'down') {
-        return '/ch/about'
-      }
-      break
-    case '4':
-      if (arrow === 'down') {
-        return '/ch/project'
-      }
-    default:
-      return '#'
-  }
-}
 
 const Remote: React.FC = () => {
   const activeRef = React.useRef<HTMLDivElement>(null)
@@ -70,17 +38,27 @@ const Remote: React.FC = () => {
     }
   }, [])
 
-  const handleClickUp = React.useCallback(() => {
+  const handleClickChUp = React.useCallback(() => {
     const ch = channelChange('up')
     if (ch) {
       router.push(ch)
     }
   }, [router])
 
-  const handleClickDown = React.useCallback(() => {
+  const handleClickChDown = React.useCallback(() => {
     const ch = channelChange('down')
     if (ch) {
       router.push(ch)
+    }
+  }, [router])
+
+  const handleClickOK = React.useCallback(() => {
+    switch (router.pathname) {
+      case '/ch/intro':
+        break
+
+      default:
+        break
     }
   }, [router])
 
@@ -121,7 +99,11 @@ const Remote: React.FC = () => {
                 <li onMouseDown={handleSignal} onMouseUp={handleOff} />
                 <li onMouseDown={handleSignal} onMouseUp={handleOff} />
                 <li onMouseDown={handleSignal} onMouseUp={handleOff} />
-                <li onMouseDown={handleSignal} onMouseUp={handleOff}>
+                <li
+                  onMouseDown={handleSignal}
+                  onMouseUp={handleOff}
+                  onClick={handleClickOK}
+                >
                   OK
                 </li>
               </ul>
@@ -158,45 +140,11 @@ const Remote: React.FC = () => {
                 <p>VOL</p>
               </div>
               <div>
-                <i onClick={handleClickUp}>channel up</i>
-                <i onClick={handleClickDown}>channel down</i>
+                <i onClick={handleClickChUp}>channel up</i>
+                <i onClick={handleClickChDown}>channel down</i>
                 <p>CH</p>
               </div>
             </div>
-            {/* <div className="keypad">
-          <ul>
-            <li>
-              <button className="keypad_number">1</button>
-            </li>
-            <li>
-              <button className="keypad_number">2</button>
-            </li>
-            <li>
-              <button className="keypad_number">3</button>
-            </li>
-            <li>
-              <button className="keypad_number">4</button>
-            </li>
-            <li>
-              <button className="keypad_number">5</button>
-            </li>
-            <li>
-              <button className="keypad_number">6</button>
-            </li>
-            <li>
-              <button className="keypad_number">7</button>
-            </li>
-            <li>
-              <button className="keypad_number">8</button>
-            </li>
-            <li>
-              <button className="keypad_number">9</button>
-            </li>
-            <li>
-              <button className="keypad_number">0</button>
-            </li>
-          </ul>
-        </div> */}
           </div>
         </>
       )}
