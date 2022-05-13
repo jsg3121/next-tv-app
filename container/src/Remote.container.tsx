@@ -1,8 +1,8 @@
-import { channelChange } from 'common'
 import isEqual from 'fast-deep-equal'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React from 'react'
+import { Actions, useDispatch, useSelector } from 'store'
 import styled from 'styled-components'
 import remote from 'styles/remote.module.scss'
 
@@ -24,7 +24,10 @@ const Remote: React.FC = () => {
   const activeRef = React.useRef<HTMLDivElement>(null)
   const [isShow, setIsShow] = React.useState<boolean>(true)
 
+  const { chNum, power } = useSelector((props) => props.channel)
+
   const router = useRouter()
+  const dispatch = useDispatch()
 
   const handleSignal = React.useCallback(() => {
     if (activeRef.current) {
@@ -39,28 +42,16 @@ const Remote: React.FC = () => {
   }, [])
 
   const handleClickChUp = React.useCallback(() => {
-    const ch = channelChange('up')
-    if (ch) {
-      router.push(ch)
-    }
-  }, [router])
+    if (chNum < 4) dispatch(Actions.remote.changeChannel('up'))
+  }, [dispatch, chNum])
 
   const handleClickChDown = React.useCallback(() => {
-    const ch = channelChange('down')
-    if (ch) {
-      router.push(ch)
-    }
-  }, [router])
+    if (chNum > 1) dispatch(Actions.remote.changeChannel('down'))
+  }, [dispatch, chNum])
 
   const handleClickOK = React.useCallback(() => {
-    switch (router.pathname) {
-      case '/ch/intro':
-        break
-
-      default:
-        break
-    }
-  }, [router])
+    dispatch(Actions.remote.powerOnOff(!power))
+  }, [dispatch, power])
 
   React.useEffect(() => {
     if (router.pathname === '/ch/intro') {
@@ -83,7 +74,7 @@ const Remote: React.FC = () => {
         <>
           <div className={remote.container}>
             <div className={remote.controller_container}>
-              <div className={remote.btn_power}>
+              <div className={remote.btn_power} onClick={handleClickOK}>
                 <button area-label="power_btn">
                   power button
                   <i className="power_icon"></i>
@@ -99,11 +90,7 @@ const Remote: React.FC = () => {
                 <li onMouseDown={handleSignal} onMouseUp={handleOff} />
                 <li onMouseDown={handleSignal} onMouseUp={handleOff} />
                 <li onMouseDown={handleSignal} onMouseUp={handleOff} />
-                <li
-                  onMouseDown={handleSignal}
-                  onMouseUp={handleOff}
-                  onClick={handleClickOK}
-                >
+                <li onMouseDown={handleSignal} onMouseUp={handleOff}>
                   OK
                 </li>
               </ul>

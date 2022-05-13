@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
+import { Actions, useDispatch, useSelector } from 'store'
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
@@ -31,17 +32,13 @@ const Progress = styled((props) => {
 
 const Channel: React.FC<ChannelProps> = (props) => {
   const { chName, chNumber, progress, broadcast } = props
-  const [isShow, setIsShow] = React.useState<boolean>(true)
+
+  const dispatch = useDispatch()
+  const isShow = useSelector(({ channel }) => channel.chShow)
 
   React.useEffect(() => {
-    const show = setInterval(() => {
-      setIsShow(false)
-    }, 1500)
-
-    return () => {
-      return clearInterval(show)
-    }
-  }, [])
+    dispatch(Actions.remote.channelInfoShow())
+  }, [dispatch])
 
   return (
     <>

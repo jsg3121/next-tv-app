@@ -18,7 +18,7 @@ const Contact: NextPage = () => {
         progress={90}
         broadcast="Devfolio the movie"
       />
-      <div className={page.section_contact}>
+      <section className={page.section_contact}>
         <div className={contact.conatiner}>
           <ul className={contact.credit_container}>
             <li>
@@ -58,6 +58,7 @@ const Contact: NextPage = () => {
                 <Text>Fast-deep-equal</Text>
                 <Text>Swr</Text>
                 <Text>Dayjs</Text>
+                <Text>Immer</Text>
               </div>
             </li>
             <br />
@@ -79,13 +80,13 @@ const Contact: NextPage = () => {
             <br />
             <li>
               <Title depth={3}>
-                Copyright 2022. Jangsungyu All pictures cannot be copied without
-                permission.
+                Copyright 2022. Jangsungyu All resources cannot be copied
+                without permission.
               </Title>
             </li>
           </ul>
         </div>
-      </div>
+      </section>
     </>
   )
 }
