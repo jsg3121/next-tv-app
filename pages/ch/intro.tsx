@@ -1,15 +1,24 @@
 import { turnOff, turnOnOff } from 'common'
-import { Channel } from 'components'
-import { IntorContainer, NoticeContainer } from 'container'
+import { ChannelContainer, IntorContainer, NoticeContainer } from 'container'
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import React from 'react'
+import { Actions, useDispatch, useSelector } from 'store'
 import intro from 'styles/intro.module.scss'
+
+const chSet = {
+  chName: 'Intro',
+  chNum: 1,
+}
 
 const Intro: NextPage = () => {
   const [isShow, setIsShow] = React.useState<boolean>(false)
   const mainRef = React.useRef<HTMLHeadingElement>(null)
+
   const router = useRouter()
+
+  const isOpen = useSelector(({ channel }) => channel.openning)
+  const dispatch = useDispatch()
 
   const handleClick = React.useCallback(() => {
     if (mainRef.current) {
@@ -18,32 +27,42 @@ const Intro: NextPage = () => {
   }, [router])
 
   React.useEffect(() => {
-    sessionStorage.setItem('chNum', '1')
-    if (mainRef.current) {
-      turnOnOff(mainRef.current)
-      const timeSet = setInterval(() => {
-        setIsShow(true)
-      }, 1400)
+    if (!isOpen) {
+      if (mainRef.current) {
+        turnOnOff(mainRef.current)
+        const timeSet = setInterval(() => {
+          setIsShow(true)
+          dispatch(Actions.remote.channelOpenning())
+        }, 1400)
 
-      return () => {
-        return clearInterval(timeSet)
+        return () => {
+          return clearInterval(timeSet)
+        }
       }
+    } else {
+      if (mainRef.current) {
+        mainRef.current.style.backgroundImage = 'none'
+      }
+      setIsShow(true)
     }
-  }, [])
+  }, [isOpen, dispatch])
+
+  React.useEffect(() => {
+    dispatch(Actions.remote.refreshChannel(1))
+    dispatch(Actions.remote.channelSet(chSet))
+  }, [dispatch])
 
   return (
     <>
-      {isShow && (
-        <Channel chName="Intro" chNumber="001" progress={0} broadcast="시작" />
-      )}
-      <main className={intro.container} ref={mainRef}>
+      {isShow && <ChannelContainer />}
+      <section className={intro.container} ref={mainRef}>
         {isShow && (
           <div>
             <IntorContainer />
             <NoticeContainer onClick={handleClick} />
           </div>
         )}
-      </main>
+      </section>
     </>
   )
 }

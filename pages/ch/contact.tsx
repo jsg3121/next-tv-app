@@ -1,24 +1,29 @@
-import { Channel, Text, Title } from 'components'
+import { Text, Title } from 'components'
+import { ChannelContainer } from 'container'
 import type { NextPage } from 'next'
 import Link from 'next/link'
 import React from 'react'
+import { Actions, useDispatch } from 'store'
 import contact from 'styles/contact.module.scss'
 import page from 'styles/page.module.scss'
 
+const chSet = {
+  chName: 'Contact',
+  chNum: 4,
+}
+
 const Contact: NextPage = () => {
+  const dispatch = useDispatch()
+
   React.useEffect(() => {
-    sessionStorage.setItem('chNum', '4')
-  }, [])
+    dispatch(Actions.remote.refreshChannel(4))
+    dispatch(Actions.remote.channelSet(chSet))
+  }, [dispatch])
 
   return (
     <>
-      <Channel
-        chName="Contact"
-        chNumber="004"
-        progress={90}
-        broadcast="Devfolio the movie"
-      />
-      <div className={page.section_contact}>
+      <ChannelContainer />
+      <section className={page.section_contact}>
         <div className={contact.conatiner}>
           <ul className={contact.credit_container}>
             <li>
@@ -58,6 +63,7 @@ const Contact: NextPage = () => {
                 <Text>Fast-deep-equal</Text>
                 <Text>Swr</Text>
                 <Text>Dayjs</Text>
+                <Text>Immer</Text>
               </div>
             </li>
             <br />
@@ -79,13 +85,13 @@ const Contact: NextPage = () => {
             <br />
             <li>
               <Title depth={3}>
-                Copyright 2022. Jangsungyu All pictures cannot be copied without
-                permission.
+                Copyright 2022. Jangsungyu All resources cannot be copied
+                without permission.
               </Title>
             </li>
           </ul>
         </div>
-      </div>
+      </section>
     </>
   )
 }

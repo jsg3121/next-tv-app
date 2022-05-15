@@ -4,7 +4,6 @@ import React from 'react'
 
 const Home: NextPage = () => {
   React.useEffect(() => {
-    sessionStorage.setItem('chNum', '1')
     Router.replace('/ch/intro')
   }, [])
 

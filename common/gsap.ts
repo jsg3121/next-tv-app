@@ -24,7 +24,9 @@ export const turnOff = (
       duration: 0.1,
     })
     .then(() => {
-      router.push('/ch/about')
+      if (router) {
+        router.push('/ch/about')
+      }
     })
 }
 

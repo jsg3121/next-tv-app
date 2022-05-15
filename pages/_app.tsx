@@ -1,21 +1,49 @@
-import { Remote } from 'components'
+import { RemoteContainer } from 'container'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import React from 'react'
 import 'react-image-gallery/styles/scss/image-gallery.scss'
-import { wrapper } from 'store'
+import { useSelector, wrapper } from 'store'
 import styled from 'styled-components'
 import { GlobalStyle } from '../styles/Global'
 
-const Root = styled.div`
+const Root = styled.main`
   width: 100%;
   height: 100vh;
   display: flex;
   align-items: center;
   overflow: hidden;
+
+  &.powerOff {
+    &::before {
+      content: 'power off';
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      background-color: #000000;
+      z-index: 1000000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+    }
+  }
 `
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const rootRef = React.useRef<HTMLElement>(null)
+
+  const power = useSelector(({ channel }) => channel.power)
+
+  React.useEffect(() => {
+    if (power && rootRef.current) {
+      rootRef.current.classList.remove('powerOff')
+    }
+    if (!power && rootRef.current) {
+      rootRef.current.classList.add('powerOff')
+    }
+  }, [power])
+
   return (
     <>
       <Head>
@@ -34,8 +62,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <GlobalStyle />
-      <Root>
-        <Remote />
+      <Root ref={rootRef}>
+        <RemoteContainer />
         <Component {...pageProps} />
       </Root>
     </>
