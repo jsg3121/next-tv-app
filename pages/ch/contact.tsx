@@ -1,23 +1,28 @@
-import { Channel, Text, Title } from 'components'
+import { Text, Title } from 'components'
+import { ChannelContainer } from 'container'
 import type { NextPage } from 'next'
 import Link from 'next/link'
 import React from 'react'
+import { Actions, useDispatch } from 'store'
 import contact from 'styles/contact.module.scss'
 import page from 'styles/page.module.scss'
 
+const chSet = {
+  chName: 'Contact',
+  chNum: 4,
+}
+
 const Contact: NextPage = () => {
+  const dispatch = useDispatch()
+
   React.useEffect(() => {
-    sessionStorage.setItem('chNum', '4')
-  }, [])
+    dispatch(Actions.remote.refreshChannel(4))
+    dispatch(Actions.remote.channelSet(chSet))
+  }, [dispatch])
 
   return (
     <>
-      <Channel
-        chName="Contact"
-        chNumber="004"
-        progress={90}
-        broadcast="Devfolio the movie"
-      />
+      <ChannelContainer />
       <section className={page.section_contact}>
         <div className={contact.conatiner}>
           <ul className={contact.credit_container}>

@@ -1,4 +1,5 @@
 export { default as IntorContainer } from './src/Intro.container'
 export { default as NoticeContainer } from './src/Notice.container'
 export { default as RemoteContainer } from './src/Remote.container'
+export { default as ChannelContainer } from './src/Channel.container'
 export * from './src/introduce'

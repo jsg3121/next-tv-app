@@ -24,7 +24,7 @@ const Remote: React.FC = () => {
   const activeRef = React.useRef<HTMLDivElement>(null)
   const [isShow, setIsShow] = React.useState<boolean>(true)
 
-  const { chNum, power } = useSelector((props) => props.channel)
+  const { chInfo, power, btn_show } = useSelector((props) => props.channel)
 
   const router = useRouter()
   const dispatch = useDispatch()
@@ -42,15 +42,51 @@ const Remote: React.FC = () => {
   }, [])
 
   const handleClickChUp = React.useCallback(() => {
-    if (chNum < 4) dispatch(Actions.remote.changeChannel('up'))
-  }, [dispatch, chNum])
+    if (chInfo.chNum < 4) dispatch(Actions.remote.changeChannel('up'))
+  }, [dispatch, chInfo.chNum])
 
   const handleClickChDown = React.useCallback(() => {
-    if (chNum > 1) dispatch(Actions.remote.changeChannel('down'))
-  }, [dispatch, chNum])
+    if (chInfo.chNum > 1) dispatch(Actions.remote.changeChannel('down'))
+  }, [dispatch, chInfo.chNum])
 
   const handleClickOK = React.useCallback(() => {
+    dispatch(Actions.remote.showBtnInfo(true))
+  }, [dispatch])
+
+  const handleClickArrow = React.useCallback(
+    (val: 'up' | 'left' | 'right' | 'down') => () => {
+      switch (val) {
+        case 'up':
+          if (chInfo.chNum < 4) dispatch(Actions.remote.channelBtnArrow(val))
+          break
+        case 'down':
+          if (chInfo.chNum > 1) dispatch(Actions.remote.channelBtnArrow(val))
+          break
+        case 'left':
+          // if (chInfo.chNum < 4) dispatch(Actions.remote.channelBtnArrow(val))
+          break
+        case 'right':
+          // if (chInfo.chNum < 4) dispatch(Actions.remote.channelBtnArrow(val))
+          break
+      }
+    },
+    [dispatch, chInfo.chNum]
+  )
+
+  const handleClickPower = React.useCallback(() => {
     dispatch(Actions.remote.powerOnOff(!power))
+    if (!power) {
+      dispatch(Actions.remote.channelInfoShow(true))
+
+      const timeOut = setTimeout(() => {
+        dispatch(Actions.remote.channelInfoShow(false))
+      }, 2000)
+      return () => clearTimeout(timeOut)
+    }
+
+    if (power) {
+      dispatch(Actions.remote.channelInfoShow(false))
+    }
   }, [dispatch, power])
 
   React.useEffect(() => {
@@ -74,7 +110,7 @@ const Remote: React.FC = () => {
         <>
           <div className={remote.container}>
             <div className={remote.controller_container}>
-              <div className={remote.btn_power} onClick={handleClickOK}>
+              <div className={remote.btn_power} onClick={handleClickPower}>
                 <button area-label="power_btn">
                   power button
                   <i className="power_icon"></i>
@@ -86,11 +122,31 @@ const Remote: React.FC = () => {
             </div>
             <div className={remote.arrow_btn}>
               <ul className={remote.btn_container}>
-                <li onMouseDown={handleSignal} onMouseUp={handleOff} />
-                <li onMouseDown={handleSignal} onMouseUp={handleOff} />
-                <li onMouseDown={handleSignal} onMouseUp={handleOff} />
-                <li onMouseDown={handleSignal} onMouseUp={handleOff} />
-                <li onMouseDown={handleSignal} onMouseUp={handleOff}>
+                <li
+                  onMouseDown={handleSignal}
+                  onMouseUp={handleOff}
+                  onClick={handleClickArrow('up')}
+                />
+                <li
+                  onMouseDown={handleSignal}
+                  onMouseUp={handleOff}
+                  onClick={handleClickArrow('right')}
+                />
+                <li
+                  onMouseDown={handleSignal}
+                  onMouseUp={handleOff}
+                  onClick={handleClickArrow('down')}
+                />
+                <li
+                  onMouseDown={handleSignal}
+                  onMouseUp={handleOff}
+                  onClick={handleClickArrow('left')}
+                />
+                <li
+                  onMouseDown={handleSignal}
+                  onMouseUp={handleOff}
+                  onClick={handleClickOK}
+                >
                   OK
                 </li>
               </ul>
