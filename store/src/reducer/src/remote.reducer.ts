@@ -1,7 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit'
-import { remoteActions } from 'store/src/action'
 import produce from 'immer'
 import Router from 'next/router'
+import { remoteActions } from 'store/src/action'
 
 export type RemoteType = {
   chInfo: {

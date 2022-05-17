@@ -1,5 +1,5 @@
-import { NextRouter } from 'next/router'
 import { gsap } from 'gsap'
+import { NextRouter } from 'next/router'
 
 export const turnOff = (
   current: HTMLHeadingElement,

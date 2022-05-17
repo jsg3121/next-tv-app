@@ -24,7 +24,7 @@ const Remote: React.FC = () => {
   const activeRef = React.useRef<HTMLDivElement>(null)
   const [isShow, setIsShow] = React.useState<boolean>(true)
 
-  const { chInfo, power, btn_show } = useSelector((props) => props.channel)
+  const { chInfo, power } = useSelector((props) => props.channel)
 
   const router = useRouter()
   const dispatch = useDispatch()

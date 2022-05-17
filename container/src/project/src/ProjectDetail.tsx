@@ -1,12 +1,10 @@
+import { Title } from 'components'
 import isEqual from 'fast-deep-equal'
-import React from 'react'
-import project from 'styles/project.module.scss'
-import ImageGallery, { ReactImageGalleryItem } from 'react-image-gallery'
 import Image from 'next/image'
-import styled from 'styled-components'
-import { useRouter } from 'next/router'
-import { Text, Title } from 'components'
 import Link from 'next/link'
+import React from 'react'
+import styled from 'styled-components'
+import project from 'styles/project.module.scss'
 
 interface ProjectDetailProps {
   detail: Array<ProjectDescription>
