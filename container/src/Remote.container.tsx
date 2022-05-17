@@ -29,13 +29,13 @@ const Remote: React.FC = () => {
   const router = useRouter()
   const dispatch = useDispatch()
 
-  const handleSignal = React.useCallback(() => {
+  const handleMouseDown = React.useCallback(() => {
     if (activeRef.current) {
       activeRef.current.classList.add('active')
     }
   }, [])
 
-  const handleOff = React.useCallback(() => {
+  const handleMouseUp = React.useCallback(() => {
     if (activeRef.current) {
       activeRef.current.classList.remove('active')
     }
@@ -123,28 +123,28 @@ const Remote: React.FC = () => {
             <div className={remote.arrow_btn}>
               <ul className={remote.btn_container}>
                 <li
-                  onMouseDown={handleSignal}
-                  onMouseUp={handleOff}
+                  onMouseDown={handleMouseDown}
+                  onMouseUp={handleMouseUp}
                   onClick={handleClickArrow('up')}
                 />
                 <li
-                  onMouseDown={handleSignal}
-                  onMouseUp={handleOff}
+                  onMouseDown={handleMouseDown}
+                  onMouseUp={handleMouseUp}
                   onClick={handleClickArrow('right')}
                 />
                 <li
-                  onMouseDown={handleSignal}
-                  onMouseUp={handleOff}
+                  onMouseDown={handleMouseDown}
+                  onMouseUp={handleMouseUp}
                   onClick={handleClickArrow('down')}
                 />
                 <li
-                  onMouseDown={handleSignal}
-                  onMouseUp={handleOff}
+                  onMouseDown={handleMouseDown}
+                  onMouseUp={handleMouseUp}
                   onClick={handleClickArrow('left')}
                 />
                 <li
-                  onMouseDown={handleSignal}
-                  onMouseUp={handleOff}
+                  onMouseDown={handleMouseDown}
+                  onMouseUp={handleMouseUp}
                   onClick={handleClickOK}
                 >
                   OK

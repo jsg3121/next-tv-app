@@ -85,9 +85,16 @@ const remoteReducer = createReducer<RemoteType>(channelState, (builder) => {
     })
     .addCase(remoteActions.showBtnInfo, (store, { payload }) => {
       return produce(store, (draft) => {
+        if (store.chShow && store.btn_show) {
+          console.log('yes')
+          draft.btn_show === false
+          draft.chShow === false
+        }
+
         if (store.btn_show === false) {
           draft.btn_show = payload
         }
+
         if (store.btn_show === true) {
           if (store.beforeChInfo) {
             if (store.beforeChInfo.chNum !== store.chInfo.chNum) {
