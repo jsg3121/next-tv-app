@@ -1,19 +1,10 @@
+import { BroadcastTime, timeSet } from 'common'
 import { Title } from 'components'
-import dayjs from 'dayjs'
-import 'dayjs/locale/ko'
-import timezone from 'dayjs/plugin/timezone'
-import utc from 'dayjs/plugin/utc'
 import isEqual from 'fast-deep-equal'
 import React from 'react'
 import { Actions, useDispatch, useSelector } from 'store'
 import styled from 'styled-components'
 import channel from 'styles/channel.module.scss'
-
-dayjs.extend(timezone)
-dayjs.extend(utc)
-
-dayjs.tz.setDefault('Asia/Seoul')
-dayjs.locale('ko')
 
 const Progress = styled((props) => {
   return <p {...props}>진행막대</p>
@@ -25,9 +16,9 @@ const Progress = styled((props) => {
   border-radius: 0.25rem;
 `
 
-const date = new Date()
-
 const Channel: React.FC = () => {
+  const [date, setDate] = React.useState<BroadcastTime>()
+
   const dispatch = useDispatch()
   const {
     btn_show,
@@ -46,6 +37,10 @@ const Channel: React.FC = () => {
     return () => clearTimeout(timeOut)
   }, [dispatch])
 
+  React.useEffect(() => {
+    setDate(timeSet())
+  }, [])
+
   return (
     <section>
       {isShow && (
@@ -54,29 +49,31 @@ const Channel: React.FC = () => {
           <Title depth={2}>{chInfo.chName}</Title>
         </div>
       )}
-      <div className={channel.epg_container}>
-        <div className={channel.channel_number}>
-          <h1>00{chInfo.chNum}</h1>
-        </div>
-        <div className={channel.epg_progress}>
-          <div className={channel.ch_info}>
-            <p>{chInfo.chName}</p>
-            <p>현재 시간 {dayjs(date).format('HH:mm')}</p>
+      {(isShow || btn_show) && (
+        <div className={channel.epg_container}>
+          <div className={channel.channel_number}>
+            <h1>00{chInfo.chNum}</h1>
           </div>
-          <div className={channel.progress_info}>
-            <div className={channel.broadcast_name}>
-              <p>{chInfo.broadcast}</p>
+          <div className={channel.epg_progress}>
+            <div className={channel.ch_info}>
+              <p>{chInfo.chName}</p>
+              <p>{date?.now}</p>
             </div>
-            <span className={channel.progress_bar}>
-              <Progress progress={chInfo.progress} />
-            </span>
-            <div className={channel.broadcast_time}>
-              <p>{dayjs(date).subtract(1, 'h').format('HH:mm')}</p>
-              <p>{dayjs(date).add(1, 'h').format('HH:mm')}</p>
+            <div className={channel.progress_info}>
+              <div className={channel.broadcast_name}>
+                <p>{chInfo.broadcast}</p>
+              </div>
+              <span className={channel.progress_bar}>
+                <Progress progress={chInfo.progress} />
+              </span>
+              <div className={channel.broadcast_time}>
+                <p>{date?.before}</p>
+                <p>{date?.after}</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
       <div className={channel.channel_wartermark}>
         <h1>{beforeChInfo ? beforeChInfo.chName : chInfo.chName}</h1>
       </div>
