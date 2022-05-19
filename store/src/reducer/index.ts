@@ -1,9 +1,9 @@
 import { AnyAction, combineReducers } from '@reduxjs/toolkit'
 import { HYDRATE } from 'next-redux-wrapper'
-import channel, { RemoteType } from './src/remote.reducer'
+import channel, { RemoteStateType } from './src/remote.reducer'
 
 export type RootState = {
-  channel: RemoteType
+  channel: RemoteStateType
 }
 
 const rootReducer = (state: RootState | undefined, action: AnyAction) => {
