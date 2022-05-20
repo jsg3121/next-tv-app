@@ -30,7 +30,7 @@ const ArrowBtn: React.FC<ArrowBtnProps> = (props) => {
   )
 
   const handleClickOK = React.useCallback(() => {
-    dispatch(Actions.remote.showBtnInfo(true))
+    dispatch(Actions.remote.okBtn(true))
   }, [dispatch])
 
   return (

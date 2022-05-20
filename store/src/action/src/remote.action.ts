@@ -22,10 +22,6 @@ export const refreshChannel = createAction<number, '@@CHANNEL/REFRESH'>(
   '@@CHANNEL/REFRESH'
 )
 
-export const showBtnInfo = createAction<boolean, '@@CHANNEL/BTNINFO'>(
-  '@@CHANNEL/BTNINFO'
-)
-
 // 전원 끄고 키기
 export const powerOnOff = createAction<void, '@@CHANNEL/POWER_ON_OFF'>(
   '@@CHANNEL/POWER_ON_OFF'
@@ -51,3 +47,12 @@ export const changeChannel = createAction<
 export const arrowBtn = createAction<Arrow, '@@CHANNEL/ARROW'>(
   '@@CHANNEL/ARROW'
 )
+
+// OK 버튼
+export const okBtn = createAction<boolean, '@@CHANNEL/OK'>('@@CHANNEL/OK')
+
+// 채널 정보 사라질 때 페이지 체널정보로 복구
+export const resetChannelInfo = createAction<
+  void,
+  '@@CHANNEL/RESET_CHANNEL_INFO'
+>('@@CHANNEL/RESET_CHANNEL_INFO')

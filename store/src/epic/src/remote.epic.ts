@@ -29,10 +29,11 @@ export const epicChannelInfoShow: Epic<Action, Action> = (action$, store$) => {
  * @param store$
  * @returns
  */
-export const epicChannelInfoHide: Epic<Action, Action> = (action$, _) => {
+export const epicChannelInfoHide: Epic<Action, Action> = (action$, store$) => {
   return action$.pipe(
     ofType('@@CHANNEL/INFO_SHOW'),
-    debounceTime(2000),
+    debounceTime(3000),
+    filter(() => store$.value.channel.btn_show === true),
     map(() => {
       return {
         type: '@@CHANNEL/INFO_HIDE',
@@ -48,14 +49,27 @@ export const epicChannelInfoHide: Epic<Action, Action> = (action$, _) => {
  * @param store$
  * @returns
  */
-export const epicArrowClickShow: Epic<Action, Action> = (action$, _) => {
+export const epicArrowClickShow: Epic<Action, Action> = (action$, store$) => {
   return action$.pipe(
-    ofType('@@CHANNEL/ARROW'),
-    debounceTime(2000),
+    ofType('@@CHANNEL/ARROW', '@@CHANNEL/OK'),
+    debounceTime(3000),
+    filter(() => store$.value.channel.btn_show === true),
     map(() => {
       return {
         type: '@@CHANNEL/INFO_HIDE',
       }
+    })
+  )
+}
+
+export const epicChannelReset: Epic<Action, Action> = (action$, store$) => {
+  return action$.pipe(
+    ofType('@@CHANNEL/INFO_HIDE'),
+    filter(
+      () => store$.value.channel.beforeChInfo !== store$.value.channel.chInfo
+    ),
+    map(() => {
+      return { type: '@@CHANNEL/RESET_CHANNEL_INFO' }
     })
   )
 }

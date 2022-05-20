@@ -13,7 +13,7 @@ export type RemoteStateType = {
   power: boolean
   chShow: boolean
   btn_show: boolean
-  beforeChInfo?: {
+  beforeChInfo: {
     chNum: number
     chName: string
     progress: number
@@ -24,15 +24,21 @@ export type RemoteStateType = {
 
 const channelState: RemoteStateType = {
   chInfo: {
-    broadcast: '',
-    chName: 'Intro',
     chNum: 1,
+    chName: 'Intro',
+    broadcast: '',
     progress: 0,
   },
   power: true,
   chShow: true,
   btn_show: false,
   openning: false,
+  beforeChInfo: {
+    chNum: 0,
+    chName: '',
+    progress: 0,
+    broadcast: '',
+  },
 }
 
 const chList = ['Intro', 'About', 'Project', 'Contact']
@@ -56,38 +62,14 @@ const remoteReducer = createReducer<RemoteStateType>(
           draft.chInfo.progress = progress[payload.chNum - 1]
         })
       })
+      // info : 페이지 렌더링시 채널정보 저장 ↓↓
       .addCase(remoteActions.refreshChannel, (store, { payload }) => {
         return produce(store, (draft) => {
           draft.chInfo.chNum = payload
           draft.chInfo.chName = chList[payload - 1]
+          draft.beforeChInfo = store.chInfo
         })
       })
-      .addCase(remoteActions.showBtnInfo, (store, { payload }) => {
-        return produce(store, (draft) => {
-          if (store.chShow && store.btn_show) {
-            draft.btn_show === false
-            draft.chShow === false
-          }
-
-          if (store.btn_show === false) {
-            draft.btn_show = payload
-          }
-
-          if (store.btn_show === true) {
-            if (store.beforeChInfo) {
-              if (store.beforeChInfo.chNum !== store.chInfo.chNum) {
-                Router.push(`/ch/${draft.chInfo.chName.toLowerCase()}`)
-                draft.beforeChInfo = undefined
-              } else if (store.beforeChInfo.chNum === store.chInfo.chNum) {
-                draft.btn_show = false
-              }
-            } else if (!store.beforeChInfo) {
-              draft.btn_show = false
-            }
-          }
-        })
-      })
-
       // info : 전원버튼 기능 ↓↓
       .addCase(remoteActions.powerOnOff, (store, _) => {
         return produce(store, (draft) => {
@@ -141,6 +123,27 @@ const remoteReducer = createReducer<RemoteStateType>(
           draft.chInfo.chName = chList[draft.chInfo.chNum - 1]
           draft.chInfo.progress = progress[draft.chInfo.chNum - 1]
           draft.chInfo.broadcast = broadcast[draft.chInfo.chNum - 1]
+        })
+      })
+      // info : OK 버튼 이벤트 ↓↓
+      .addCase(remoteActions.okBtn, (store) => {
+        return produce(store, (draft) => {
+          if (!store.btn_show) draft.btn_show = true
+          if (store.btn_show) {
+            if (store.beforeChInfo.chNum !== store.chInfo.chNum) {
+              Router.push(`/ch/${draft.chInfo.chName.toLowerCase()}`)
+            }
+            if (store.beforeChInfo.chNum === store.chInfo.chNum) {
+              draft.btn_show = false
+              draft.chShow = false
+            }
+          }
+        })
+      })
+      // info : 화살표 버튼 이벤트 ↓↓
+      .addCase(remoteActions.resetChannelInfo, (store) => {
+        return produce(store, (draft) => {
+          draft.chInfo = store.beforeChInfo
         })
       })
   }
