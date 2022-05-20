@@ -1,23 +1,21 @@
 import isEqual from 'fast-deep-equal'
 import React from 'react'
-import { Actions, useDispatch, useSelector } from 'store'
 import remote from 'styles/remote.module.scss'
 
-interface ChannelBtnProps {}
+interface ChannelBtnProps {
+  onClickUp: () => void
+  onClickDown: () => void
+}
 
 const ChannelBtn: React.FC<ChannelBtnProps> = (props) => {
-  const {} = props
-
-  const { chInfo } = useSelector((props) => props.channel)
-  const dispatch = useDispatch()
+  const { onClickUp, onClickDown } = props
 
   const handleClickChUp = React.useCallback(() => {
-    if (chInfo.chNum < 4) dispatch(Actions.remote.changeChannel('up'))
-  }, [dispatch, chInfo.chNum])
-
+    onClickUp()
+  }, [])
   const handleClickChDown = React.useCallback(() => {
-    if (chInfo.chNum > 1) dispatch(Actions.remote.changeChannel('down'))
-  }, [dispatch, chInfo.chNum])
+    onClickDown()
+  }, [])
 
   return (
     <div className={remote.channel_btn_container}>

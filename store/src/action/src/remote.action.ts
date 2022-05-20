@@ -17,11 +17,6 @@ export const channelSet = createAction<ChannelSetInfo, '@@CHANNEL/CHANNELSET'>(
   '@@CHANNEL/CHANNELSET'
 )
 
-// 채널 변경
-export const changeChannel = createAction<ChannelType, '@@CHANNEL/NUMBER'>(
-  '@@CHANNEL/NUMBER'
-)
-
 // 새로고침시 적용되는 채널 정보
 export const refreshChannel = createAction<number, '@@CHANNEL/REFRESH'>(
   '@@CHANNEL/REFRESH'
@@ -49,3 +44,9 @@ export const channelInfoShow = createAction<void, '@@CHANNEL/INFO_SHOW'>(
 export const channelInfoHide = createAction<void, '@@CHANNEL/INFO_HIDE'>(
   '@@CHANNEL/INFO_HIDE'
 )
+
+// 채널 변경
+export const changeChannel = createAction<
+  ChannelType,
+  '@@CHANNEL/CHANE_BUTTON'
+>('@@CHANNEL/CHANE_BUTTON')

@@ -56,25 +56,12 @@ const remoteReducer = createReducer<RemoteStateType>(
           draft.chInfo.progress = progress[payload.chNum - 1]
         })
       })
-      .addCase(remoteActions.changeChannel, (store, { payload }) => {
-        return produce(store, (draft) => {
-          if (payload === 'up') {
-            draft.chInfo.chNum += 1
-          }
-          if (payload === 'down') {
-            draft.chInfo.chNum -= 1
-          }
-          draft.chInfo.chName = chList[draft.chInfo.chNum - 1]
-          Router.push(`/ch/${draft.chInfo.chName.toLowerCase()}`)
-        })
-      })
       .addCase(remoteActions.refreshChannel, (store, { payload }) => {
         return produce(store, (draft) => {
           draft.chInfo.chNum = payload
           draft.chInfo.chName = chList[payload - 1]
         })
       })
-
       .addCase(remoteActions.showBtnInfo, (store, { payload }) => {
         return produce(store, (draft) => {
           if (store.chShow && store.btn_show) {
@@ -129,21 +116,37 @@ const remoteReducer = createReducer<RemoteStateType>(
           draft.chInfo.broadcast = broadcast[draft.chInfo.chNum - 1]
         })
       })
+      // info : 전원버튼 기능 ↓↓
       .addCase(remoteActions.powerOnOff, (store, _) => {
         return produce(store, (draft) => {
           draft.power = !store.power
         })
       })
+      // info : 채널 정보 표시 ↓↓
       .addCase(remoteActions.channelInfoShow, (store, _) => {
         return produce(store, (draft) => {
           draft.chShow = true
           draft.btn_show = true
         })
       })
+      // info : 채널 정보 표시 해제 ↓↓
       .addCase(remoteActions.channelInfoHide, (store, _) => {
         return produce(store, (draft) => {
           draft.chShow = false
           draft.btn_show = false
+        })
+      })
+      // info : 채널 변경 ↓↓
+      .addCase(remoteActions.changeChannel, (store, { payload }) => {
+        return produce(store, (draft) => {
+          if (payload === 'up') {
+            draft.chInfo.chNum += 1
+          }
+          if (payload === 'down') {
+            draft.chInfo.chNum -= 1
+          }
+          draft.chInfo.chName = chList[draft.chInfo.chNum - 1]
+          Router.push(`/ch/${draft.chInfo.chName.toLowerCase()}`)
         })
       })
   }

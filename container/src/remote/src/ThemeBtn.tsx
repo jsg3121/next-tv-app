@@ -21,7 +21,7 @@ const ThemeBtn: React.FC<ThemeBtnProps> = (props) => {
             src="/theme_light.svg"
             layout="fill"
             alt="icon_theme"
-            priority
+            loading="lazy"
           />
         </i>
         <i>
