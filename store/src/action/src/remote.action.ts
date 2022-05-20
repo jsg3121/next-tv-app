@@ -41,7 +41,7 @@ export const powerOnOff = createAction<void, '@@CHANNEL/POWER_ON_OFF'>(
 )
 
 // 전원 채널 정보 표시
-export const channelInfoShow = createAction<boolean, '@@CHANNEL/INFO_SHOW'>(
+export const channelInfoShow = createAction<void, '@@CHANNEL/INFO_SHOW'>(
   '@@CHANNEL/INFO_SHOW'
 )
 
