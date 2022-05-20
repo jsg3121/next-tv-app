@@ -1,17 +1,17 @@
 import isEqual from 'fast-deep-equal'
 import React from 'react'
-import { Actions, useDispatch, useSelector } from 'store'
+import { Actions, useDispatch } from 'store'
 import remote from 'styles/remote.module.scss'
 
 interface ArrowBtnProps {
   onMouseDown: () => void
   onMouseUp: () => void
+  onClick: (arrow: 'up' | 'down') => void
 }
 
 const ArrowBtn: React.FC<ArrowBtnProps> = (props) => {
-  const { onMouseDown, onMouseUp } = props
+  const { onMouseDown, onMouseUp, onClick } = props
 
-  const { chInfo } = useSelector((props) => props.channel)
   const dispatch = useDispatch()
 
   const handleMouseDown = React.useCallback(() => {
@@ -23,23 +23,10 @@ const ArrowBtn: React.FC<ArrowBtnProps> = (props) => {
   }, [])
 
   const handleClickArrow = React.useCallback(
-    (val: 'up' | 'left' | 'right' | 'down') => () => {
-      switch (val) {
-        case 'up':
-          if (chInfo.chNum < 4) dispatch(Actions.remote.channelBtnArrow(val))
-          break
-        case 'down':
-          if (chInfo.chNum > 1) dispatch(Actions.remote.channelBtnArrow(val))
-          break
-        case 'left':
-          // if (chInfo.chNum < 4) dispatch(Actions.remote.channelBtnArrow(val))
-          break
-        case 'right':
-          // if (chInfo.chNum < 4) dispatch(Actions.remote.channelBtnArrow(val))
-          break
-      }
+    (arrow: 'up' | 'down') => () => {
+      onClick(arrow)
     },
-    [dispatch, chInfo.chNum]
+    []
   )
 
   const handleClickOK = React.useCallback(() => {
@@ -54,21 +41,13 @@ const ArrowBtn: React.FC<ArrowBtnProps> = (props) => {
           onMouseUp={handleMouseUp}
           onClick={handleClickArrow('up')}
         />
-        <li
-          onMouseDown={handleMouseDown}
-          onMouseUp={handleMouseUp}
-          onClick={handleClickArrow('right')}
-        />
+        <li onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} />
         <li
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}
           onClick={handleClickArrow('down')}
         />
-        <li
-          onMouseDown={handleMouseDown}
-          onMouseUp={handleMouseUp}
-          onClick={handleClickArrow('left')}
-        />
+        <li onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} />
         <li
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}

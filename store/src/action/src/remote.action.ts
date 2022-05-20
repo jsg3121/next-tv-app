@@ -26,10 +26,6 @@ export const showBtnInfo = createAction<boolean, '@@CHANNEL/BTNINFO'>(
   '@@CHANNEL/BTNINFO'
 )
 
-export const channelBtnArrow = createAction<Arrow, '@@CHANNEL/ARROW'>(
-  '@@CHANNEL/ARROW'
-)
-
 // 전원 끄고 키기
 export const powerOnOff = createAction<void, '@@CHANNEL/POWER_ON_OFF'>(
   '@@CHANNEL/POWER_ON_OFF'
@@ -50,3 +46,8 @@ export const changeChannel = createAction<
   ChannelType,
   '@@CHANNEL/CHANE_BUTTON'
 >('@@CHANNEL/CHANE_BUTTON')
+
+// 화살표 버튼 채널 정보 표시
+export const arrowBtn = createAction<Arrow, '@@CHANNEL/ARROW'>(
+  '@@CHANNEL/ARROW'
+)

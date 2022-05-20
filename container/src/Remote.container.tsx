@@ -2,7 +2,7 @@ import { ChannelBtn } from 'components'
 import isEqual from 'fast-deep-equal'
 import Router, { useRouter } from 'next/router'
 import React from 'react'
-import { Actions, useDispatch } from 'store'
+import { Actions, useDispatch, useSelector } from 'store'
 import styled from 'styled-components'
 import remote from 'styles/remote.module.scss'
 import { ArrowBtn, PowerBtn, ThemeBtn } from './remote'
@@ -24,6 +24,7 @@ const Lights = styled.div`
 const Remote: React.FC = () => {
   const activeRef = React.useRef<HTMLDivElement>(null)
   const [isShow, setIsShow] = React.useState<boolean>(true)
+  console.log('Asdf')
 
   const router = useRouter()
 
@@ -53,6 +54,17 @@ const Remote: React.FC = () => {
     }
   }, [dispatch])
 
+  const handleClickChShow = React.useCallback((val: 'up' | 'down') => {
+    switch (val) {
+      case 'up':
+        dispatch(Actions.remote.arrowBtn(val))
+        break
+      case 'down':
+        dispatch(Actions.remote.arrowBtn(val))
+        break
+    }
+  }, [])
+
   React.useEffect(() => {
     if (router.pathname === '/ch/intro') {
       const timeOut = setTimeout(() => {
@@ -71,22 +83,24 @@ const Remote: React.FC = () => {
   return (
     <>
       {isShow && (
-        <>
-          <div className={remote.container}>
-            <div className={remote.controller_container}>
-              <PowerBtn />
-              <Lights ref={activeRef}>
-                <i></i>
-              </Lights>
-            </div>
-            <ArrowBtn onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} />
-            <ThemeBtn />
-            <ChannelBtn
-              onClickUp={handleClickChUp}
-              onClickDown={handleClickChDown}
-            />
+        <div className={remote.container}>
+          <div className={remote.controller_container}>
+            <PowerBtn />
+            <Lights ref={activeRef}>
+              <i></i>
+            </Lights>
           </div>
-        </>
+          <ThemeBtn />
+          <ArrowBtn
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
+            onClick={handleClickChShow}
+          />
+          <ChannelBtn
+            onClickUp={handleClickChUp}
+            onClickDown={handleClickChDown}
+          />
+        </div>
       )}
     </>
   )

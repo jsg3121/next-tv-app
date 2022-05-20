@@ -87,35 +87,7 @@ const remoteReducer = createReducer<RemoteStateType>(
           }
         })
       })
-      .addCase(remoteActions.channelBtnArrow, (store, { payload }) => {
-        return produce(store, (draft) => {
-          if (draft.btn_show === false) {
-            draft.beforeChInfo = store.chInfo
-            draft.btn_show = true
-          }
 
-          if (draft.btn_show === true && draft.beforeChInfo === undefined) {
-            draft.beforeChInfo = store.chInfo
-          }
-
-          switch (payload) {
-            case 'up':
-              draft.chInfo.chNum += 1
-              break
-            case 'down':
-              draft.chInfo.chNum -= 1
-              break
-            case 'right':
-              break
-            case 'left':
-              break
-          }
-
-          draft.chInfo.chName = chList[draft.chInfo.chNum - 1]
-          draft.chInfo.progress = progress[draft.chInfo.chNum - 1]
-          draft.chInfo.broadcast = broadcast[draft.chInfo.chNum - 1]
-        })
-      })
       // info : 전원버튼 기능 ↓↓
       .addCase(remoteActions.powerOnOff, (store, _) => {
         return produce(store, (draft) => {
@@ -147,6 +119,28 @@ const remoteReducer = createReducer<RemoteStateType>(
           }
           draft.chInfo.chName = chList[draft.chInfo.chNum - 1]
           Router.push(`/ch/${draft.chInfo.chName.toLowerCase()}`)
+        })
+      })
+      // info : 화살표 버튼 이벤트 ↓↓
+      .addCase(remoteActions.arrowBtn, (store, { payload }) => {
+        return produce(store, (draft) => {
+          switch (payload) {
+            case 'up':
+              if (store.chInfo.chNum < 4) draft.chInfo.chNum += 1
+              break
+            case 'down':
+              if (store.chInfo.chNum > 1) draft.chInfo.chNum -= 1
+              break
+            case 'right':
+              break
+            case 'left':
+              break
+          }
+
+          if (!store.btn_show) draft.btn_show = true
+          draft.chInfo.chName = chList[draft.chInfo.chNum - 1]
+          draft.chInfo.progress = progress[draft.chInfo.chNum - 1]
+          draft.chInfo.broadcast = broadcast[draft.chInfo.chNum - 1]
         })
       })
   }
