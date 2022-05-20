@@ -28,13 +28,7 @@ const Channel: React.FC = () => {
   } = useSelector(({ channel }) => channel)
 
   React.useEffect(() => {
-    dispatch(Actions.remote.channelInfoShow(true))
-
-    const timeOut = setTimeout(() => {
-      dispatch(Actions.remote.channelInfoShow(false))
-    }, 2000)
-
-    return () => clearTimeout(timeOut)
+    dispatch(Actions.remote.channelInfoShow())
   }, [dispatch])
 
   React.useEffect(() => {

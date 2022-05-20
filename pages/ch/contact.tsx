@@ -64,6 +64,8 @@ const Contact: NextPage = () => {
                 <Text>Swr</Text>
                 <Text>Dayjs</Text>
                 <Text>Immer</Text>
+                <Text>Rxjs</Text>
+                <Text>Redux-Observable</Text>
               </div>
             </li>
             <br />

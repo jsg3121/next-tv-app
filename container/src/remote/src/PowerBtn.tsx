@@ -8,24 +8,11 @@ interface PowerBtnProps {}
 const PowerBtn: React.FC<PowerBtnProps> = (props) => {
   const {} = props
 
-  const { power } = useSelector((props) => props.channel)
   const dispatch = useDispatch()
 
   const handleClickPower = React.useCallback(() => {
-    dispatch(Actions.remote.powerOnOff(!power))
-    if (!power) {
-      dispatch(Actions.remote.channelInfoShow(true))
-
-      const timeOut = setTimeout(() => {
-        dispatch(Actions.remote.channelInfoShow(false))
-      }, 2000)
-      return () => clearTimeout(timeOut)
-    }
-
-    if (power) {
-      dispatch(Actions.remote.channelInfoShow(false))
-    }
-  }, [dispatch, power])
+    dispatch(Actions.remote.powerOnOff())
+  }, [dispatch])
 
   return (
     <div className={remote.btn_power} onClick={handleClickPower}>
