@@ -16,7 +16,6 @@
 }
 
 .container {
-  width: 100%;
   height: 100%;
   position: relative;
   display: flex;
@@ -32,28 +31,53 @@
     color: $color-default-bright5;
   }
 
+  h3 {
+    position: relative;
+
+    &::after {
+      content: ':';
+      position: absolute;
+      right: 0;
+      height: 100%;
+      line-height: 0.8;
+    }
+  }
+
+  a {
+    text-decoration: underline;
+    text-underline-position: under;
+  }
+
   & > div > h1 {
     display: block;
     position: relative;
     z-index: 15;
+  }
+
+  @media screen and (max-width: 430px) {
+    align-items: flex-start;
   }
 }
 
 .profile_info {
   display: flex;
   align-items: flex-end;
-  height: 16.666rem;
   width: 100%;
-  margin-bottom: 2.222rem;
+  margin-bottom: 2rem;
   position: relative;
   z-index: 10;
+  flex-wrap: wrap;
+
+  @media screen and (max-width: 430px) {
+    margin-bottom: 1.5rem;
+  }
 }
 
 .profile {
-  width: 16.666rem;
-  height: 16.666rem;
+  width: 16.5rem;
+  height: 16.5rem;
   display: block;
-  margin-right: 1.666rem;
+  margin-right: 1.4rem;
   position: relative;
   z-index: 15;
 
@@ -63,12 +87,21 @@
     box-shadow: 0.388rem 0.388rem 0.722rem -0.166rem #1f1f1f,
       inset -0.333rem -0.333rem 0.5rem -0.166rem #0000007d;
     border-radius: 0.555555555555556rem;
+    position: relative;
+  }
+
+  @media screen and (min-width: 431px) and (max-width: 679px) {
+    width: 13rem;
+    height: 13rem;
+  }
+
+  @media screen and (max-width: 430px) {
+    margin-top: 0.5rem;
   }
 }
 
 .info_list {
-  width: calc(100% - 18.332rem);
-  position: absolute;
+  width: calc(100% - 17.9rem);
   right: 0;
 
   li {
@@ -76,9 +109,27 @@
     align-items: center;
     margin: 0.555rem 0;
 
-    h3 {
+    h3,
+    h2 {
       width: 6rem;
+      margin-right: 0.5rem;
     }
+
+    @media screen and (min-width: 431px) and (max-width: 679px) {
+      margin: 0.3rem 0;
+    }
+
+    @media screen and (max-width: 430px) {
+      margin: 0;
+    }
+  }
+
+  @media screen and (min-width: 431px) and (max-width: 679px) {
+    width: calc(100% - 14.4rem);
+  }
+
+  @media screen and (max-width: 430px) {
+    width: 100%;
   }
 }
 
