@@ -5,10 +5,20 @@ import remote from 'styles/remote.module.scss'
 interface ChannelBtnProps {
   onClickUp: () => void
   onClickDown: () => void
+  onMouseDown: () => void
+  onMouseUp: () => void
 }
 
 const ChannelBtn: React.FC<ChannelBtnProps> = (props) => {
-  const { onClickUp, onClickDown } = props
+  const { onMouseDown, onMouseUp, onClickUp, onClickDown } = props
+
+  const handleMouseDown = React.useCallback(() => {
+    onMouseDown()
+  }, [])
+
+  const handleMouseUp = React.useCallback(() => {
+    onMouseUp()
+  }, [])
 
   const handleClickChUp = React.useCallback(() => {
     onClickUp()
@@ -20,13 +30,29 @@ const ChannelBtn: React.FC<ChannelBtnProps> = (props) => {
   return (
     <div className={remote.channel_btn_container}>
       <div>
-        <i>volum up</i>
-        <i>volum up</i>
+        <i onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>
+          volum up
+        </i>
+        <i onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>
+          volum up
+        </i>
         <p>VOL</p>
       </div>
       <div>
-        <i onClick={handleClickChUp}>channel up</i>
-        <i onClick={handleClickChDown}>channel down</i>
+        <i
+          onClick={handleClickChUp}
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
+        >
+          channel up
+        </i>
+        <i
+          onClick={handleClickChDown}
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
+        >
+          channel down
+        </i>
         <p>CH</p>
       </div>
     </div>

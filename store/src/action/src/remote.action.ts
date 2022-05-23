@@ -7,19 +7,9 @@ type ChannelSetInfo = {
 type ChannelType = 'up' | 'down'
 type Arrow = 'up' | 'left' | 'right' | 'down'
 
-// intro 오프닝
-export const channelOpenning = createAction<void, '@@CHANNEL/OPENNING'>(
-  '@@CHANNEL/OPENNING'
-)
-
 // 새로고침시 적용되는 채널 정보
 export const channelSet = createAction<ChannelSetInfo, '@@CHANNEL/CHANNELSET'>(
   '@@CHANNEL/CHANNELSET'
-)
-
-// 새로고침시 적용되는 채널 정보
-export const refreshChannel = createAction<number, '@@CHANNEL/REFRESH'>(
-  '@@CHANNEL/REFRESH'
 )
 
 // 전원 끄고 키기

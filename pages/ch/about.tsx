@@ -38,7 +38,6 @@ const Introduce: NextPage = () => {
 
   React.useEffect(() => {
     dispatch(Actions.remote.channelSet(chSet))
-    dispatch(Actions.remote.refreshChannel(2))
   }, [dispatch])
 
   return (

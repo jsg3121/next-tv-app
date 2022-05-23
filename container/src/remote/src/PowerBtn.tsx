@@ -1,14 +1,25 @@
 import isEqual from 'fast-deep-equal'
 import React from 'react'
-import { Actions, useDispatch, useSelector } from 'store'
+import { Actions, useDispatch } from 'store'
 import remote from 'styles/remote.module.scss'
 
-interface PowerBtnProps {}
+interface PowerBtnProps {
+  onMouseDown: () => void
+  onMouseUp: () => void
+}
 
 const PowerBtn: React.FC<PowerBtnProps> = (props) => {
-  const {} = props
+  const { onMouseDown, onMouseUp } = props
 
   const dispatch = useDispatch()
+
+  const handleMouseDown = React.useCallback(() => {
+    onMouseDown()
+  }, [])
+
+  const handleMouseUp = React.useCallback(() => {
+    onMouseUp()
+  }, [])
 
   const handleClickPower = React.useCallback(() => {
     dispatch(Actions.remote.powerOnOff())
@@ -16,7 +27,11 @@ const PowerBtn: React.FC<PowerBtnProps> = (props) => {
 
   return (
     <div className={remote.btn_power} onClick={handleClickPower}>
-      <button area-label="power_btn">
+      <button
+        area-label="power_btn"
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+      >
         power button
         <i className="power_icon"></i>
       </button>

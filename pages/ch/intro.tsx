@@ -32,7 +32,6 @@ const Intro: NextPage = () => {
         turnOnOff(mainRef.current)
         const timeSet = setInterval(() => {
           setIsShow(true)
-          dispatch(Actions.remote.channelOpenning())
         }, 1400)
 
         return () => {
@@ -48,7 +47,6 @@ const Intro: NextPage = () => {
   }, [isOpen, dispatch])
 
   React.useEffect(() => {
-    dispatch(Actions.remote.refreshChannel(1))
     dispatch(Actions.remote.channelSet(chSet))
   }, [dispatch])
 

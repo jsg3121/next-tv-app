@@ -49,24 +49,13 @@ const remoteReducer = createReducer<RemoteStateType>(
   channelState,
   (builder) => {
     builder
-      .addCase(remoteActions.channelOpenning, (store, _) => {
-        return produce(store, (draft) => {
-          draft.openning = true
-        })
-      })
+      // info : 페이지 집입시 채널 정보 저장 및 변경전 original 채널 정보 저장 ↓↓
       .addCase(remoteActions.channelSet, (store, { payload }) => {
         return produce(store, (draft) => {
           draft.chInfo.broadcast = broadcast[payload.chNum - 1]
           draft.chInfo.chName = payload.chName
           draft.chInfo.chNum = payload.chNum
           draft.chInfo.progress = progress[payload.chNum - 1]
-        })
-      })
-      // info : 페이지 렌더링시 채널정보 저장 ↓↓
-      .addCase(remoteActions.refreshChannel, (store, { payload }) => {
-        return produce(store, (draft) => {
-          draft.chInfo.chNum = payload
-          draft.chInfo.chName = chList[payload - 1]
           draft.beforeChInfo = store.chInfo
         })
       })
