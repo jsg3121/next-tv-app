@@ -39,8 +39,8 @@ const Channel: React.FC = () => {
     <section>
       {isShow && (
         <div className={channel.container}>
-          <Title depth={1}>00{chInfo.chNum}</Title>
-          <Title depth={2}>{chInfo.chName}</Title>
+          <Title depth={1}>00{beforeChInfo.chNum}</Title>
+          <Title depth={2}>{beforeChInfo.chName}</Title>
         </div>
       )}
       {(isShow || btn_show) && (
@@ -69,7 +69,7 @@ const Channel: React.FC = () => {
         </div>
       )}
       <div className={channel.channel_wartermark}>
-        <h1>{beforeChInfo ? beforeChInfo.chName : chInfo.chName}</h1>
+        <h1>{beforeChInfo.chName}</h1>
       </div>
     </section>
   )
