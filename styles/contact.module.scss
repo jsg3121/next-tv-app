@@ -38,7 +38,11 @@
   li {
     margin-bottom: 1.5rem;
 
-    &:nth-child(n + 3):nth-child(-n + 5) {
+    &:first-child {
+      margin-bottom: 2.5rem;
+    }
+
+    &:nth-child(n + 2):nth-child(-n + 4) {
       width: 30%;
       display: flex;
       align-items: center;
@@ -46,7 +50,7 @@
       margin: 0 auto 1.5rem;
     }
 
-    &:nth-child(n + 7):nth-child(-n + 8) {
+    &:nth-child(n + 5):nth-child(-n + 6) {
       & > div {
         width: 30%;
         display: flex;

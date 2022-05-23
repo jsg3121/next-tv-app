@@ -14,18 +14,18 @@ const ChannelBtn: React.FC<ChannelBtnProps> = (props) => {
 
   const handleMouseDown = React.useCallback(() => {
     onMouseDown()
-  }, [])
+  }, [onMouseDown])
 
   const handleMouseUp = React.useCallback(() => {
     onMouseUp()
-  }, [])
+  }, [onMouseUp])
 
   const handleClickChUp = React.useCallback(() => {
     onClickUp()
-  }, [])
+  }, [onClickUp])
   const handleClickChDown = React.useCallback(() => {
     onClickDown()
-  }, [])
+  }, [onClickDown])
 
   return (
     <div className={remote.channel_btn_container}>
