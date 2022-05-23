@@ -72,10 +72,8 @@ const IconContainer = styled((props) => {
           <figure>
             <Image
               src={backgroundImage}
-              width={width}
-              height={height}
               alt="Devfolio"
-              layout="responsive"
+              layout="fill"
               priority
             />
           </figure>
@@ -109,6 +107,11 @@ const IconContainer = styled((props) => {
     filter: ${(props) => {
       return props.blur ? `blur(${props.blur}px)` : ''
     }};
+  }
+
+  @media screen and (max-width: 679px) {
+    width: 6.5rem;
+    height: 6.5rem;
   }
 `
 
