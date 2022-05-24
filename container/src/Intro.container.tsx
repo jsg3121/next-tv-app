@@ -12,8 +12,8 @@ const IntorContainer: React.FC = () => {
         translateX="-45"
         translateY="-45"
         backgroundImage="/storybook.svg"
-        width={'8.333rem'}
-        height={'8.333rem'}
+        width={'8rem'}
+        height={'8rem'}
         zIndex={20}
         delay={1}
       />
@@ -23,8 +23,8 @@ const IntorContainer: React.FC = () => {
         translateX="-45"
         translateY="-45"
         backgroundImage="/prisma.svg"
-        width={'8.333rem'}
-        height={'8.333rem'}
+        width={'8rem'}
+        height={'8rem'}
         zIndex={20}
         delay={2.9}
       />
@@ -34,8 +34,8 @@ const IntorContainer: React.FC = () => {
         translateX="-45"
         translateY="-45"
         backgroundImage="/node.svg"
-        width={'8.333rem'}
-        height={'8.333rem'}
+        width={'8rem'}
+        height={'8rem'}
         zIndex={20}
         delay={3.75}
       />
@@ -45,8 +45,8 @@ const IntorContainer: React.FC = () => {
         translateX="-45"
         translateY="-45"
         backgroundImage="/javascript.svg"
-        width={'8.333rem'}
-        height={'8.333rem'}
+        width={'8rem'}
+        height={'8rem'}
         zIndex={20}
         delay={2}
       />
@@ -56,8 +56,8 @@ const IntorContainer: React.FC = () => {
         translateX="-45"
         translateY="-45"
         backgroundImage="/redux.svg"
-        width={'8.333rem'}
-        height={'8.333rem'}
+        width={'8rem'}
+        height={'8rem'}
         zIndex={20}
         delay={3.65}
       />
@@ -69,8 +69,8 @@ const IntorContainer: React.FC = () => {
         translateX="-30"
         translateY="-30"
         backgroundImage="/react.svg"
-        width={'8.333rem'}
-        height={'8.333rem'}
+        width={'8rem'}
+        height={'8rem'}
         blur={3}
         zIndex={10}
         delay={3.7}
@@ -81,8 +81,8 @@ const IntorContainer: React.FC = () => {
         translateX="-30"
         translateY="-30"
         backgroundImage="/vue.svg"
-        width={'8.333rem'}
-        height={'8.333rem'}
+        width={'8rem'}
+        height={'8rem'}
         blur={3}
         zIndex={10}
         delay={1.5}
@@ -93,8 +93,8 @@ const IntorContainer: React.FC = () => {
         translateX="-30"
         translateY="-30"
         backgroundImage="/html.svg"
-        width={'8.333rem'}
-        height={'8.333rem'}
+        width={'8rem'}
+        height={'8rem'}
         blur={3}
         zIndex={10}
         delay={3.2}
@@ -105,8 +105,8 @@ const IntorContainer: React.FC = () => {
         translateX="-30"
         translateY="-30"
         backgroundImage="/typescript.svg"
-        width={'8.333rem'}
-        height={'8.333rem'}
+        width={'8rem'}
+        height={'8rem'}
         blur={3}
         zIndex={10}
         delay={3.5}
@@ -117,8 +117,8 @@ const IntorContainer: React.FC = () => {
         translateX="-30"
         translateY="-30"
         backgroundImage="/graphql.svg"
-        width={'8.333rem'}
-        height={'8.333rem'}
+        width={'8rem'}
+        height={'8rem'}
         blur={3}
         zIndex={10}
         delay={2.6}
@@ -131,8 +131,8 @@ const IntorContainer: React.FC = () => {
         translateX="-15"
         translateY="-15"
         backgroundImage="/mysql.svg"
-        width={'8.333rem'}
-        height={'8.333rem'}
+        width={'8rem'}
+        height={'8rem'}
         blur={5}
         zIndex={5}
         delay={3.6}
@@ -167,8 +167,8 @@ const IntorContainer: React.FC = () => {
         translateX="-15"
         translateY="-15"
         backgroundImage="/css.svg"
-        width={'8.333rem'}
-        height={'8.333rem'}
+        width={'8rem'}
+        height={'8rem'}
         blur={5}
         zIndex={5}
         delay={3.4}

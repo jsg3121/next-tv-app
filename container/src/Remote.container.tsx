@@ -2,7 +2,7 @@ import { ChannelBtn } from 'components'
 import isEqual from 'fast-deep-equal'
 import Router, { useRouter } from 'next/router'
 import React from 'react'
-import { Actions, useDispatch, useSelector } from 'store'
+import { Actions, useDispatch } from 'store'
 import styled from 'styled-components'
 import remote from 'styles/remote.module.scss'
 import { ArrowBtn, PowerBtn, ThemeBtn } from './remote'
@@ -24,7 +24,6 @@ const Lights = styled.div`
 const Remote: React.FC = () => {
   const activeRef = React.useRef<HTMLDivElement>(null)
   const [isShow, setIsShow] = React.useState<boolean>(true)
-  console.log('Asdf')
 
   const router = useRouter()
 
@@ -85,7 +84,7 @@ const Remote: React.FC = () => {
       {isShow && (
         <div className={remote.container}>
           <div className={remote.controller_container}>
-            <PowerBtn />
+            <PowerBtn onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} />
             <Lights ref={activeRef}>
               <i></i>
             </Lights>
@@ -97,6 +96,8 @@ const Remote: React.FC = () => {
             onClick={handleClickChShow}
           />
           <ChannelBtn
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
             onClickUp={handleClickChUp}
             onClickDown={handleClickChDown}
           />

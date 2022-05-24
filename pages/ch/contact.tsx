@@ -16,7 +16,6 @@ const Contact: NextPage = () => {
   const dispatch = useDispatch()
 
   React.useEffect(() => {
-    dispatch(Actions.remote.refreshChannel(4))
     dispatch(Actions.remote.channelSet(chSet))
   }, [dispatch])
 
@@ -29,7 +28,6 @@ const Contact: NextPage = () => {
             <li>
               <Title depth={1}>Cast</Title>
             </li>
-            <br />
             <li>
               <Title depth={2}>기획</Title>
               <Text>장선규</Text>
@@ -42,7 +40,6 @@ const Contact: NextPage = () => {
               <Title depth={2}>개발</Title>
               <Text>장선규</Text>
             </li>
-            <br />
             <li>
               <Title depth={2}>Main Skills</Title>
               <div>
@@ -68,14 +65,13 @@ const Contact: NextPage = () => {
                 <Text>Redux-Observable</Text>
               </div>
             </li>
-            <br />
           </ul>
           <ul className={contact.contact_container}>
             <li>
               <Title depth={1}>Gmail</Title>
               <Link href="mailto:xodm95@gmail.com">xodm95@gmail.com</Link>
+              <br />
             </li>
-            <br />
             <li>
               <Title depth={1}>Git</Title>
               <Link href="https://github.com/jsg3121">
@@ -83,8 +79,8 @@ const Contact: NextPage = () => {
                   https://github.com/jsg3121
                 </a>
               </Link>
+              <br />
             </li>
-            <br />
             <li>
               <Title depth={3}>
                 Copyright 2022. Jangsungyu All resources cannot be copied

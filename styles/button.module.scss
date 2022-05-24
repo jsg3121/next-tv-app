@@ -83,15 +83,16 @@
     z-index: -1;
     border-radius: 0.555rem;
   }
+  @media screen and (hover: hover) and (pointer: fine) {
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0.277rem 0.222rem 0.333rem -0.166rem #706fa0,
+        inset -0.222rem -0.222rem 0.333rem -0.166rem #5e5c87;
+      border: 0;
 
-  &:hover {
-    transform: scale(1.05);
-    box-shadow: 0.277rem 0.222rem 0.333rem -0.166rem #706fa0,
-      inset -0.222rem -0.222rem 0.333rem -0.166rem #5e5c87;
-    border: 0;
-
-    &::after {
-      animation: 0.5s reverse both running easeInBounce;
+      &::after {
+        animation: 0.5s reverse both running easeInBounce;
+      }
     }
   }
 }
@@ -106,8 +107,11 @@
   font-size: 1rem;
   background-color: $color-default-bright3;
   color: $color-default-dark4;
-  &:hover {
-    background-color: $color-default-dark3;
-    color: #ffffff;
+
+  @media screen and (hover: hover) and (pointer: fine) {
+    &:hover {
+      background-color: $color-default-dark3;
+      color: #ffffff;
+    }
   }
 }

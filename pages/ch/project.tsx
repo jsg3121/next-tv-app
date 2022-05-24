@@ -25,7 +25,6 @@ const Project: NextPage = () => {
   })
 
   React.useEffect(() => {
-    dispatch(Actions.remote.refreshChannel(3))
     dispatch(Actions.remote.channelSet(chSet))
   }, [dispatch])
 

@@ -1,6 +1,5 @@
 import { Text, Title } from 'components'
 import isEqual from 'fast-deep-equal'
-import { gsap } from 'gsap'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -23,42 +22,38 @@ const About: React.FC = () => {
                   borderRadius: '0.555rem',
                   zIndex: '-1',
                 }}
+                objectFit="contain"
               />
             </figure>
           </picture>
           <ul className={about.info_list}>
             <li>
               <Title depth={3}>NAME</Title>
-              <Text>&nbsp;:&nbsp;장선규 (Jang Sungyu)</Text>
+              <Text>장선규 (Jang Sungyu)</Text>
             </li>
             <li>
               <Title depth={3}>BIRTH</Title>
-              <Text>&nbsp;:&nbsp;1995. 08. 09</Text>
+              <Text>1995. 08. 09</Text>
             </li>
             <li>
               <Title depth={3}>VELOG</Title>
               <Link href="https://velog.io/@jsg3121">
-                <a target="_blank">&nbsp;:&nbsp;https://velog.io/@jsg3121</a>
+                <a target="_blank">https://velog.io/@jsg3121</a>
               </Link>
             </li>
             <li>
               <Title depth={3}>WAKATIME</Title>
               <Link href="https://wakatime.com/@jsg3121">
-                <a target="_blank">
-                  &nbsp;:&nbsp;https://wakatime.com/@jsg3121
-                </a>
+                <a target="_blank">https://wakatime.com/@jsg3121</a>
               </Link>
             </li>
             <li>
               <Title depth={3}>CAREER</Title>
-              <Text>&nbsp;:&nbsp;Quber Web Developer ( 2019. 11 ~ )</Text>
+              <Text>Quber ( 2019. 11 ~ )</Text>
             </li>
             <li>
-              <Title depth={3}> </Title>
-              <Text>
-                &nbsp;&nbsp;&nbsp;Cresector Web Developer ( 2018. 06 ~ 2019. 07
-                )
-              </Text>
+              <Title depth={2}> </Title>
+              <Text>Cresector ( 2018. 06 ~ 2019. 07 )</Text>
             </li>
           </ul>
         </div>
