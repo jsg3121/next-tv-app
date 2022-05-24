@@ -22,8 +22,12 @@
     transform: scale(1.1);
   }
 
-  @media screen and (max-width: 679px) {
+  @media screen and(min-width: 420px) and (max-width: 679px) {
     right: 2rem;
+  }
+
+  @media screen and (max-width: 419px) {
+    right: 1rem;
   }
 }
 
