@@ -44,8 +44,10 @@
   &.active {
     transform: translateY(8rem);
 
-    &:hover {
-      transform: translateY(1rem);
+    @media screen and (hover: hover) and (pointer: fine) {
+      &:hover {
+        transform: translateY(1rem);
+      }
     }
   }
 }
@@ -73,15 +75,15 @@
     z-index: 120;
   }
 
-  &:hover {
-    &::after {
-      content: none;
-    }
-  }
+  @media screen and (hover: hover) and (pointer: fine) {
+    &:hover {
+      transform: scale(1.2);
+      z-index: 15;
 
-  &:hover {
-    transform: scale(1.2);
-    z-index: 15;
+      &::after {
+        content: none;
+      }
+    }
   }
 }
 
