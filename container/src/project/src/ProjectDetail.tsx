@@ -55,21 +55,9 @@ const Description = styled((props) => {
   const { children } = props
   return <div {...props}>{children}</div>
 })`
-  position: absolute;
-  right: ${(props) => {
-    const { position } = props
-    return position.right ? position.right : 'none'
-  }};
-  left: ${(props) => {
-    const { position } = props
-    return position.left ? position.left : 'none'
-  }};
-  top: ${(props) => {
-    const { position } = props
-    return position.top
-  }};
-  width: 28rem;
-  height: calc(100% - 10rem);
+  position: relative;
+  width: 24rem;
+  height: calc(100% - 14rem);
   background-color: rgba(0, 0, 0, 0.3);
   padding: 1rem 0 1rem 1rem;
 
@@ -104,46 +92,43 @@ const ProjectDetail: React.FC<ProjectDetailProps> = (props) => {
   const { detail, category } = props
   return (
     <article className={project.project_thumb}>
-      {detail.map((item, index) => {
-        const { thumbnail_image } = item
-        if (thumbnail_image.img) {
-          return (
-            <ThumnailImage
-              key={index}
-              width={thumbnail_image.width}
-              height={thumbnail_image.height}
-              top={thumbnail_image.top}
-              bottom={thumbnail_image.bottom}
-              left={thumbnail_image.left}
-              right={thumbnail_image.right}
-              zindex={thumbnail_image.zIndex}
-              backgroundcolor={item.backgroundColor}
-            >
-              <figure>
-                <Image
-                  src={thumbnail_image.img}
-                  alt="thumbnail"
-                  layout="fill"
-                  objectFit={
-                    thumbnail_image.objectFit
-                      ? thumbnail_image.objectFit
-                      : 'cover'
-                  }
-                  priority
-                />
-              </figure>
-            </ThumnailImage>
-          )
-        }
-        return
-      })}
+      <div className={project.thumnail}>
+        {detail.map((item, index) => {
+          const { thumbnail_image } = item
+          if (thumbnail_image.img) {
+            return (
+              <ThumnailImage
+                key={index}
+                width={thumbnail_image.width}
+                height={thumbnail_image.height}
+                top={thumbnail_image.top}
+                bottom={thumbnail_image.bottom}
+                left={thumbnail_image.left}
+                right={thumbnail_image.right}
+                zindex={thumbnail_image.zIndex}
+                backgroundcolor={item.backgroundColor}
+              >
+                <figure>
+                  <Image
+                    src={thumbnail_image.img}
+                    alt="thumbnail"
+                    layout="fill"
+                    objectFit={
+                      thumbnail_image.objectFit
+                        ? thumbnail_image.objectFit
+                        : 'cover'
+                    }
+                    priority
+                  />
+                </figure>
+              </ThumnailImage>
+            )
+          }
+          return
+        })}
+      </div>
       {category === 'ToyProject' && (
-        <Description
-          position={{
-            top: '3rem',
-            left: '3rem',
-          }}
-        >
+        <Description>
           <Title depth={1}>{category}</Title>
           <div>
             {detail.map((item, index: number) => {
@@ -193,12 +178,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = (props) => {
         </Description>
       )}
       {category !== 'ToyProject' && (
-        <Description
-          position={{
-            top: '3rem',
-            right: '3rem',
-          }}
-        >
+        <Description>
           <Title depth={1}>{category}</Title>
           <div>
             {detail.map((item, index: number) => {
