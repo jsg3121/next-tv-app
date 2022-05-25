@@ -43,31 +43,31 @@ const Channel: React.FC = () => {
           <Title depth={2}>{beforeChInfo.chName}</Title>
         </div>
       )}
-      {/* {(isShow || btn_show) && ( */}
-      <div className={channel.epg_container}>
-        <div className={channel.channel_number}>
-          <h1>00{chInfo.chNum}</h1>
-        </div>
-        <div className={channel.epg_progress}>
-          <div className={channel.ch_info}>
-            <p>{chInfo.chName}</p>
-            <p>{date?.now}</p>
+      {(isShow || btn_show) && (
+        <div className={channel.epg_container}>
+          <div className={channel.channel_number}>
+            <h1>00{chInfo.chNum}</h1>
           </div>
-          <div className={channel.progress_info}>
-            <div className={channel.broadcast_name}>
-              <p>{chInfo.broadcast}</p>
+          <div className={channel.epg_progress}>
+            <div className={channel.ch_info}>
+              <p>{chInfo.chName}</p>
+              <p>{date?.now}</p>
             </div>
-            <span className={channel.progress_bar}>
-              <Progress progress={chInfo.progress} />
-            </span>
-            <div className={channel.broadcast_time}>
-              <p>{date?.before}</p>
-              <p>{date?.after}</p>
+            <div className={channel.progress_info}>
+              <div className={channel.broadcast_name}>
+                <p>{chInfo.broadcast}</p>
+              </div>
+              <span className={channel.progress_bar}>
+                <Progress progress={chInfo.progress} />
+              </span>
+              <div className={channel.broadcast_time}>
+                <p>{date?.before}</p>
+                <p>{date?.after}</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      {/* )} */}
+      )}
       <div className={channel.channel_wartermark}>
         <h1>{beforeChInfo.chName}</h1>
       </div>
