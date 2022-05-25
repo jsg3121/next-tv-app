@@ -44,10 +44,8 @@
   &.active {
     transform: translateY(8rem);
 
-    @media screen and (hover: hover) and (pointer: fine) {
-      &:hover {
-        transform: translateY(1rem);
-      }
+    &:hover {
+      transform: translateY(1rem);
     }
   }
 }
