@@ -25,12 +25,22 @@
 }
 
 .project_thumb {
-  width: 100vw;
   height: 100vh;
-  position: absolute;
   top: 0;
   left: 0;
   z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0 2rem;
+
+  .thumnail {
+    position: relative;
+    right: 0;
+    width: 50rem;
+    height: calc(100% - 12rem);
+    margin-right: 1rem;
+  }
 }
 
 .contaianer_thumbnail {
@@ -44,10 +54,8 @@
   &.active {
     transform: translateY(8rem);
 
-    @media screen and (hover: hover) and (pointer: fine) {
-      &:hover {
-        transform: translateY(1rem);
-      }
+    &:hover {
+      transform: translateY(1rem);
     }
   }
 }
