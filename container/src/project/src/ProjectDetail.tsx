@@ -51,43 +51,6 @@ const ThumnailImage = styled((props) => {
   }
 `
 
-const Description = styled((props) => {
-  const { children } = props
-  return <div {...props}>{children}</div>
-})`
-  position: relative;
-  width: 24rem;
-  height: calc(100% - 14rem);
-  background-color: rgba(0, 0, 0, 0.3);
-  padding: 1rem 0 1rem 1rem;
-
-  & > div {
-    height: calc(100% - 1.5rem);
-    overflow: auto;
-    padding-right: 0.5rem;
-    margin-right: 0.5rem;
-
-    &::-webkit-scrollbar {
-      display: block;
-      width: 0.7rem;
-    }
-    &::-webkit-scrollbar-thumb {
-      background-color: rgba(0, 0, 0, 0.3);
-      border-radius: 10px;
-      background-clip: padding-box;
-      border: 2px solid transparent;
-    }
-    &::-webkit-scrollbar-track {
-      background-color: rgba(0, 0, 0, 0);
-    }
-  }
-
-  h1,
-  h2 {
-    color: #ffffff;
-  }
-`
-
 const ProjectDetail: React.FC<ProjectDetailProps> = (props) => {
   const { detail, category } = props
   return (
@@ -127,105 +90,54 @@ const ProjectDetail: React.FC<ProjectDetailProps> = (props) => {
           return
         })}
       </div>
-      {category === 'ToyProject' && (
-        <Description>
-          <Title depth={1}>{category}</Title>
-          <div>
-            {detail.map((item, index: number) => {
-              return (
-                <div key={index}>
-                  <ul className={project.description_info}>
+      <div className={project.description}>
+        <Title depth={1}>{category}</Title>
+        <div>
+          {detail.map((item, index: number) => {
+            return (
+              <div key={index}>
+                <ul className={project.description_info}>
+                  <li>
+                    <Title depth={2}>프로젝트 명 :&nbsp;</Title>
+                    <p>{item.name}</p>
+                  </li>
+                  <li className={project.info_skillList}>
+                    <Title depth={2}>주요 기술 :&nbsp;</Title>
+                    {item.skills.map((skills, index: number) => {
+                      return <p key={index}>{skills}</p>
+                    })}
+                  </li>
+                  <li>
+                    <Title depth={2}>기간 :&nbsp;</Title>
+                    <p>{item.date}</p>
+                  </li>
+                  {item.url && (
                     <li>
-                      <Title depth={2}>프로젝트 명 :&nbsp;</Title>
-                      <p>{item.name}</p>
+                      <Title depth={2}>url :&nbsp;</Title>
+                      <Link href={item.url}>
+                        <a target="_blank" rel="noopener">
+                          홈페이지 방문하기
+                        </a>
+                      </Link>
                     </li>
-                    <li className={project.info_skillList}>
-                      <Title depth={2}>주요 기술 :&nbsp;</Title>
-                      {item.skills.map((skills, index: number) => {
-                        return <p key={index}>{skills}</p>
-                      })}
-                    </li>
+                  )}
+                  {item.git && (
                     <li>
-                      <Title depth={2}>기간 :&nbsp;</Title>
-                      <p>{item.date}</p>
+                      <Title depth={2}>Github :&nbsp;</Title>
+                      <Link href={item.git}>
+                        <a target="_blank" rel="noopener">
+                          Git 방문하기
+                        </a>
+                      </Link>
                     </li>
-                    {item.url && (
-                      <li>
-                        <Title depth={2}>url :&nbsp;</Title>
-                        <Link href={item.url}>
-                          <a target="_blank" rel="noopener">
-                            홈페이지 방문하기
-                          </a>
-                        </Link>
-                      </li>
-                    )}
-                    {item.git && (
-                      <li>
-                        <Title depth={2}>Github :&nbsp;</Title>
-                        <Link href={item.git}>
-                          <a target="_blank" rel="noopener">
-                            Git 방문하기
-                          </a>
-                        </Link>
-                      </li>
-                    )}
-                  </ul>
-                  <hr />
-                </div>
-              )
-            })}
-          </div>
-        </Description>
-      )}
-      {category !== 'ToyProject' && (
-        <Description>
-          <Title depth={1}>{category}</Title>
-          <div>
-            {detail.map((item, index: number) => {
-              return (
-                <div key={index}>
-                  <ul className={project.description_info}>
-                    <li>
-                      <Title depth={2}>프로젝트 명 :&nbsp;</Title>
-                      <p>{item.name}</p>
-                    </li>
-                    <li>
-                      <Title depth={2}>주요 기술 :&nbsp;</Title>
-                      {item.skills.map((skills, index: number) => {
-                        return <p key={index}>{skills}</p>
-                      })}
-                    </li>
-                    <li>
-                      <Title depth={2}>기간 :&nbsp;</Title>
-                      <p>{item.date}</p>
-                    </li>
-                    {item.url && (
-                      <li>
-                        <Title depth={2}>url :&nbsp;</Title>
-                        <Link href={item.url}>
-                          <a target="_blank" rel="noopener">
-                            홈페이지 방문하기
-                          </a>
-                        </Link>
-                      </li>
-                    )}
-                    {item.role && (
-                      <li>
-                        <Title depth={2}>담당 업무 :&nbsp;</Title>
-                        {item.role.map((item, index) => {
-                          return <p key={index}>{item}</p>
-                        })}
-                      </li>
-                    )}
-                  </ul>
-                  <br />
-                  <hr />
-                </div>
-              )
-            })}
-          </div>
-        </Description>
-      )}
+                  )}
+                </ul>
+                <hr />
+              </div>
+            )
+          })}
+        </div>
+      </div>
     </article>
   )
 }
