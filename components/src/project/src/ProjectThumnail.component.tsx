@@ -4,17 +4,18 @@ import Image from 'next/image'
 import project from 'styles/project.module.scss'
 
 interface ProjectThumnailComponentProps {
-  onClick: (path: string) => void
+  onClick: (path: string, key: string) => void
   imagePath: string
+  name: string
 }
 
 const ProjectThumnailComponent: React.FC<ProjectThumnailComponentProps> = (
   props
 ) => {
-  const { onClick, imagePath } = props
+  const { onClick, imagePath, name } = props
 
   const handleClick = React.useCallback(() => {
-    onClick(imagePath)
+    onClick(imagePath, name)
   }, [])
 
   return (

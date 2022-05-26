@@ -20,11 +20,12 @@
     "node-sass": "^7.0.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-image-gallery": "^1.2.7",
     "react-redux": "^8.0.1",
+    "react-slick": "^0.29.0",
     "redux-observable": "^2.0.0",
     "rxjs": "^7.5.5",
     "sharp": "^0.30.3",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.3",
     "styled-reset": "^4.3.4",
     "swr": "^1.2.2"
@@ -32,7 +33,7 @@
   "devDependencies": {
     "@types/node": "17.0.14",
     "@types/react": "17.0.38",
-    "@types/react-image-gallery": "^1.0.5",
+    "@types/react-slick": "^0.23.8",
     "@types/styled-components": "^5.1.21",
     "babel-plugin-styled-components": "1.10.2",
     "eslint": "^8.13.0",

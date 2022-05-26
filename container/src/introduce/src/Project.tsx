@@ -1,22 +1,24 @@
+import { ProjectDetail, ProjectThumbnail } from 'components'
 import isEqual from 'fast-deep-equal'
-import Image from 'next/image'
+import { gsap } from 'gsap'
 import React from 'react'
 import project from 'styles/project.module.scss'
-import { gsap } from 'gsap'
-import { ProjectThumbnail } from 'components/src/project'
 
 interface ProjectProps {
   data: ProjectData
 }
 
+interface DetailData {
+  images: Array<string>
+}
+
 const Project: React.FC<ProjectProps> = (props) => {
   const { data } = props
-
+  const [detail, setDetail] = React.useState<DetailData>()
   const projectRef = React.useRef<HTMLDivElement>(null)
-  console.log(data)
 
-  const handleClickThumnail = React.useCallback((val: string) => {
-    if (val) {
+  const handleClickThumnail = React.useCallback((path: string) => {
+    if (path) {
       gsap
         .timeline()
         .to(projectRef.current, {
@@ -24,7 +26,7 @@ const Project: React.FC<ProjectProps> = (props) => {
           duration: 0.1,
         })
         .to(projectRef.current, {
-          background: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('${val}') center/cover no-repeat `,
+          background: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('${path}') center/cover no-repeat `,
           duration: 0,
         })
         .to(projectRef.current, {
@@ -33,6 +35,16 @@ const Project: React.FC<ProjectProps> = (props) => {
         })
     }
   }, [])
+
+  React.useEffect(() => {
+    if (data) {
+      const detailData = {
+        images: data[0].service_image,
+      }
+
+      setDetail(detailData)
+    }
+  }, [data])
 
   return (
     <article id="project" className={project.container}>
@@ -45,9 +57,13 @@ const Project: React.FC<ProjectProps> = (props) => {
                 key={list.name}
                 imagePath={list.thumbnail_image}
                 onClick={handleClickThumnail}
+                name={list.name}
               />
             )
           })}
+      </div>
+      <div className={project.detail_container}>
+        {detail && <ProjectDetail detailData={detail} />}
       </div>
     </article>
   )
