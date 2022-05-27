@@ -4,7 +4,7 @@ import Image from 'next/image'
 import project from 'styles/project.module.scss'
 
 interface ProjectThumnailComponentProps {
-  onClick: (path: string, key: string) => void
+  onClick?: (path: string, key: string) => void
   imagePath: string
   name: string
 }
@@ -15,8 +15,8 @@ const ProjectThumnailComponent: React.FC<ProjectThumnailComponentProps> = (
   const { onClick, imagePath, name } = props
 
   const handleClick = React.useCallback(() => {
-    onClick(imagePath, name)
-  }, [])
+    if (onClick) onClick(imagePath, name)
+  }, [imagePath, name, onClick])
 
   return (
     <picture className={project.thumbnail_image} onClick={handleClick}>
@@ -25,7 +25,7 @@ const ProjectThumnailComponent: React.FC<ProjectThumnailComponentProps> = (
           src={imagePath}
           layout="fill"
           priority
-          objectFit="contain"
+          objectFit="cover"
           alt="thumnail_image"
         />
       </figure>

@@ -1,6 +1,5 @@
-import { ProjectDetail, ProjectThumbnail } from 'components'
+import { ProjectBG, ProjectDetail } from 'components'
 import isEqual from 'fast-deep-equal'
-import { gsap } from 'gsap'
 import React from 'react'
 import project from 'styles/project.module.scss'
 
@@ -10,36 +9,42 @@ interface ProjectProps {
 
 interface DetailData {
   images: Array<string>
+  title: string
+  date: string
+  skills: Array<SkillsName>
+  git: string
+  url?: string
 }
 
 const Project: React.FC<ProjectProps> = (props) => {
   const { data } = props
   const [detail, setDetail] = React.useState<DetailData>()
-  const projectRef = React.useRef<HTMLDivElement>(null)
 
-  const handleClickThumnail = React.useCallback((path: string) => {
-    if (path) {
-      gsap
-        .timeline()
-        .to(projectRef.current, {
-          opacity: 0,
-          duration: 0.1,
-        })
-        .to(projectRef.current, {
-          background: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('${path}') center/cover no-repeat `,
-          duration: 0,
-        })
-        .to(projectRef.current, {
-          opacity: 1,
-          duration: 0.1,
-        })
-    }
-  }, [])
+  const handleClickThumb = React.useCallback(
+    (val: number) => {
+      const detailData = {
+        images: data[val].service_image,
+        title: data[val].name,
+        date: data[val].date,
+        skills: data[val].skills,
+        git: data[val].git ?? '',
+        url: data[val].url,
+      }
+
+      setDetail(detailData)
+    },
+    [data]
+  )
 
   React.useEffect(() => {
     if (data) {
       const detailData = {
         images: data[0].service_image,
+        title: data[0].name,
+        date: data[0].date,
+        skills: data[0].skills,
+        git: data[0].git ?? '',
+        url: data[0].url,
       }
 
       setDetail(detailData)
@@ -48,20 +53,7 @@ const Project: React.FC<ProjectProps> = (props) => {
 
   return (
     <article id="project" className={project.container}>
-      <div className={project.container_background} ref={projectRef}></div>
-      <div className={project.thumbnail_container}>
-        {data &&
-          data.map((list) => {
-            return (
-              <ProjectThumbnail
-                key={list.name}
-                imagePath={list.thumbnail_image}
-                onClick={handleClickThumnail}
-                name={list.name}
-              />
-            )
-          })}
-      </div>
+      <ProjectBG data={data} onClick={handleClickThumb} />
       <div className={project.detail_container}>
         {detail && <ProjectDetail detailData={detail} />}
       </div>
