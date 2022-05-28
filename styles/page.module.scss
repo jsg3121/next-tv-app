@@ -2,7 +2,7 @@
 
 @keyframes open {
   0% {
-    height: 50vh;
+    height: calc(var(--MOBILE-vh, 1vh) * 50);
   }
   100% {
     height: 3.888rem;
@@ -45,7 +45,7 @@
     position: absolute;
     top: 0;
     width: 100vw;
-    height: 50vh;
+    height: calc(var(--MOBILE-vh, 1vh) * 50);
     background-color: #000000;
     z-index: 200;
     animation: open 2s 2s ease both running;
@@ -57,7 +57,7 @@
     position: absolute;
     bottom: 0;
     width: 100vw;
-    height: 50vh;
+    height: calc(var(--MOBILE-vh, 1vh) * 50);
     background-color: #000000;
     z-index: 200;
     animation: open 2s 2s ease both running;

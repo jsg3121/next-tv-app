@@ -4,6 +4,7 @@ import { Text, Title } from 'components'
 import project from 'styles/project.module.scss'
 import Slider, { Settings } from 'react-slick'
 import Image from 'next/image'
+import Link from 'next/link'
 
 interface ProjectDetailComponentProps {
   detailData: {
@@ -74,13 +75,17 @@ const ProjectDetailComponent: React.FC<ProjectDetailComponentProps> = (
           {detailData.git && (
             <li>
               <Title depth={2}>Git</Title>
-              <Text>{detailData.git}</Text>
+              <Link href={detailData.git}>
+                <a target="_blank">{detailData.git}</a>
+              </Link>
             </li>
           )}
           {detailData.url && (
             <li>
               <Title depth={2}>Link</Title>
-              <Text>{detailData.url}</Text>
+              <Link href={detailData.url}>
+                <a target="_blank">{detailData.url}</a>
+              </Link>
             </li>
           )}
         </ul>

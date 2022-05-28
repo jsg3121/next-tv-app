@@ -11,7 +11,7 @@ import { GlobalStyle } from '../styles/Global'
 
 const Root = styled.main`
   width: 100%;
-  height: 100vh;
+  height: calc(var(--MOBILE-vh, 1vh) * 100);
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -20,7 +20,7 @@ const Root = styled.main`
     &::before {
       content: 'power off';
       width: 100vw;
-      height: 100vh;
+      height: calc(var(--MOBILE-vh, 1vh) * 100);
       position: absolute;
       background-color: #000000;
       z-index: 1000000;
@@ -48,6 +48,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, [power])
 
+  React.useEffect(() => {
+    const vh = window.innerHeight * 0.01
+    document.documentElement.style.setProperty('--MOBILE-vh', `${vh}px`)
+  }, [])
+
   return (
     <>
       <Head>
@@ -55,6 +60,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="author" content="xodm95@gmail.com" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
         <meta
           name="description"
           content="

@@ -28,7 +28,7 @@ export const GlobalStyle = createGlobalStyle`
         -ms-overflow-style: none;
         scrollbar-width: none;
         width: 100%;
-        height: 100vh;
+        height: calc(var(--MOBILE-vh, 1vh) * 100);
         background-color:#000000
     }
     button {
@@ -49,6 +49,10 @@ export const GlobalStyle = createGlobalStyle`
     figure {
         width: 100%;
         height:100%;
+    }
+
+    * {
+        -webkit-tap-highlight-color: transparent !important;
     }
 
     @media screen and (min-width: 960px) and (max-width: 1280px) {
