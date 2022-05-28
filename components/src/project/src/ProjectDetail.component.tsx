@@ -33,8 +33,6 @@ const ProjectDetailComponent: React.FC<ProjectDetailComponentProps> = (
 ) => {
   const { detailData } = props
 
-  console.log('123123123')
-
   return (
     <>
       <div className={project.slide_container}>
@@ -73,10 +71,12 @@ const ProjectDetailComponent: React.FC<ProjectDetailComponentProps> = (
               return <Text key={skill}>{skill}</Text>
             })}
           </li>
-          <li>
-            <Title depth={2}>Git</Title>
-            <Text>{detailData.git}</Text>
-          </li>
+          {detailData.git && (
+            <li>
+              <Title depth={2}>Git</Title>
+              <Text>{detailData.git}</Text>
+            </li>
+          )}
           {detailData.url && (
             <li>
               <Title depth={2}>Link</Title>

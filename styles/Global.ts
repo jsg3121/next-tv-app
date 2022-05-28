@@ -61,14 +61,14 @@ export const GlobalStyle = createGlobalStyle`
             font-size : 14px;
         }
     }
-    @media screen and (min-width: 480px) and (max-width: 679px) {
+    @media screen and (max-width: 679px) {
         html, body {
             font-size : 12px;
         }
     }
-    @media screen and (max-width: 479px) {
+    /* @media screen and (max-width: 479px) {
         html, body {
             font-size : 11px;
         }
-    }
+    } */
 `

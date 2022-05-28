@@ -1,6 +1,6 @@
 import { ChannelBtn } from 'components'
 import isEqual from 'fast-deep-equal'
-import Router, { useRouter } from 'next/router'
+import Router from 'next/router'
 import React from 'react'
 import { Actions, useDispatch } from 'store'
 import styled from 'styled-components'
@@ -23,9 +23,6 @@ const Lights = styled.div`
 
 const Remote: React.FC = () => {
   const activeRef = React.useRef<HTMLDivElement>(null)
-  const [isShow, setIsShow] = React.useState<boolean>(true)
-
-  const router = useRouter()
 
   const dispatch = useDispatch()
 
@@ -53,57 +50,40 @@ const Remote: React.FC = () => {
     }
   }, [dispatch])
 
-  const handleClickChShow = React.useCallback((val: 'up' | 'down') => {
-    switch (val) {
-      case 'up':
-        dispatch(Actions.remote.arrowBtn(val))
-        break
-      case 'down':
-        dispatch(Actions.remote.arrowBtn(val))
-        break
-    }
-  }, [])
-
-  React.useEffect(() => {
-    if (router.pathname === '/ch/intro') {
-      const timeOut = setTimeout(() => {
-        setIsShow(true)
-
-        return () => {
-          return clearTimeout(timeOut)
-        }
-      }, 5500)
-    }
-    if (router.pathname !== '/ch/intro') {
-      setIsShow(true)
-    }
-  }, [router.pathname])
-
+  const handleClickChShow = React.useCallback(
+    (val: 'up' | 'down') => {
+      switch (val) {
+        case 'up':
+          dispatch(Actions.remote.arrowBtn(val))
+          break
+        case 'down':
+          dispatch(Actions.remote.arrowBtn(val))
+          break
+      }
+    },
+    [dispatch]
+  )
   return (
-    <>
-      {isShow && (
-        <div className={remote.container}>
-          <div className={remote.controller_container}>
-            <PowerBtn onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} />
-            <Lights ref={activeRef}>
-              <i></i>
-            </Lights>
-          </div>
-          <ThemeBtn />
-          <ArrowBtn
-            onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp}
-            onClick={handleClickChShow}
-          />
-          <ChannelBtn
-            onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp}
-            onClickUp={handleClickChUp}
-            onClickDown={handleClickChDown}
-          />
-        </div>
-      )}
-    </>
+    <div className={remote.container}>
+      <div className={remote.controller_container}>
+        <PowerBtn onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} />
+        <Lights ref={activeRef}>
+          <i></i>
+        </Lights>
+      </div>
+      <ThemeBtn />
+      <ArrowBtn
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onClick={handleClickChShow}
+      />
+      <ChannelBtn
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onClickUp={handleClickChUp}
+        onClickDown={handleClickChDown}
+      />
+    </div>
   )
 }
 

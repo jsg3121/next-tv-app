@@ -28,6 +28,7 @@ const ProjectBGComponent: React.FC<ProjectBGComponentProps> = (props) => {
       slidesToShow: 1,
       slidesToScroll: 1,
       pauseOnHover: false,
+      arrows: false,
       appendDots: (dots) => (
         <div>
           <ul className={project.nav_container}> {dots} </ul>

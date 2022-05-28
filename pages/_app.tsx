@@ -1,6 +1,7 @@
 import { RemoteContainer } from 'container'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import React from 'react'
 import 'slick-carousel/slick/slick-theme.css'
 import 'slick-carousel/slick/slick.css'
@@ -36,6 +37,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   const power = useSelector(({ channel }) => channel.power)
 
+  const router = useRouter()
+
   React.useEffect(() => {
     if (power && rootRef.current) {
       rootRef.current.classList.remove('powerOff')
@@ -64,7 +67,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <GlobalStyle />
       <Root ref={rootRef}>
-        <RemoteContainer />
+        {router.pathname !== '/ch/intro' && <RemoteContainer />}
         <Component {...pageProps} />
       </Root>
     </>

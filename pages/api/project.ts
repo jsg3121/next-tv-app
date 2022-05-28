@@ -61,7 +61,7 @@ const projectData: ProjectData = [
   {
     name: 'Devfolio v2',
     date: '2021. 11 ~ 2022. 03',
-    skills: ['Next.js', 'typescript', 'scss', 'storybook'],
+    skills: ['Next.js', 'typescript', 'scss'],
     workers: {
       total: 1,
       design: 0,
