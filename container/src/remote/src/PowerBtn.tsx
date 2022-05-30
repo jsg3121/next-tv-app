@@ -15,11 +15,11 @@ const PowerBtn: React.FC<PowerBtnProps> = (props) => {
 
   const handleMouseDown = React.useCallback(() => {
     onMouseDown()
-  }, [])
+  }, [onMouseDown])
 
   const handleMouseUp = React.useCallback(() => {
     onMouseUp()
-  }, [])
+  }, [onMouseUp])
 
   const handleClickPower = React.useCallback(() => {
     dispatch(Actions.remote.powerOnOff())
