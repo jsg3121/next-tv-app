@@ -42,9 +42,9 @@ const About: React.FC = () => {
               </Link>
             </li>
             <li>
-              <Title depth={3}>WAKATIME</Title>
-              <Link href="https://wakatime.com/@jsg3121">
-                <a target="_blank">https://wakatime.com/@jsg3121</a>
+              <Title depth={3}>GIT</Title>
+              <Link href="https://github.com/jsg3121">
+                <a target="_blank">https://github.com/jsg3121</a>
               </Link>
             </li>
             <li>
