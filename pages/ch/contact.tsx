@@ -63,6 +63,7 @@ const Contact: NextPage = () => {
                 <Text>Immer</Text>
                 <Text>Rxjs</Text>
                 <Text>Redux-Observable</Text>
+                <Text>react-slick</Text>
               </div>
             </li>
           </ul>
