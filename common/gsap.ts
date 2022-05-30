@@ -1,9 +1,11 @@
 import { gsap } from 'gsap'
 import { NextRouter } from 'next/router'
+import { Actions, Dispatch } from 'store'
 
 export const turnOff = (
   current: HTMLHeadingElement,
-  router: NextRouter
+  router: NextRouter,
+  dispatch: Dispatch
 ): void => {
   gsap
     .timeline()
@@ -25,7 +27,8 @@ export const turnOff = (
     })
     .then(() => {
       if (router) {
-        router.push('/ch/about')
+        dispatch(Actions.remote.changeChannel('up'))
+        // router.push('/ch/about')
       }
     })
 }

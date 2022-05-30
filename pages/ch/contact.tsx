@@ -16,6 +16,7 @@ const Contact: NextPage = () => {
   const dispatch = useDispatch()
 
   React.useEffect(() => {
+    console.log('set')
     dispatch(Actions.remote.channelSet(chSet))
   }, [dispatch])
 

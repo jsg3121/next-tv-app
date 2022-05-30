@@ -97,3 +97,22 @@ export const epicPowerOn: Epic<Action, Action> = (action$, store$) => {
     })
   )
 }
+
+/**
+ * info : 페이지 새로고침시 채널 정보 저장
+ * @author 장선규
+ * @param action$
+ * @param store$
+ * @returns
+ */
+export const epicChannelSet: Epic<Action, Action> = (action$, store$) => {
+  return action$.pipe(
+    ofType('@@CHANNEL/CHANNELSET'),
+    filter(() => store$.value.channel.beforeChInfo.chNum === -1),
+    map(() => {
+      return {
+        type: '@@CHANNEL/RECOVER_CHANNEL_INFO',
+      }
+    })
+  )
+}

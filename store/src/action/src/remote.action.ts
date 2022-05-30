@@ -46,3 +46,9 @@ export const resetChannelInfo = createAction<
   void,
   '@@CHANNEL/RESET_CHANNEL_INFO'
 >('@@CHANNEL/RESET_CHANNEL_INFO')
+
+// 새로고침시 채널 정보 다시 저장
+export const recoverChannelInfo = createAction<
+  void,
+  '@@CHANNEL/RECOVER_CHANNEL_INFO'
+>('@@CHANNEL/RECOVER_CHANNEL_INFO')

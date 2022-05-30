@@ -1,5 +1,5 @@
 import { turnOff, turnOnOff } from 'common'
-import { ChannelContainer, IntorContainer, NoticeContainer } from 'container'
+import { IntorContainer, NoticeContainer } from 'container'
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -22,9 +22,9 @@ const Intro: NextPage = () => {
 
   const handleClick = React.useCallback(() => {
     if (mainRef.current) {
-      turnOff(mainRef.current, router)
+      turnOff(mainRef.current, router, dispatch)
     }
-  }, [router])
+  }, [router, dispatch])
 
   React.useEffect(() => {
     if (!isOpen) {

@@ -24,8 +24,8 @@ export type RemoteStateType = {
 
 const channelState: RemoteStateType = {
   chInfo: {
-    chNum: 1,
-    chName: 'Intro',
+    chNum: -1,
+    chName: '',
     broadcast: '',
     progress: 0,
   },
@@ -52,11 +52,11 @@ const remoteReducer = createReducer<RemoteStateType>(
       // info : 페이지 집입시 채널 정보 저장 및 변경전 original 채널 정보 저장 ↓↓
       .addCase(remoteActions.channelSet, (store, { payload }) => {
         return produce(store, (draft) => {
-          draft.chInfo.broadcast = broadcast[payload.chNum - 1]
+          draft.beforeChInfo = store.chInfo
           draft.chInfo.chName = payload.chName
           draft.chInfo.chNum = payload.chNum
+          draft.chInfo.broadcast = broadcast[payload.chNum - 1]
           draft.chInfo.progress = progress[payload.chNum - 1]
-          draft.beforeChInfo = store.chInfo
         })
       })
       // info : 전원버튼 기능 ↓↓
@@ -133,6 +133,11 @@ const remoteReducer = createReducer<RemoteStateType>(
       .addCase(remoteActions.resetChannelInfo, (store) => {
         return produce(store, (draft) => {
           draft.chInfo = store.beforeChInfo
+        })
+      })
+      .addCase(remoteActions.recoverChannelInfo, (store) => {
+        return produce(store, (draft) => {
+          draft.beforeChInfo = store.chInfo
         })
       })
   }
