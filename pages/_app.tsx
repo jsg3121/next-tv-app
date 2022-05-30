@@ -11,7 +11,7 @@ import { GlobalStyle } from '../styles/Global'
 
 const Root = styled.main`
   width: 100%;
-  height: calc(var(--MOBILE-vh, 1vh) * 100);
+  height: 100vh;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -20,7 +20,7 @@ const Root = styled.main`
     &::before {
       content: 'power off';
       width: 100vw;
-      height: calc(var(--MOBILE-vh, 1vh) * 100);
+      height: 100vh;
       position: absolute;
       background-color: #000000;
       z-index: 1000000;
@@ -28,7 +28,15 @@ const Root = styled.main`
       align-items: center;
       justify-content: center;
       color: #ffffff;
+
+      @media screen and (hover: none) and (pointer: coarse) {
+        height: calc(var(--MOBILE-vh, 1vh) * 100);
+      }
     }
+  }
+
+  @media screen and (hover: none) and (pointer: coarse) {
+    height: calc(var(--MOBILE-vh, 1vh) * 100);
   }
 `
 

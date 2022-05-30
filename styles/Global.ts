@@ -28,9 +28,14 @@ export const GlobalStyle = createGlobalStyle`
         -ms-overflow-style: none;
         scrollbar-width: none;
         width: 100%;
-        height: calc(var(--MOBILE-vh, 1vh) * 100);
-        background-color:#000000
+        height: 100vh;
+        background-color:#000000;
+
+        @media screen and (hover: none) and (pointer: coarse){
+            height: calc(var(--MOBILE-vh, 1vh) * 100);
+        }
     }
+
     button {
         background: none;
         padding: 0;

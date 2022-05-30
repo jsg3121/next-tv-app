@@ -26,7 +26,7 @@ const Contact: NextPage = () => {
         <div className={contact.conatiner}>
           <ul className={contact.credit_container}>
             <li>
-              <Title depth={1}>Cast</Title>
+              <Title depth={1}>Thanks</Title>
             </li>
             <li>
               <Title depth={2}>기획</Title>

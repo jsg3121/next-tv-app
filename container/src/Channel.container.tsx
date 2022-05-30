@@ -50,7 +50,7 @@ const Channel: React.FC = () => {
           </div>
           <div className={channel.epg_progress}>
             <div className={channel.ch_info}>
-              <p>{chInfo.chName}</p>
+              <p>CH. {chInfo.chName}</p>
               <p>{date?.now}</p>
             </div>
             <div className={channel.progress_info}>
