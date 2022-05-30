@@ -32,7 +32,7 @@ declare global {
     [K in GradeType]: Array<SkillInfo>
   }
 
-  export type ProjectOffice = 'Quber' | 'Cresector' | 'ToyProject'
+  export type ProjectOffice = 'ToyProject'
 
   export type ProjectDescription = {
     name: string
@@ -44,17 +44,7 @@ declare global {
       developer: number
     }
     role?: Array<string>
-    thumbnail_image: {
-      img?: string
-      top?: string
-      bottom?: string
-      left?: string
-      right?: string
-      width?: string
-      height?: string
-      zIndex?: number
-      objectFit?: ImageProps['objectFit']
-    }
+    thumbnail_image: string
     service_image: Array<string>
     backgroundColor: string
     url?: string
@@ -62,9 +52,7 @@ declare global {
     git?: string
   }
 
-  export type ProjectData = {
-    [T in ProjectOffice]: Array<ProjectDescription>
-  }
+  export type ProjectData = Array<ProjectDescription>
 }
 
 export {}

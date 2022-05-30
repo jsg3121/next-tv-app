@@ -1,73 +1,62 @@
+import { ProjectBG, ProjectDetail } from 'components'
 import isEqual from 'fast-deep-equal'
 import React from 'react'
 import project from 'styles/project.module.scss'
-import { ProjectCard, ProjectDetail } from '../../../src/project'
+
 interface ProjectProps {
   data: ProjectData
 }
 
+interface DetailData {
+  images: Array<string>
+  title: string
+  date: string
+  skills: Array<SkillsName>
+  git: string
+  url?: string
+}
+
 const Project: React.FC<ProjectProps> = (props) => {
   const { data } = props
-  const projectRef = React.useRef<HTMLDivElement>(null)
-  const [detail, setDetail] = React.useState<ProjectData[keyof ProjectData]>()
-  const [category, setCategory] =
-    React.useState<keyof ProjectData>('ToyProject')
+  const [detail, setDetail] = React.useState<DetailData>()
 
-  const handleClick = React.useCallback(
-    (val: keyof ProjectData) => {
-      if (projectRef.current) {
-        projectRef.current.classList.add(`${project.active}`)
-        setDetail(data[val])
-        setCategory(val)
+  const handleClickThumb = React.useCallback(
+    (val: number) => {
+      const detailData = {
+        images: data[val].service_image,
+        title: data[val].name,
+        date: data[val].date,
+        skills: data[val].skills,
+        git: data[val].git ?? '',
+        url: data[val].url,
       }
+
+      setDetail(detailData)
     },
-    [projectRef, data]
+    [data]
   )
 
   React.useEffect(() => {
     if (data) {
-      setDetail(data.ToyProject)
-
-      const time = setTimeout(() => {
-        projectRef.current?.classList.add(`${project.active}`)
-      }, 1000)
-      return () => {
-        return clearTimeout(time)
+      const detailData = {
+        images: data[0].service_image,
+        title: data[0].name,
+        date: data[0].date,
+        skills: data[0].skills,
+        git: data[0].git ?? '',
+        url: data[0].url,
       }
+
+      setDetail(detailData)
     }
   }, [data])
 
   return (
     <article id="project" className={project.container}>
-      <div className={project.slide_container}>
-        <div className={project.contaianer_thumbnail} ref={projectRef}>
-          <article className={project.thumbnail}>
-            <ProjectCard
-              onClick={handleClick}
-              thumbnail={'/quber.png'}
-              backgroundColor={'#888888'}
-              category="Quber"
-            />
-          </article>
-          <article className={project.thumbnail}>
-            <ProjectCard
-              onClick={handleClick}
-              thumbnail={'/cresector.jpeg'}
-              backgroundColor={'red'}
-              category="Cresector"
-            />
-          </article>
-          <article className={project.thumbnail}>
-            <ProjectCard
-              onClick={handleClick}
-              thumbnail={'/personal.png'}
-              backgroundColor={'#ffffff'}
-              category="ToyProject"
-            />
-          </article>
-        </div>
+      <ProjectBG data={data} onClick={handleClickThumb} />
+      <div className={project.detail_container}>
+        {detail && <ProjectDetail detailData={detail} />}
       </div>
-      {detail && <ProjectDetail detail={detail} category={category} />}
     </article>
   )
 }

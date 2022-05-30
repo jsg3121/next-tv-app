@@ -52,7 +52,6 @@ const Intro: NextPage = () => {
 
   return (
     <>
-      {isShow && <ChannelContainer />}
       <section className={intro.container} ref={mainRef}>
         {isShow && (
           <div>
