@@ -62,12 +62,36 @@ export const epicArrowClickShow: Epic<Action, Action> = (action$, store$) => {
   )
 }
 
+/**
+ * info : 채널 정보 리셋
+ * @author 장선규
+ * @param action$
+ * @param store$
+ * @returns
+ */
 export const epicChannelReset: Epic<Action, Action> = (action$, store$) => {
   return action$.pipe(
     ofType('@@CHANNEL/INFO_HIDE'),
     filter(
       () => store$.value.channel.beforeChInfo !== store$.value.channel.chInfo
     ),
+    map(() => {
+      return { type: '@@CHANNEL/RESET_CHANNEL_INFO' }
+    })
+  )
+}
+
+/**
+ * info : 화면이 다시 켜질 때 채널 정보 리셋
+ * @author 장선규
+ * @param action$
+ * @param store$
+ * @returns
+ */
+export const epicPowerOn: Epic<Action, Action> = (action$, store$) => {
+  return action$.pipe(
+    ofType('@@CHANNEL/POWER_ON_OFF'),
+    filter(() => store$.value.channel.power === true),
     map(() => {
       return { type: '@@CHANNEL/RESET_CHANNEL_INFO' }
     })
