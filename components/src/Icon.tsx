@@ -109,9 +109,14 @@ const IconContainer = styled((props) => {
     }};
   }
 
-  @media screen and (max-width: 679px) {
+  @media screen and (min-width: 480px) and (max-width: 679px) {
     width: 6.5rem;
     height: 6.5rem;
+  }
+
+  @media screen and (max-width: 479px) {
+    width: 4.5rem;
+    height: 4.5rem;
   }
 `
 
