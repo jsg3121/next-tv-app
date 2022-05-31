@@ -19,7 +19,7 @@
       position: relative;
       height: 100vh;
 
-      @media screen and (hover: none) and (pointer: coarse) {
+      @media screen and (pointer: coarse) {
         height: calc(var(--MOBILE-vh, 1vh) * 100);
       }
     }

@@ -57,7 +57,7 @@ export const turnOnOff = (current: HTMLHeadingElement) => {
     })
     .to(current, {
       width: '100%',
-      height: 'calc(100vh - 7.778rem)',
+      height: 'calc(calc(var(--MOBILE-vh, 1vh) * 100) - 7.778rem)',
       duration: 0.1,
     })
     .delay(1)

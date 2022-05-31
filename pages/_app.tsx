@@ -15,6 +15,7 @@ const Root = styled.main`
   display: flex;
   align-items: center;
   overflow: hidden;
+  position: relative;
 
   &.powerOff {
     &::before {
@@ -29,22 +30,20 @@ const Root = styled.main`
       justify-content: center;
       color: #ffffff;
 
-      @media screen and (hover: none) and (pointer: coarse) {
+      @media screen and (pointer: coarse) {
         height: calc(var(--MOBILE-vh, 1vh) * 100);
       }
     }
   }
 
-  @media screen and (hover: none) and (pointer: coarse) {
+  @media screen and (pointer: coarse) {
     height: calc(var(--MOBILE-vh, 1vh) * 100);
   }
 `
 
 function MyApp({ Component, pageProps }: AppProps) {
   const rootRef = React.useRef<HTMLElement>(null)
-
   const power = useSelector(({ channel }) => channel.power)
-
   const router = useRouter()
 
   React.useEffect(() => {
@@ -70,7 +69,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="author" content="xodm95@gmail.com" />
         <meta
           name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          content="width=device-width,height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
         <meta
           name="description"

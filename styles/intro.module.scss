@@ -16,8 +16,4 @@
   will-change: filter;
   filter: grayscale(100%);
   transform: translate(-50%, -50%);
-
-  @media screen and (hover: none) and (pointer: coarse) {
-    height: calc(var(--MOBILE-vh, 1vh) * 100);
-  }
 }
