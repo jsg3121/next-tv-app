@@ -9,23 +9,7 @@ const About: React.FC = () => {
   return (
     <article className={about.container} id="about">
       <div>
-        <Title depth={1}>ABOUT ME</Title>
         <div className={about.profile_info}>
-          <picture className={about.profile}>
-            <figure>
-              <Image
-                src="/profile.webp"
-                alt="profile_image"
-                layout="fill"
-                loading="lazy"
-                style={{
-                  borderRadius: '0.555rem',
-                  zIndex: '-1',
-                }}
-                objectFit="contain"
-              />
-            </figure>
-          </picture>
           <ul className={about.info_list}>
             <li>
               <Title depth={2}>PROFILE</Title>
