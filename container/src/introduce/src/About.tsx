@@ -28,6 +28,9 @@ const About: React.FC = () => {
           </picture>
           <ul className={about.info_list}>
             <li>
+              <Title depth={2}>PROFILE</Title>
+            </li>
+            <li>
               <Title depth={3}>NAME</Title>
               <Text>장선규 (Jang Sungyu)</Text>
             </li>
@@ -52,7 +55,7 @@ const About: React.FC = () => {
               <Text>Quber ( 2019. 11 ~ )</Text>
             </li>
             <li>
-              <Title depth={2}> </Title>
+              <Title depth={2}>&nbsp;</Title>
               <Text>Cresector ( 2018. 06 ~ 2019. 07 )</Text>
             </li>
           </ul>

@@ -69,7 +69,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="author" content="xodm95@gmail.com" />
         <meta
           name="viewport"
-          content="width=device-width,height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          content="width=device-width,height=device-height, initial-scale=1.0, maximum-scale=5.0"
         />
         <meta
           name="description"

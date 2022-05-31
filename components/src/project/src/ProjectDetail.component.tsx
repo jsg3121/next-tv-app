@@ -44,7 +44,7 @@ const ProjectDetailComponent: React.FC<ProjectDetailComponentProps> = (
                 <figure>
                   <Image
                     src={image}
-                    loading="lazy"
+                    priority
                     alt="slide_image"
                     layout="fill"
                     objectFit="contain"

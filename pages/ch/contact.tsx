@@ -83,10 +83,10 @@ const Contact: NextPage = () => {
               <br />
             </li>
             <li>
-              <Title depth={3}>
+              <Text>
                 Copyright 2022. Jangsungyu All resources cannot be copied
                 without permission.
-              </Title>
+              </Text>
             </li>
           </ul>
         </div>

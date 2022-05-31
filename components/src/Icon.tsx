@@ -74,7 +74,7 @@ const IconContainer = styled((props) => {
               src={backgroundImage}
               alt="Devfolio"
               layout="fill"
-              priority
+              loading="lazy"
             />
           </figure>
         </picture>
