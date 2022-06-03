@@ -27,6 +27,20 @@ const slideSetting: Settings = {
   fade: true,
   pauseOnHover: false,
   slidesToShow: 1,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {},
+    },
+    {
+      breakpoint: 600,
+      settings: {},
+    },
+    {
+      breakpoint: 480,
+      settings: {},
+    },
+  ],
 }
 
 const ProjectDetailComponent: React.FC<ProjectDetailComponentProps> = (
@@ -35,7 +49,7 @@ const ProjectDetailComponent: React.FC<ProjectDetailComponentProps> = (
   const { detailData } = props
 
   return (
-    <>
+    <div className={project.detail_container}>
       <div className={project.slide_container}>
         <Slider {...slideSetting}>
           {detailData.images.map((image, index: number) => {
@@ -76,7 +90,7 @@ const ProjectDetailComponent: React.FC<ProjectDetailComponentProps> = (
             <li>
               <Title depth={2}>Git</Title>
               <Link href={detailData.git}>
-                <a target="_blank">{detailData.git}</a>
+                <a target="_blank">Visit Git</a>
               </Link>
             </li>
           )}
@@ -84,13 +98,13 @@ const ProjectDetailComponent: React.FC<ProjectDetailComponentProps> = (
             <li>
               <Title depth={2}>Link</Title>
               <Link href={detailData.url}>
-                <a target="_blank">{detailData.url}</a>
+                <a target="_blank">Visit WebSite</a>
               </Link>
             </li>
           )}
         </ul>
       </div>
-    </>
+    </div>
   )
 }
 

@@ -2,33 +2,40 @@ import isEqual from 'fast-deep-equal'
 import React from 'react'
 import Slider, { Settings } from 'react-slick'
 import project from 'styles/project.module.scss'
-import { ProjectNav, ProjectThumbnail } from '..'
+import { ProjectDetail, ProjectNav, ProjectThumbnail } from '..'
 
-interface ProjectBGComponentProps {
+interface ProjectSlideComponentProps {
   data: ProjectData
-  onClick: (val: number) => void
 }
 
-const ProjectBGComponent: React.FC<ProjectBGComponentProps> = (props) => {
-  const { data, onClick } = props
-
-  const handleChange = React.useCallback(
-    (val: number) => {
-      onClick(val)
-    },
-    [onClick]
-  )
+const ProjectSlideComponent: React.FC<ProjectSlideComponentProps> = (props) => {
+  const { data } = props
 
   const settings: Settings = React.useMemo(() => {
     return {
       dots: true,
       speed: 500,
+      lazyLoad: 'progressive',
       fade: true,
       infinite: true,
       slidesToShow: 1,
       slidesToScroll: 1,
       pauseOnHover: false,
       arrows: false,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {},
+        },
+        {
+          breakpoint: 600,
+          settings: {},
+        },
+        {
+          breakpoint: 480,
+          settings: {},
+        },
+      ],
       appendDots: (dots) => (
         <div>
           <ul className={project.nav_container}> {dots} </ul>
@@ -43,23 +50,30 @@ const ProjectBGComponent: React.FC<ProjectBGComponentProps> = (props) => {
 
         return <ProjectNav index={index} navList={navThumb} />
       },
-      afterChange: (index) => {
-        handleChange(index)
-      },
     }
-  }, [data, handleChange])
+  }, [data])
 
   return (
     <div className={project.thumbnail_container}>
       <Slider {...settings}>
         {data &&
           data.map((list) => {
+            const detail = {
+              images: list.service_image,
+              title: list.name,
+              date: list.date,
+              skills: list.skills,
+              git: list.git ?? '',
+              url: list.url,
+            }
             return (
-              <ProjectThumbnail
-                key={list.name}
-                imagePath={list.thumbnail_image}
-                name={list.name}
-              />
+              <div key={list.name}>
+                <ProjectThumbnail
+                  imagePath={list.thumbnail_image}
+                  name={list.name}
+                />
+                <ProjectDetail detailData={detail} />
+              </div>
             )
           })}
       </Slider>
@@ -67,4 +81,4 @@ const ProjectBGComponent: React.FC<ProjectBGComponentProps> = (props) => {
   )
 }
 
-export default React.memo(ProjectBGComponent, isEqual)
+export default React.memo(ProjectSlideComponent, isEqual)
