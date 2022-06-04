@@ -1,6 +1,6 @@
-import React from 'react'
 import isEqual from 'fast-deep-equal'
 import Image from 'next/image'
+import React from 'react'
 import project from 'styles/project.module.scss'
 
 interface ProjectThumnailComponentProps {
@@ -19,17 +19,19 @@ const ProjectThumnailComponent: React.FC<ProjectThumnailComponentProps> = (
   }, [imagePath, name, onClick])
 
   return (
-    <picture className={project.thumbnail_image} onClick={handleClick}>
-      <figure>
-        <Image
-          src={imagePath}
-          layout="fill"
-          priority
-          objectFit="cover"
-          alt="thumnail_image"
-        />
-      </figure>
-    </picture>
+    <>
+      <picture className={project.thumbnail_image} onClick={handleClick}>
+        <figure>
+          <Image
+            src={imagePath}
+            layout="fill"
+            priority
+            objectFit="cover"
+            alt="thumnail_image"
+          />
+        </figure>
+      </picture>
+    </>
   )
 }
 
