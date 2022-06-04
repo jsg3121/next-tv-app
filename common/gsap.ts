@@ -38,27 +38,16 @@ export const turnOnOff = (current: HTMLHeadingElement) => {
 
   timeLine
     .to(current, {
+      backgroundColor: '#222222',
       width: '100%',
       height: '2px',
       ease: 'Power4.easeOut',
       duration: 0.1,
-    })
-    .to(current, {
-      width: '0',
-      height: '0',
-      duration: 0.2,
-    })
-    .to(current, {
-      width: '100%',
-      height: '2px',
-      ease: 'Power4.easeOut',
-      duration: 0.2,
-      backgroundImage: 'none',
     })
     .to(current, {
       width: '100%',
       height: 'calc(calc(var(--MOBILE-vh, 1vh) * 100) - 7.778rem)',
-      duration: 0.1,
+      duration: 0.2,
     })
     .delay(1)
 }
