@@ -18,7 +18,6 @@ interface ProjectDetailComponentProps {
 }
 
 const slideSetting: Settings = {
-  lazyLoad: 'progressive',
   infinite: true,
   autoplay: true,
   arrows: false,
@@ -27,20 +26,7 @@ const slideSetting: Settings = {
   fade: true,
   pauseOnHover: false,
   slidesToShow: 1,
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {},
-    },
-    {
-      breakpoint: 600,
-      settings: {},
-    },
-    {
-      breakpoint: 480,
-      settings: {},
-    },
-  ],
+  autoplaySpeed: 2000,
 }
 
 const ProjectDetailComponent: React.FC<ProjectDetailComponentProps> = (
@@ -62,6 +48,7 @@ const ProjectDetailComponent: React.FC<ProjectDetailComponentProps> = (
                     alt="slide_image"
                     layout="fill"
                     objectFit="contain"
+                    sizes="50vw"
                   />
                 </figure>
               </picture>

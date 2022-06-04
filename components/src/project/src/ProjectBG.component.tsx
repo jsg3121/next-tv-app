@@ -15,27 +15,12 @@ const ProjectSlideComponent: React.FC<ProjectSlideComponentProps> = (props) => {
     return {
       dots: true,
       speed: 500,
-      lazyLoad: 'progressive',
       fade: true,
       infinite: true,
       slidesToShow: 1,
       slidesToScroll: 1,
       pauseOnHover: false,
       arrows: false,
-      responsive: [
-        {
-          breakpoint: 1024,
-          settings: {},
-        },
-        {
-          breakpoint: 600,
-          settings: {},
-        },
-        {
-          breakpoint: 480,
-          settings: {},
-        },
-      ],
       appendDots: (dots) => (
         <div>
           <ul className={project.nav_container}> {dots} </ul>

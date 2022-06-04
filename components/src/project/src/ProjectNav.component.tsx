@@ -21,6 +21,7 @@ const ProjectNavComponent: React.FC<ProjectNavComponentProps> = (props) => {
             alt="nav_image"
             objectFit="cover"
             priority
+            sizes="50vw"
           />
         </figure>
       </picture>

@@ -28,6 +28,7 @@ const ProjectThumnailComponent: React.FC<ProjectThumnailComponentProps> = (
             priority
             objectFit="cover"
             alt="thumnail_image"
+            sizes="50vw"
           />
         </figure>
       </picture>
